@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yesteryear — Book Club Guide (Complete, Ch. 1–57 + Part Three + Epilogue)</title>
+<style>
+  :root {
+    --cream: #f6f1e7;
+    --ink: #2b2620;
+    --brown: #6b4a34;
+    --rust: #a8462f;
+    --sage: #6f7d5c;
+    --line: #ddd2bd;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    line-height: 1.7;
+    font-size: 19px;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 56px 90px;
+  }
+  header {
+    text-align: center;
+    border-bottom: 2px solid var(--brown);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+  header .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+    color: var(--rust);
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 4rem;
+    margin: 0 0 8px;
+    font-style: italic;
+  }
+  header .author {
+    font-size: 1.4rem;
+    color: var(--brown);
+  }
+  header .scope {
+    margin-top: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.05rem;
+    color: #6b6252;
+  }
+  h2 {
+    font-size: 2rem;
+    color: var(--rust);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-top: 60px;
+  }
+  h3 {
+    font-size: 1.4rem;
+    color: var(--brown);
+    margin-bottom: 6px;
+  }
+  .warning {
+    background: #fbeee4;
+    border-left: 4px solid var(--rust);
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #5c3a2a;
+    margin-top: 32px;
+  }
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 40px;
+  }
+  .chapter {
+    margin-bottom: 22px;
+    padding-left: 20px;
+    border-left: 3px solid var(--line);
+  }
+  .chapter.wide {
+    grid-column: 1 / -1;
+  }
+  .chapter .num {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: bold;
+  }
+  .chapter ul { margin: 8px 0 0; padding-left: 22px; }
+  .chapter li { margin-bottom: 6px; }
+  details.quote-toggle {
+    margin-top: 14px;
+  }
+  details.quote-toggle summary {
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--rust);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    list-style: none;
+  }
+  details.quote-toggle summary::-webkit-details-marker { display: none; }
+  details.quote-toggle summary::before {
+    content: "▸ ";
+  }
+  details.quote-toggle[open] summary::before {
+    content: "▾ ";
+  }
+  details.quote-toggle[open] summary {
+    margin-bottom: 10px;
+  }
+  .chapter-quote {
+    margin: 0 0 10px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--sage);
+    background: #f0ece0;
+    font-style: italic;
+    font-size: 1rem;
+  }
+  .chapter-quote:last-child { margin-bottom: 0; }
+  .chapter-quote cite {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--brown);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .alt-label {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sage);
+    margin: 12px 0 6px;
+    font-weight: bold;
+  }
+  .chapter-quote.alt {
+    border-left-style: dashed;
+    border-left-color: var(--line);
+    background: #f5f1e5;
+  }
+  .part-label {
+    display: inline-block;
+    background: var(--brown);
+    color: var(--cream);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin: 28px 0 14px;
+  }
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+  }
+  blockquote {
+    margin: 0;
+    padding: 18px 22px;
+    border-left: 4px solid var(--sage);
+    background: #f0ece0;
+    font-style: italic;
+    font-size: 1.15rem;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--brown);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  ol.discussion {
+    padding-left: 26px;
+    columns: 2;
+    column-gap: 40px;
+  }
+  ol.discussion li {
+    margin-bottom: 20px;
+    padding-left: 4px;
+    break-inside: avoid;
+  }
+  .cast {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px 28px;
+    font-size: 1.05rem;
+  }
+  .cast div strong { color: var(--brown); }
+  footer {
+    margin-top: 70px;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #8a8070;
+  }
+  @media (max-width: 900px) {
+    .wrap { padding: 40px 24px 70px; }
+    .chapter-grid { grid-template-columns: 1fr; }
+    .quote-grid { grid-template-columns: 1fr; }
+    .cast { grid-template-columns: 1fr 1fr; }
+    ol.discussion { columns: 1; }
+    header h1 { font-size: 2.6rem; }
+  }
+  @media (max-width: 600px) {
+    .cast { grid-template-columns: 1fr; }
+    header h1 { font-size: 2.1rem; }
+    body { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div style="font:600 14px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;padding:12px 16px"><a href="index.html" style="color:inherit;opacity:.85;text-decoration:none">← All our books</a></div>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Reading Club Guide</div>
+    <h1>Yesteryear</h1>
+    <div class="author">by Caro Claire Burke</div>
+    <div class="scope">Complete guide — Part One, Part Two (Chapters 1–57), Part Three, and the Epilogue</div>
+    <div class="scope" style="margin-top:6px;"><a href="yesteryear-recap.html" style="color:var(--rust);">See the milestone recap page (Ch. 10 / 30 / 45 / The End) →</a></div>
+  </header>
+
+  <h2>Chapter-by-Chapter Highlights</h2>
+
+  <div class="part-label">Part One — "The Past"</div>
+  <div class="chapter wide">
+    <ul>
+      <li>Natalie narrates a "Content Day" of filming sourdough tutorials and staged family dinners, all while privately holding her audience, staff, and even her kids in contempt</li>
+      <li>Her daughter Clementine asks what "tradwife" actually means, then later tells Natalie to <em>stop filming me</em> — a first crack in the family's polished image</li>
+      <li>That night, Shannon resigns (Natalie already knows about her affair with Caleb)</li>
+      <li>Caleb reveals his father wants him to run for office — a plan Natalie secretly engineered</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quotes to discuss</summary>
+      <blockquote class="chapter-quote">"People think they want minimalism […] when in fact a perfectly uncluttered home makes them want to kill themselves. […] most people don't take a moment to really think about anything. Most people are morons."<cite>Part One</cite></blockquote>
+      <blockquote class="chapter-quote">"I was a shark, and they were five million tiny fish, nipping at the nutrients along my belly."<cite>Part One</cite></blockquote>
+      <blockquote class="chapter-quote">"Stop filming me."<cite>Clementine, Part One</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"That's the thing about being a mother and a wife and an influencer, all at the same time: it's basically like breastfeeding three babies simultaneously."<cite>Part One, p. 12</cite></blockquote>
+      <blockquote class="chapter-quote alt">"The worst thing you can ever do is let a child know you care."<cite>Part One, p. 21</cite></blockquote>
+    </details>
+  </div>
+
+  <div class="part-label">Part Two — "The Present" (Chapters 1–30)</div>
+
+  <div class="chapter-grid">
+  <div class="chapter">
+    <span class="num">Chapter 1</span>
+    <ul>
+      <li>Natalie wakes in a cold, dark, unfamiliar version of her house — no phone, no power, four strange children who call her "Mama"</li>
+      <li>Height marks carved into the doorframe read "MAEVE, 1852–1854," and at her own eye level: "MAMA, 1855"</li>
+      <li>Outside, a colder, harder version of Caleb catches her trying to run and slaps her unconscious</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"What I know is this: I wake one morning and think, Jesus fucking Christ, it's cold. Then: Sorry, Lord."<cite>Chapter 1</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"This is my home. This is not my home."<cite>Chapter 1, p. 44</cite></blockquote>
+      <blockquote class="chapter-quote alt">"A good wife doesn't speak to her husband that way." He rears back and slaps me so hard the whole world turns black.<cite>Chapter 1, p. 51</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 2</span>
+    <ul>
+      <li><em>Flashback.</em> Seventeen-year-old Natalie leaves her small Idaho town for Harvard</li>
+      <li>She was raised to tell her community her absent father is dead rather than admit he left</li>
+      <li>She refuses to look back at her family, thinking of Lot's wife turning to salt</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Everything would have been fine if I'd grown up with a strong father figure in my life, I thought calmly. As soon as I thought this, though, I felt immediately certain that it wasn't true."<cite>Chapter 2</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"the job of a woman was threefold. Be a mother, be a wife, and keep the household clean. Oh — and don't forget to smile!"<cite>Chapter 2, p. 53</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 3</span>
+    <ul>
+      <li>Natalie wakes in pain; a girl named Maeve tells her it's 1855 and that "the man" is out working</li>
+      <li>Natalie realizes she is no longer pregnant</li>
+      <li>In the kitchen, an older girl is making soap using a recipe from one of Natalie's own old influencer videos</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"'I want it to feel like stepping into a time machine,' I kept repeating in every meeting. […] I wanted all the aesthetics of the olden times and all the amenities of modernity."<cite>Chapter 3</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"Welcome to the time machine. I'm lying beneath the covers of that god-awful quilt, curled in the fetal position."<cite>Chapter 3, p. 59</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 4</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie's disastrous first night at Harvard: she's mocked for her prairie dress</li>
+      <li>She retreats from a party, then is forced to share a room while her roommate Reena has sex nearby</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I'd found myself in a highly claustrophobic holding tank for rich kids. An artificially intelligent Eden."<cite>Chapter 4</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"Was it more important to the Lord that I abstain from alcohol, or get along with strangers? I took a sip."<cite>Chapter 4, p. 65</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 5</span>
+    <ul>
+      <li>Natalie explores the deteriorated, old-fashioned farmhouse — same floor plan as her real home, but decayed</li>
+      <li>Disoriented, she clicks her heels together three times like Dorothy in <em>The Wizard of Oz</em>. Nothing happens</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"The floor plan of this house is identical to mine […] Like a time machine, […] Like a bruised and beaten version of my life."<cite>Chapter 5, p. 71</cite></blockquote>
+      <blockquote class="chapter-quote alt">"A sudden agoraphobia sweeps over me." […] "if I keep myself hidden beneath the covers, the monsters won't see me."<cite>Chapter 5, p. 73</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 6</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie isolates on campus and fights publicly with Reena</li>
+      <li>She finally finds community in a Christian student group — where she meets Caleb Mills</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Our pastor talks about a God who is so very different from the God my parents taught me to know. I am starting to think that church might just be another word for people."<cite>Chapter 6</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"you, on the other hand, are all alone with your imaginary friends, Jesus and Mary and the holy fucking spirit."<cite>Chapter 6, p. 81</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 7</span>
+    <ul>
+      <li>An older girl introduces herself as Mary — the exact name Natalie had chosen for her own unborn daughter</li>
+      <li>Natalie tries to flee toward the woods and steps into a steel trap</li>
+      <li>Caleb carries her back; Mary prepares to stitch the wound</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"It's easy to go everywhere when you're the one who sets the traps."<cite>Chapter 7</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"This is my property. This is my land. These are my mountains. And yet: This is not my house or my family. These are not my chickens. This is not my nightgown."<cite>Chapter 7, p. 89</cite></blockquote>
+      <blockquote class="chapter-quote alt">"Maybe Old Caleb is actually one of my followers."<cite>Chapter 7, p. 88</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 8</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie and Caleb's slow, formal courtship</li>
+      <li>She learns about his wealthy political family</li>
+      <li>By their fourth date they're already discussing marriage</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quotes to discuss</summary>
+      <blockquote class="chapter-quote">"I want a farm. With chickens. I want to live near my mother. I want a view of the mountains from my bedroom window, and I'd like to study theology. Part-time, of course, and only after the children are grown."<cite>Chapter 8, on her first date with Caleb</cite></blockquote>
+      <blockquote class="chapter-quote">"Dating in my religion works that way: it feels like you're rolling very slowly down a very long runway — then right as you think you're going to die for lack of momentum…"<cite>Chapter 8</cite></blockquote>
+      <div class="alt-label">From your highlights</div>
+      <blockquote class="chapter-quote alt">"if you wanted to be a wealthy Christian woman and maintain good standing, you needed to publicly disavow your luxuries in order to maintain possession of them."<cite>Chapter 8, p. 97</cite></blockquote>
+      <blockquote class="chapter-quote alt">"On the third date, we discussed marriage."<cite>Chapter 8, p. 96</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 9</span>
+    <ul>
+      <li>After the trap injury, Mary insists Natalie is her mother and this is her home</li>
+      <li>The family eats a simple dinner; Natalie develops a fever</li>
+      <li>Maeve tells her the name of this place: "Yesteryear"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Yesteryear, Mama! That's what we call home."<cite>Chapter 9, p. 105 (Maeve)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"I hesitate, then reach for the biscuit that looks the least likely to be poisoned."<cite>Chapter 9, p. 104</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 10</span>
+    <ul>
+      <li><em>Flashback.</em> At Natalie and Caleb's wedding, her sister Abigail announces her own pregnancy</li>
+      <li>A year later, a pregnant Natalie runs into a struggling Reena and gloats about her marriage and imminent exit from Harvard, convinced she's made the better life choice</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"From here on out, Reena's life was going to be hard. She would have to work hard to get the job, and hard to keep it, and even harder to get promoted […] Reena would grow used to this quickly: the simple act of receiving less than she wanted at the same exact time she watched someone else receive more than she could have hoped for."<cite>Chapter 10, p. 111</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"I waved goodbye, making a point to really wiggle my fingers so the diamond caught the light, and then I slipped past her, the first angry woman in my life, and skipped forward into the future."<cite>Chapter 10, p. 113</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 11</span>
+    <ul>
+      <li>Present-timeline nightmare: Natalie gives birth to all her children at once on a dirty floor</li>
+      <li>The attending doctor, husband, and midwife all have mouths but no eyes; the babies have no feet</li>
+      <li>Everyone in the dream is calling for "Mama"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I dreamed I was giving birth on a farm in the middle of nowhere."<cite>Chapter 11, p. 114</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 12</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie gives birth to Clementine in a hospital after panicking about her planned home birth</li>
+      <li>Horrified by the physical reality of childbirth, she feels alienated from the baby and tells Eliza she thinks "there's been a mistake"</li>
+      <li>Eliza suggests a jog to lift her spirits; Natalie sneaks out, rips her stitches, and collapses — Eliza tells her she can handle motherhood "because she has no other choice"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"On the fourth day of a record heat wave in August, I met our first child, a six-pound girl with coal-black eyes. Clementine."<cite>Chapter 12, p. 115</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"How else could I describe the expression of this child, if not malevolent?"<cite>Chapter 12, p. 115</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 13</span>
+    <ul>
+      <li>Mary wakes Natalie, threatening to "saw your foot off" herself if she won't get out of bed</li>
+      <li>Feverish, Natalie can't tell if she dreamed Old Caleb crawling into bed with her</li>
+      <li>Visiting the chickens with Maeve, she trips and finds a small black plastic fragment in the dirt — a piece of a lapel microphone — and hides it in her pocket</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"It looks like a broken piece of lapel microphone,"<cite>Chapter 13, p. 126</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"If you're not up in five minutes, I will come back here and saw your foot off myself."<cite>Chapter 13, p. 122 (Mary)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 14</span>
+    <ul>
+      <li><em>Flashback.</em> Still at her mother's house with severe postpartum depression, Natalie is visited by Abigail, who confesses her own unhappiness in motherhood and marriage</li>
+      <li>Caleb visits with gifts — a phone, running shoes, a baby carrier for jogging — confirming Natalie's fear that she's mistaken his wealth for competence</li>
+      <li>She resolves to fake affection for Clementine until it becomes real, then confronts Caleb about getting a job</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"This was the moment I realized my husband was an actual, honest-to-God idiot […] I'd mistaken a man's wealth for his intellect."<cite>Chapter 14, pp. 131-132</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Breastfeed. Sleep. Kill yourself."<cite>Chapter 14, p. 128</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 15</span>
+    <ul>
+      <li>In the chicken coop with Maeve, Natalie grips the microphone fragment and builds a theory that she's the subject of a hidden reality show</li>
+      <li>She rationalizes the violence around her as staged entertainment for an audience she mentally dubs "the Angry Women"</li>
+      <li>She avoids thinking about her vanished pregnancy, and says aloud that this "reality show" is terrible</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"America hates women. What a comfort to remember."<cite>Chapter 15, p. 137</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"This reality show blows," I say aloud as Maeve tugs me back to the house. The wind whistles in reply.<cite>Chapter 15, p. 139</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 16</span>
+    <ul>
+      <li><em>Flashback.</em> Caleb keeps resisting getting a job, suggesting travel or a farm instead</li>
+      <li>Breaking point: he does yoga in the driveway in full view of the neighbors</li>
+      <li>Natalie calls Amelia to complain; alone in Caleb's childhood room with a crying Clementine, she accepts she'll never finish her Harvard degree</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Milk. My husband wanted milk. […] I had unknowingly married and been impregnated by a toddler."<cite>Chapter 16, p. 147</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Natalie's like a border collie, my mother used to say to the other women at church. She needs a project, otherwise she starts chewing the cabinet corners."<cite>Chapter 16, p. 148</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 17</span>
+    <ul>
+      <li>Maeve and Natalie bring eggs to the kitchen; Natalie makes sourdough using the household's starter jar</li>
+      <li>Old Caleb brings in raw milk; Mary cleans it and changes Natalie's ankle dressing</li>
+      <li>Natalie silently grips the mic fragment, wondering if the Angry Women are watching her suffer</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I find the little microphone in my pocket and hold it tightly in my grip. Hello, America. Are you watching me, right now? Are you entertained?"<cite>Chapter 17, p. 152</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 18</span>
+    <ul>
+      <li><em>Flashback.</em> At the Mills estate, Natalie discovers Caleb spends his days on video games and porn</li>
+      <li>Doug and Amelia stage an intervention, revealing Caleb failed a business-school interview and alluding to a past incident where he harmed a classroom rabbit</li>
+      <li>That night Caleb says he wishes he could just play with babies for a living; Natalie has an epiphany that they're meant to "remake" each other, and turns down Doug's offer of a vineyard job for Caleb</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"There comes a point in every marriage when a woman realizes that the man she married is a freak."<cite>Chapter 18, p. 153</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"It kind of sounds like you're making a bet, Miss Natalie." I held out my hand. "May the best man win."<cite>Chapter 18, p. 160</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 19</span>
+    <ul>
+      <li>Natalie's bread bake fails; she and Mary argue, and Mary orders her off the porch until she can "control herself"</li>
+      <li>Walking with Noah, she presses him about the horse and how far the family ever travels — he grows evasive, mentions wolves and "evil souls" beyond the trees, and runs off</li>
+      <li>Old Caleb comes barreling toward her; she drops to her knees and begs forgiveness in prayerful language</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I drop my walking stick and fall to my knees, fingers clasped in prayer. 'I'm sorry I'm sorry I'm sorry,' I cry to his bloodied, dirt-smeared boots. 'Forgive me, dear husband, and deliver me from evil—'"<cite>Chapter 19, p. 166</cite></blockquote>
+    </details>
+  </div>
+  </div>
+
+  <div class="part-label">Part Two — Chapters 20–30</div>
+
+  <div class="chapter-grid">
+  <div class="chapter">
+    <span class="num">Chapter 20</span>
+    <ul>
+      <li><em>Flashback.</em> Living at the Mills estate with 7-month-old Clementine, Natalie grinds through a relentless routine — diapers, breastfeeding, ghostwriting Caleb's résumé and job applications, cooking dinner in a baby carrier</li>
+      <li>Amelia offers to babysit and, in a disturbing moment, tells a dazed Natalie to "call me Mama"; Natalie calls Eliza, desperate, and asks how she manages everything so well</li>
+      <li>Eliza reveals her secret: she imagines an audience watching her, with God as the ultimate observer</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Whenever I was reaching my wits' end, I would pause for a moment and — do you know what I would do? […] I would imagine I was being watched."<cite>Chapter 20, p. 172 (Eliza)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Breathe. Breathe. Breathe. Kill yourself. No—conjure the audience. Conjure Jesus. Conjure mother. Conjure Reena."<cite>Chapter 20, p. 174</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 21</span>
+    <ul>
+      <li>Natalie is on "house arrest" in 1855; her old influencer patter ("Afternoon, y'all! Today we're making butter from scratch—") creeps into her narration, undercut by her own bitter laughter</li>
+      <li>She snaps at Mary that she is not her family; Mary freezes, then quietly offers fresh bread as a peace offering</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"You. Are. Not. My. Family." Mary freezes.<cite>Chapter 21, p. 178</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Afternoon, y'all! Today we're making butter from scratch—" Ha. Ha ha ha.<cite>Chapter 21, p. 177</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 22</span>
+    <ul>
+      <li><em>Flashback.</em> Caleb bursts in declaring he's found his purpose: substitute kindergarten teacher</li>
+      <li>Natalie, alarmed, reflects that they've become "a couple with a diagnosis so serious it bordered on medical: failure to launch," and realizes Caleb doesn't want to be an actor or a cowboy — he wants to be his father, a true American patriarch</li>
+      <li>The idea of playing an actual cowboy on a ranch starts to take root in her mind instead</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"A kindergarten teacher. My husband wanted to be a kindergarten teacher."<cite>Chapter 22, p. 180</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"We were a couple with a diagnosis so serious it bordered on medical: failure to launch."<cite>Chapter 22, p. 181</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 23</span>
+    <ul>
+      <li>Natalie appears to have been physically restrained; she delivers an old-timey monologue to the children about how brave their pioneer ancestors had to be</li>
+      <li>She asks to be untied, promising she won't run — and is let go</li>
+      <li>Alone, she admits she doesn't trust anyone in the house, including herself</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I don't trust anyone in this house, least of all myself."<cite>Chapter 23, p. 187</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'You're not going to run away?' 'No. I'm not going to run away.'"<cite>Chapter 23, p. 186</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 24</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie's mother's realtor turns up a derelict cattle ranch in southwest Idaho; after one seller passes on them, they land a property by offering half a million over ask</li>
+      <li>She pitches Doug on funding it; he agrees to the $5 million — on the explicit condition that she give Caleb "more babies" and "a big American family"</li>
+      <li>Caleb, meanwhile, is radicalizing on men's forums and insists on homeschooling the kids to keep them from "the pedophiles in the school system" — and vetoes raising cattle entirely</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"How much do you need?" "Five million dollars." […] "I want you to have more babies with my son."<cite>Chapter 24, pp. 194-195 (Doug)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Oh," Caleb added, "And also: no cattle."<cite>Chapter 24, p. 199</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 25</span>
+    <ul>
+      <li>For the first time in days, Natalie isn't gripped by terror; Maeve is thrilled, telling her over and over that she's "back"</li>
+      <li>Passing a scythe and axe hanging on the wall, she reassures herself they're just "props" — tools for imagination</li>
+      <li>She credits the sudden calm to a tonic Mary's been giving her, unsure whether that's reassuring or alarming</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Maeve is in the doorway. 'Mama?' […] Mamamamamamama, you're back."<cite>Chapter 25, p. 202</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Props, I think to myself, willing the good cheer back through my limbs. That's all they are. Tools for imagination."<cite>Chapter 25, p. 204</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 26</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie's Instagram account is reduced to six photos across three years: the ranch purchase, black mold, a dairy cow and chicks that die almost immediately, hired ranch hands, and Doug's eighth Senate reelection night — during which Amelia is found passed out in his dressing room</li>
+      <li>After two years of Caleb being unable to perform, Natalie resorts to self-insemination with a sauce baster from the kitchen drawer and becomes pregnant again</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"In the kitchen, I set the bowl on the counter then pulled a sauce baster out of the drawer."<cite>Chapter 26, p. 219</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"All the chicks died shortly after arrival. Whatever killed them caused their bodies to bloat like little tennis balls. We tossed them."<cite>Chapter 26, p. 214</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 27</span>
+    <ul>
+      <li>Life in Yesteryear settles into a blur of "good days and bad days"; Natalie hides her tears from everyone, especially Maeve</li>
+      <li>On bad days she can barely get out of bed, gripped by relentless panic she calls "an exercise in insanity"</li>
+      <li>She clings to the belief that someone, somewhere, has to be watching her</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"...someone, somewhere, has to be watching me right now."<cite>Chapter 27, p. 225</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"The best word I can come up with is purgatory, and even that feels a bit too tame."<cite>Chapter 27, p. 223</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 28</span>
+    <ul>
+      <li><em>Flashback.</em> Reena is now grinding through an unglamorous consulting job in NYC, which Natalie tracks obsessively; Abigail is five months pregnant with her fifth child</li>
+      <li>Natalie gives birth to her second child under anesthesia, feeling emotionally distant from him even as it happens</li>
+      <li>Her mother and Abigail visit the ranch; Abigail gently offers to take the appliances Natalie is replacing — and the chapter ends on a blunt admission: the $5 million is nearly gone</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I'd seen my sister in all manner of moods, happy and sad and tired and overwhelmed, but this, what I was seeing on her face now, was something else entirely."<cite>Chapter 28, p. 229</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"...the money was nearly gone."<cite>Chapter 28, p. 230</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 29</span>
+    <ul>
+      <li>Old Caleb moves back into Natalie's bed, telling her "I don't like hitting you" as if it's a kindness</li>
+      <li>She frames what follows as her "true role" as a wife, then reframes it again as a religious test — and privately vows not to let herself get pregnant here</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"This, right here, is my true role. To spread my legs when my husband demands. To have as many children as I can until my legs give out beneath me, and to feel nothing but gratitude on the hour of my death."<cite>Chapter 29, p. 242</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"I wonder which of the tools in the barn I'd use if I needed to kill him."<cite>Chapter 29, p. 241</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 30</span>
+    <ul>
+      <li><em>Flashback.</em> Eliza warns Natalie she's "bitten off more than she can chew" as word spreads that Natalie may be spraying illegal pesticide on her "organic" farm; Clementine begs to live at Aunt Abigail's instead</li>
+      <li>Rather than deal with any of it, Natalie takes hundreds of selfies, posts her most successful "thirst trap" yet, and decides to stop working on the farm and go back to working on the performance of herself</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"...you might have bitten off a little more than you can chew."<cite>Chapter 30, p. 253</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"The day I stopped working on my husband, my farm, my family, and returned to work on an old, beloved project: myself."<cite>Chapter 30, p. 257</cite></blockquote>
+    </details>
+  </div>
+  </div>
+
+  <div class="part-label">Part Two — Chapters 31–45</div>
+
+  <div class="chapter-grid">
+  <div class="chapter">
+    <span class="num">Chapter 31</span>
+    <ul>
+      <li>Maeve and Natalie spend the day sewing little hats for the chickens ("the Ladies")</li>
+      <li>Mary returns from the woods looking like she's seen a ghost, claiming she found a mink suffering in a trap — her hands are visibly shaking, and she avoids Natalie for the rest of the night</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Your face, Mary," I say quietly. "You look like you've seen a ghost."<cite>Chapter 31, p. 260</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"I came across an animal, okay? In a trap. A mink, I think. It was—struggling. In pain."<cite>Chapter 31, p. 261 (Mary)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 32</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie takes a $1,500 social-media course from an influencer named Tammy Lane, joining a Zoom gallery full of women who all look eerily like her</li>
+      <li>Her assigned mentor, Cassidy (secretly Tammy's own niece), tells her flat out that she doesn't look happy on camera — she looks like she's grimacing, like she's pretending</li>
+      <li>Two years have passed: Natalie's had a third child, Stetson, with a fourth on the way; Abigail's divorce has finalized and she's bagging groceries to get by; Doug calls to say he's pulling back the family's funding</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"You don't actually look happy. You look like you're grimacing."<cite>Chapter 32, p. 271</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"...it looks like you're pretending." I laughed again, though it sounded more like a cough. "Isn't everyone?"<cite>Chapter 32, pp. 271–272</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 33</span>
+    <ul>
+      <li>Mary has been acting strangely all week, her usual patience worn thin; Old Caleb tells Natalie to go talk with her</li>
+      <li>Mary asks, quietly, "Has anyone ever lied to you?" — and overwhelmed by what feels like a religious moment, Natalie blurts out three names before catching herself and going silent</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Tell me what you're thinking." She's quiet for a moment. Then she says quietly, "Has anyone ever lied to you?"<cite>Chapter 33, p. 275 (Mary)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Shannon," I manage. "Caleb. My father-in-law, bastard man, and Clementine—"<cite>Chapter 33, p. 277</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 34</span>
+    <ul>
+      <li><em>Flashback.</em> Reena posts about being laid off from her consulting job; Caleb brings Natalie to the barn to show her a men's-rights livestreamer praising her on air as an ideal "wholesome" traditional wife</li>
+      <li>Her follower count jumps from a few thousand to over 300,000 in twenty-four hours; she and Caleb scroll through the flood of comments together</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Caleb and I scrolled through the comments silently. 'Wow,' he said finally. 'That's a lot of angry women.'"<cite>Chapter 34, p. 284</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"this is the kind of woman who is going to get our country back on track. None of that city-woman, equality-of-the-sexes bullshit."<cite>Chapter 34, p. 282 (the livestreamer)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 35</span>
+    <ul>
+      <li>Abel turns thirteen; Old Caleb takes him off into the far woods for a private, ritualized "initiation"</li>
+      <li>Noah, left behind, is furious and calls Natalie a useless mother; Mary carries an exhausted, hay-covered Noah back home at sunset</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Today is Abel's thirteenth birthday. The day he becomes a man."<cite>Chapter 35, p. 285</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 36</span>
+    <ul>
+      <li><em>Flashback.</em> Three months after the livestreamer's endorsement, Natalie has a million followers; she compares the Angry Women's engagement to an addiction, and reflects that a good influencer, like a good politician, "doesn't change herself, just the packaging"</li>
+      <li>Doug pressures her to repost his campaign content, then half-threatens her when she refuses; Reena, humbled, DMs asking for a Q&amp;A; a fan recognizes her in public and gushes about how inspiring she is</li>
+      <li>Caleb catches her having forgotten to feed the kids dinner and suggests a nanny; that night, for the first time in years, they hug — and Natalie describes in detail the flawless "Online Natalie" persona she's built</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"The goal of an influencer is not to be lovable, and it is not to be unbearable. The goal is to be both at once. In other words: addicting."<cite>Chapter 36, p. 290</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"A good politician doesn't change his policies, just the messaging. A good influencer doesn't change herself, just the packaging."<cite>Chapter 36, p. 289</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 37</span>
+    <ul>
+      <li>A rare peaceful stretch on the ranch; Natalie feels the Lord's favor returning, especially in her bedroom encounters with Old Caleb, and fantasizes about being remembered someday as "Saint Natalie"</li>
+      <li>The chapter turns on its final line: it's been almost two months since Old Caleb slapped her, and she hasn't gotten her period</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Maybe one day, even, they'll talk about me in Sunday School. Saint Natalie. I like the ring of that."<cite>Chapter 37, p. 305</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"it's been almost two months since Old Caleb slapped me that cold dark morning, and I haven't gotten my period."<cite>Chapter 37, p. 306</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 38</span>
+    <ul>
+      <li><em>Flashback.</em> A live-in nanny, Louise, arrives and refuses to be filmed or called "Nanny Louise"; Natalie feels relief rather than guilt at never being fully alone with her kids again</li>
+      <li>Abigail reveals she's dating a pastor, Ben, who doesn't think divorce is a sin, and has started therapy; the sisters drift further apart</li>
+      <li>Caleb discovers Natalie has been hiding $220,000 in a private account; she brushes it off as "pregnancy brain" and quietly arranges to keep hiding future earnings anyway</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I already felt quite certain that my children were far safer online […] than they could ever be in the real world."<cite>Chapter 38, p. 311</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"That's a whole lot of pregnancy brain!"<cite>Chapter 38, p. 316 (Caleb)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 39</span>
+    <ul>
+      <li>Natalie realizes she's pregnant again, despite the vow she made to herself; for the first time, she feels her prayers going completely unanswered</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"There are no good days anymore, it seems. Only bad ones."<cite>Chapter 39, p. 319</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"It's a test, I remind myself. […] What happens if I fail the test? What happens if I pass?"<cite>Chapter 39, p. 319</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 40</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie meets Shannon, a college student who idolizes her as a "feminist icon" who escaped what Shannon calls "the maze" of modern womanhood, and hires her as her new producer</li>
+      <li>Shannon arrives at the ranch and is visibly unsettled by its scale — two nannies, roughly twenty part-time workers, boxes of "Made in China" merchandise — and starts quietly photographing the farmhands</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Everyone at my school loves you, you know. They think you're a feminist icon." […] "What they want is what you have, Natalie." "Freedom, of course."<cite>Chapter 40, pp. 321-322 (Shannon)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"This was when I realized I'd made a mistake."<cite>Chapter 40, p. 329</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 41</span>
+    <ul>
+      <li>Old Caleb and Abel return from the far woods with two other young men — the "neighbors"</li>
+      <li>Natalie feels a violent pull to both run toward them and away from them, wondering if she's already missed her only chance at freedom</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I might have just missed my only chance at freedom."<cite>Chapter 41, p. 331</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 42</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie wakes every morning determined to fire Shannon and never does — Shannon's instincts keep proving better than her own, and the two settle into an uneasy, competitive intimacy</li>
+      <li>Shannon starts folding the kids into content; Clementine visibly warms to her, and the two clash over honesty — Shannon defends the omissions as "not the full truth," insisting the audience doesn't actually want it</li>
+      <li>A fully isolated Clementine asks Shannon what an ocean is; the chapter ends with Natalie's fifth child, Junebug, born at home with Shannon filming at Natalie's own request</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"'Ocean,' Clementine said suddenly, looking at the two of us. 'What's that?'"<cite>Chapter 42, p. 339</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'You intentionally make it look like you do all this alone.'" "'No one can do all of this alone.'"<cite>Chapter 42, p. 337</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 43</span>
+    <ul>
+      <li>Natalie admits it shouldn't matter that there are other people living at Yesteryear — but by now she's seen the pair of young "neighbor" men several times</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"It shouldn't matter that there are other people in Yesteryear."<cite>Chapter 43, p. 341</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 44</span>
+    <ul>
+      <li><em>Flashback.</em> At Doug's presidential campaign kickoff — more carnival than political rally, complete with "Civil War Is Coming" shirts — Natalie realizes this crowd is exactly who Caleb's online "buddies" are</li>
+      <li>Doug confronts Shannon for filming him; strangers mob Natalie for photos, and she realizes their love feels somehow more frightening than hatred would</li>
+      <li>On the drive home, Shannon notices Doug's stump speech is quoting Natalie's own Instagram captions word for word; Caleb, oblivious to the tension, starts telling Shannon about his online forums</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Sometimes the love of strangers is much more terrifying than the hate."<cite>Chapter 44, p. 349</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"What Doug said onstage, about returning to the 'days of Yesteryear.' He was practically quoting your Instagram captions word for word."<cite>Chapter 44, p. 348 (Shannon)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 45</span>
+    <ul>
+      <li>Mary has a visible crush on the taller "neighbor" and invites both men to dinner; Old Caleb watches her with an expression Natalie recognizes as disturbed</li>
+      <li>Mid-meal, Natalie blurts out a full confession — that she's being held here against her will, that these aren't her real family, that she was kidnapped — and the neighbors don't react at all, simply returning to a conversation about the chicken coop</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I'm being held here against my will. This man isn't my real husband. These children aren't my real children. I was kidnapped."<cite>Chapter 45, p. 354</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"The taller neighbor looks to Old Caleb. 'That chicken coop is coming along nicely, don't you think?'"<cite>Chapter 45, p. 354</cite></blockquote>
+    </details>
+  </div>
+  </div>
+
+  <div class="part-label">Part Two — Chapters 46–57</div>
+
+  <div class="chapter-grid">
+  <div class="chapter">
+    <span class="num">Chapter 46</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie starts noticing Shannon growing close to everyone else on the ranch — whispering with Nanny Aimee, having lunch alone with Caleb — but she's four months pregnant with her sixth child and doesn't let herself register what it means</li>
+      <li>Clementine begs to see the ocean; Caleb asks if they really need two nannies, then one night tells Natalie flatly, "We need to talk"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I ignored all this and more because I needed to, because I was four months pregnant with my sixth child"<cite>Chapter 46, p. 355</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Caleb walked into our bedroom late one night […] and said, 'We need to talk.'"<cite>Chapter 46, p. 356</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 47</span>
+    <ul>
+      <li>Mary echoes Caleb's exact words — "We need to talk" — pulling Natalie out of the flashback; Maeve is "sick," which Natalie insists is really grief over her dead chickens</li>
+      <li>Natalie declares a quiet one-woman strike, refusing to get out of bed — secretly using the time to plan one last, real escape before her pregnancy becomes impossible to hide</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"the real goal of my little bed strike, if you want to know the truth: I'm shoring up energy. […] Gearing up for one last great magnificent escape."<cite>Chapter 47, p. 359</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'Maeve is sick,' Mary says now. 'She's not sick,' I say patiently. 'She's mourning. All her friends are dead, Mary.'"<cite>Chapter 47, p. 358</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 48</span>
+    <ul>
+      <li><em>Flashback.</em> Caleb tells Natalie he's in love with Shannon and planning to move to New York with her; Natalie confronts Shannon, who refuses any remorse and turns the blame back on Natalie</li>
+      <li>The confrontation turns physical — Natalie chokes Shannon until the sight of her own white knuckles stops her; Shannon, shaken, tells her the ranch is "cursed"</li>
+      <li>Natalie calls Doug, admits what happened, and together they decide the fix is to fast-track Caleb's political career and pay Shannon off</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"I was squeezing her throat so hard that my knuckles had gone white. It was the recognition of this fact more than anything that caused me to let go."<cite>Chapter 48, p. 366</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'This ranch,' she said, with willful slowness, 'is cursed.'"<cite>Chapter 48, p. 367 (Shannon)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 49</span>
+    <ul>
+      <li>Maeve is seriously ill and struggling to breathe; Old Caleb dismisses it as a fever that will "sweat out"</li>
+      <li>Newly desperate, Natalie asks Mary if she'd know where to find a doctor — and Mary, after a long hesitation, whispers yes</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"If birth is possible in this world, then surely so is death. What if death is the only way out?"<cite>Chapter 49, p. 374</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'If I were to say I wanted to find a doctor for Maeve. Would you know where I could find one?' She hesitates. Glances at the door. Whispers, 'Yes.'"<cite>Chapter 49, pp. 374-375 (Mary)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 50</span>
+    <ul>
+      <li><em>Flashback, short.</em> On what turns out to be her last ordinary day, Natalie preps for a PR-coached interview and can't shake the feeling she's missed something important</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"Please, Lord, show me the way. I couldn't shake the feeling there was something that I'd missed."<cite>Chapter 50, p. 377</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 51</span>
+    <ul>
+      <li>Mary packs a bag for Natalie's escape and reveals there was only ever one real trap in the woods — the rest were entirely imagined</li>
+      <li>She tells Natalie to follow triangles carved into the birch trees to reach the neighbors' house, and admits she thinks she's been there before, in a "nicer" version of it</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"The markings I should look for are triangles, carved into the bark of the birch trees."<cite>Chapter 51, p. 379</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'There's—well, there's only just that one.' […] All this time, while I've been staring out at the woods, imagining dozens or maybe hundreds of booby traps—there was nothing."<cite>Chapter 51, p. 379 (Mary)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 52</span>
+    <ul>
+      <li><em>Flashback.</em> Natalie realizes it was Shannon who taught Clementine the word "tradwife" — but it's Clementine, not Shannon, who's been quietly documenting everything on a phone Shannon gave her</li>
+      <li>The family's lawyers coach them through the fallout of the assault allegations, at one point suggesting a drug problem would actually help their case; Shannon's prime-time interview is announced</li>
+      <li>Separately, Natalie's mother Eliza finally confesses the truth she's hidden for decades — she was the one who cheated, not Natalie's father — and can't understand why that makes Natalie so angry</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"It wasn't Shannon, but Clementine, who knew exactly how to capture me."<cite>Chapter 52, p. 383</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'He didn't leave because I cheated. He left because I cheated.'" […] "WHY IS IT SO HARD FOR YOU TO BE KIND?"<cite>Chapter 52, pp. 391-393 (Eliza)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 53</span>
+    <ul>
+      <li>Walking through the woods for what she realizes is the first time in years, Natalie reflects on how little of her children's actual lives she's witnessed</li>
+      <li>She finds a small log cabin with a truck parked behind it, smoke rising from the chimney — and a single word etched into the doorframe</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"a word is etched into the doorframe: MANOSPHERE. So this is where the men go."<cite>Chapter 53, p. 396</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"Each additional child fell a little further away from me. When I try to conjure their faces now, it's only Clementine's I can see perfectly."<cite>Chapter 53, p. 394</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 54</span>
+    <ul>
+      <li><em>Flashback.</em> Shannon's polished, prime-time interview airs; the interviewer frames the choking incident as something "erotic in nature," and damning footage plays — dead cows, miserable kids, Clementine snapping "Stop filming me"</li>
+      <li>Shannon, through tears, still says on air that she forgives Natalie; Doug turns on Natalie for not telling him the whole truth, and Amelia calls her a "bad girl"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"'I forgive you, Natalie.'"<cite>Chapter 54, p. 403 (Shannon, on air)</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'You didn't tell me the whole truth. And now, little missy, all of us are fucked.'"<cite>Chapter 54, p. 403 (Doug)</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 55</span>
+    <ul>
+      <li>Mid-lesson to the children about how people traveled "in the olden days," Natalie is stopped short by a framed photo of her own real family hanging on a stranger's wall</li>
+      <li>Through a window, she watches a man peel grocery-store stickers off vegetables before dropping them into a soup pot — and when he turns around, he calls her "Mama"</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"The neighbor looks over his shoulder. His eyes are wide. 'Mama,' he blurts."<cite>Chapter 55, p. 408</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 56</span>
+    <ul>
+      <li><em>Flashback.</em> In the fallout of the scandal, a bitter fight between Natalie and Caleb turns cruel on both sides and ends with Caleb slapping her</li>
+      <li>He reveals his father wants her dead, suggesting "a car accident would be easiest"; Natalie, strangely, treats the threat almost as a relief, and tells Caleb she'll fix it herself</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"'He wants to kill you.' I shook my head slowly. 'Don't be ridiculous.' 'I'm not. He said a car accident would be easiest.'"<cite>Chapter 56, p. 413</cite></blockquote>
+      <p class="alt-label">From your highlights:</p>
+      <blockquote class="chapter-quote alt">"'He doesn't want me dead,' I said softly. 'He just wants me fixed.'"<cite>Chapter 56, p. 415</cite></blockquote>
+    </details>
+  </div>
+  <div class="chapter">
+    <span class="num">Chapter 57</span>
+    <ul>
+      <li>Natalie walks for hours through the snow and ends up right back where she started; Old Caleb tells her Maeve's fever has broken</li>
+      <li>A red Subaru — not the blue truck she's come to expect — pulls up the driveway, and a woman who looks exactly like Natalie steps out</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quote to discuss</summary>
+      <blockquote class="chapter-quote">"A woman steps out. She's my clone. She looks exactly like me, except her hair is shorter. […] 'I sure love what you've done with the place.'"<cite>Chapter 57, p. 417</cite></blockquote>
+    </details>
+  </div>
+  </div>
+
+  <div class="part-label">Part Three — "The Future"</div>
+
+  <div class="chapter wide">
+    <ul>
+      <li>The woman from the Subaru is a grown Clementine, arriving with a production crew to prep Natalie for a televised interview — and the story finally unspools all at once</li>
+      <li>The entire "1855" world was a deliberate hoax that Natalie and Caleb built together, starting after the Shannon assault and lawsuit made the family's legal exposure too dangerous to face; they told a toddler-aged Mary that her older siblings had simply died and "gone to heaven"</li>
+      <li>The two "neighbor" men are revealed to be Natalie's own grown sons, Stetson and Samuel — they've been secretly supplying the ranch with food for years, and it's Stetson who finally calls the police after Natalie stumbles into his cabin mid-escape</li>
+      <li>Clementine reveals Natalie is fifty years old and going through menopause, not pregnant — and that Doug's threat to have her killed in a staged "accident" is what directly pushed Natalie and Caleb into the fantasy in the first place</li>
+      <li>Authorities remove the younger children from the ranch; Natalie and Caleb, alone together at last, admit they should have divorced years ago — and, in the novel's final image of them, walk away from Yesteryear Ranch hand in hand</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quotes to discuss</summary>
+      <blockquote class="chapter-quote">"This is the last day of the life I imagined for myself."<cite>Part Three, p. 419</cite></blockquote>
+      <blockquote class="chapter-quote">"'Mom,' Clementine says, 'you're fifty years old. You're not pregnant.'" […] "'You're not pregnant, Mother,' Clementine says. 'You're going through menopause.'"<cite>Part Three, pp. 431-432</cite></blockquote>
+      <blockquote class="chapter-quote">"'Are you saying that the neighbors are my brothers?'"<cite>Part Three, p. 432 (Mary)</cite></blockquote>
+      <blockquote class="chapter-quote">"'I think,' I say slowly, 'that we should've gotten a divorce a very long time ago.'" […] "'I think I hate you,' I say. 'I think,' he says slowly, in a stunned sort of voice, 'that I might really hate you too.'"<cite>Part Three, p. 441</cite></blockquote>
+    </details>
+  </div>
+
+  <div class="part-label">Epilogue — "Five Years Later"</div>
+
+  <div class="chapter wide">
+    <ul>
+      <li>Five years on, Natalie is serving a thirty-year sentence for four counts of aggravated child abuse; she's interviewed on a set built to resemble a "historically accurate" homestead kitchen — though she insists even that is wrong</li>
+      <li>Her interviewer is Reena Magliotti, now a news anchor; the interview centers on <em>The Book of Mary</em>, a bestselling memoir written by her daughter Mary, who escaped with outside help and now lives in Santa Monica with Clementine and Eliza</li>
+      <li>Mary's book addresses Natalie directly — grief, love, and a hope that her mother might someday see the beauty she missed</li>
+      <li>The novel's final image is Mary, grown, driving on a California highway, feeling for the first time that the future ahead of her is better than anything Natalie built</li>
+    </ul>
+    <details class="quote-toggle">
+      <summary>Quotes to discuss</summary>
+      <blockquote class="chapter-quote">"The little girl in the woods was me. Mary Heller Mills. It's been five years since I left Yesteryear Ranch. I live in Santa Monica now"<cite>Epilogue, p. 450</cite></blockquote>
+      <blockquote class="chapter-quote">"Do you know, Mama? How much beauty you've missed. […] this future you prayed we would never get the chance to see. I think you'd like it if you gave it a chance."<cite>Epilogue, p. 452 (Mary)</cite></blockquote>
+      <blockquote class="chapter-quote">"...the only future more terrifying to me than the one where we merged onto this highway was the one where we turned around."<cite>Epilogue, p. 453 — the novel's final line</cite></blockquote>
+    </details>
+  </div>
+
+  <h2>Discussion Topics</h2>
+  <ol class="discussion">
+    <li><strong>First impressions of Natalie.</strong> The opening chapter shows her narrating her own discipline while her staff and kids are already up doing the work. How did you feel about her from the start — and has that shifted by Chapter 30?</li>
+    <li><strong>What's actually happening in 1855?</strong> Time travel, a head injury, a fever dream, a hidden reality show, a religious test — the section headers hint that "present" and "past" mean something different than they first appear. What's your theory now, and what clues are you tracking?</li>
+    <li><strong>The "MAMA, 1855" carving.</strong> That single image does a lot of work early on. What did that moment do for you as a reader — horror, confusion, dark humor?</li>
+    <li><strong>Curated domesticity vs. the real thing.</strong> Compare the filmed sourdough tutorial in Part One with Mary and Maeve's actual, exhausting chores in 1855. What does the contrast say about the "tradwife" aesthetic Natalie sells?</li>
+    <li><strong>"I was a shark, and they were tiny fish."</strong> Natalie's private contempt for her own followers is one of the book's sharpest lines. Does it change how you think about influencer culture generally — or about specific accounts you follow?</li>
+    <li><strong>Early red flags in the courtship.</strong> Natalie and Caleb are engaged within weeks, largely around a shared fantasy of farm life. Looking back, what did you notice in the courtship chapters that you might have missed on a first read?</li>
+    <li><strong>Is the satire landing?</strong> Yesteryear has been described (and reviewed) as satire of tradwife culture, but reviews are split on whether it's effective. Is it working for you so far, or does it feel heavy-handed?</li>
+    <li><strong>Mary and the power dynamic.</strong> Mary is a child, yet she stitches Natalie's wound, dictates chores, and insists on her own authority in the house. What do you make of her role now that we've seen her disappear and come back shaking (Chapter 27)?</li>
+    <li><strong>Eliza's "imagine you're being watched."</strong> This throwaway coping mechanism from Natalie's mother becomes the entire foundation of her influencer career. What does it say about where Natalie's performance of self actually comes from?</li>
+    <li><strong>The ranch, bought with a condition.</strong> Doug funds the $5 million purchase only if Natalie gives Caleb "a big American family." How does this reframe the "traditional family" the ranch is built to project — as a business deal from day one?</li>
+    <li><strong>The sauce baster scene.</strong> Natalie's self-insemination — clinical, joyless, and hidden — sits behind everything she later sells online as natural, easy fertility. Discuss the gap between the labor of building a family and the aesthetic of one.</li>
+    <li><strong>Chapter 29.</strong> This is one of the darkest chapters so far. How did the book's satire hold up here — does humor have any place next to this kind of scene, or does the tone shift entirely?</li>
+    <li><strong>The livestreamer and the follower surge.</strong> A stranger's endorsement — not anything Natalie does differently — is what launches her from a few thousand followers to 300,000 overnight. What does this say about who actually controls an influencer's success?</li>
+    <li><strong>Mary's disappearance (Chapter 27) and the mink in the trap (Chapter 31).</strong> What do you think she actually saw or did in the woods? Start collecting theories now — this is clearly being set up to pay off later.</li>
+    <li><strong>Cassidy's line: "You look like you're pretending."</strong> Chapter 32 has one of Natalie's own coached followers naming exactly what she's doing on camera — and Natalie's response is a joke ("Isn't everyone?"). What does it mean that she can say this out loud and still not change anything?</li>
+    <li><strong>The name that slips out (Chapter 33).</strong> Natalie blurts "Shannon... Clementine—" to Mary mid-crisis, and Mary doesn't recognize the second name at all. What do you make of a mother's own children not knowing about each other?</li>
+    <li><strong>The livestreamer and the follower surge (Chapter 34).</strong> A stranger's endorsement — not anything Natalie does differently — is what launches her from a few thousand followers to 300,000 overnight. What does this say about who actually controls an influencer's success?</li>
+    <li><strong>Abel's "initiation" (Chapter 35).</strong> The boys are being raised into very different roles depending on their gender, even inside the family's private mythology. What did this chapter reveal about how deep the performance goes when there's no audience at all?</li>
+    <li><strong>Shannon's arc so far.</strong> She starts (Chapter 38) admiring Natalie's escape from "corporate life," and by Chapter 40 is telling her the ranch is "cursed." What is Shannon starting to see that Natalie won't let herself see?</li>
+    <li><strong>The bearded neighbors (Chapter 41).</strong> Natalie's visceral, unexplained reaction to two strangers is one of the eeriest beats yet. What's your theory — and what specifically is she recognizing?</li>
+    <li><strong>Being watched vs. being seen (Chapter 43).</strong> For 40+ chapters Natalie has coped by imagining an audience watching her. Chapter 43 is the first time she admits real people around her actually matter to her. Is that progress, or just a new performance?</li>
+    <li><strong>The dinner scene (Chapter 45).</strong> Natalie says out loud, to witnesses, that she's being held against her will — and nothing happens. Why do you think no one reacts? What would it take to actually break through here?</li>
+    <li><strong>Shannon vs. Clementine.</strong> Natalie spends chapters watching Shannon for signs of betrayal and completely misses her own daughter, who turns out to be the real source gathering evidence (Chapter 52). What does that blind spot say about who Natalie has ever really seen as a threat — or as a person?</li>
+    <li><strong>The choking scene and the interview (Chapters 48 and 54).</strong> Natalie's assault on Shannon gets reframed on air as something "erotic in nature." How did the book handle the gap between what actually happened and how it gets packaged for an audience — and does it land as satire, horror, or both?</li>
+    <li><strong>Eliza's confession (Chapter 52).</strong> The lie that shaped Natalie's whole understanding of family and fidelity turns out to be her mother's, not her father's. Does this recontextualize anything about Natalie's own choices — or is it too late by that point?</li>
+    <li><strong>MANOSPHERE, carved into a doorframe (Chapter 53).</strong> What did it do for you, finally seeing where "the men" go — and finding out it's just a cabin with a mini-fridge and a football game?</li>
+    <li><strong>The reveal itself (Part Three).</strong> Once you know the "1855" world was a hoax Natalie and Caleb built deliberately to hide from prosecution, does anything about the earlier chapters read differently in hindsight? What clues do you wish you'd caught?</li>
+    <li><strong>"You're not pregnant, Mother. You're going through menopause."</strong> Natalie's entire internal narration for 50+ chapters treated her body's signals as religious and reproductive. What does this final correction do to how you read everything that came before it?</li>
+    <li><strong>Walking away hand in hand.</strong> The novel's last image of Natalie and Caleb together is neither punishment nor reconciliation — just two people who admit they should have left each other years ago, still leaving together. What do you make of that choice as an ending for their marriage?</li>
+    <li><strong>The Book of Mary (Epilogue).</strong> Mary's memoir gives the novel's final word to the one child the story spent the least time with directly. Why do you think Burke chose Mary, specifically, to write the family's ending — rather than Clementine, who did most of the actual rescuing?</li>
+    <li><strong>Reena's arc.</strong> From humiliated Harvard roommate to the journalist Natalie handpicks for her only prison interview, Reena's entire trajectory runs parallel to Natalie's collapse. What do you make of the choice to end the book with Reena holding the microphone?</li>
+    <li><strong>Looking back at the satire.</strong> Now that you know the full shape of the book, do you think Yesteryear ultimately worked as satire of tradwife/influencer culture — or did the plot mechanics (the hoax, the abuse charges) end up overtaking the social commentary?</li>
+  </ol>
+
+  <h2>Who's Who (so far)</h2>
+  <div class="cast">
+    <div><strong>Natalie Heller Mills</strong> — narrator; tradwife influencer, now apparently in 1855</div>
+    <div><strong>Caleb Mills</strong> — her husband; younger version in flashbacks, harder "Old Caleb" in the present</div>
+    <div><strong>Mary</strong> — a stern older girl in 1855 who insists Natalie is her mother</div>
+    <div><strong>Maeve</strong> — a younger girl in 1855, gentler toward Natalie</div>
+    <div><strong>Noah &amp; Abel</strong> — the boys of the 1855 household</div>
+    <div><strong>Clementine</strong> — Natalie's real-world eldest daughter, starting to resist being filmed</div>
+    <div><strong>Eliza</strong> — Natalie's mother; taught her to "imagine you're being watched"</div>
+    <div><strong>Abigail</strong> — Natalie's older sister</div>
+    <div><strong>Reena Magliotti</strong> — Natalie's Harvard roommate</div>
+    <div><strong>Doug &amp; Amelia Mills</strong> — Caleb's parents; Doug is a senator eyeing the presidency, and funded the ranch on the condition of "more kids"</div>
+    <div><strong>Shannon</strong> — Natalie's producer/nanny (hired around Chapter 38), who resigns after an affair with Caleb; grows suspicious of the ranch well before the reading club has caught up to her</div>
+    <div><strong>Bryce</strong> — Abigail's husband; she finally divorces him, finalized around Chapter 32</div>
+    <div><strong>Tammy Lane</strong> — a fellow Christian influencer whose $1,500 paid course (Chapter 32) Natalie takes to fix her "off" content</div>
+    <div><strong>Cassidy</strong> — Natalie's assigned "mentor" in Tammy Lane's course, secretly Tammy's own niece</div>
+    <div><strong>"The bearded man"</strong> — an unnamed men's-rights livestreamer whose on-air endorsement sends Natalie's followers from a few thousand to 300,000 overnight (Chapter 34)</div>
+    <div><strong>Stetson</strong> — Natalie and Caleb's third child, born sometime around Chapter 32; revealed in Part Three to be one of the two "neighbor" men — he's the one who finally calls the police</div>
+    <div><strong>Samuel</strong> — Natalie and Caleb's fourth child; the other "neighbor," living with Stetson in the "MANOSPHERE" cabin</div>
+    <div><strong>Junebug</strong> — Natalie and Caleb's fifth child, born at home in Chapter 42 with Shannon filming</div>
+    <div><strong>Nanny Louise &amp; Nanny Aimee</strong> — the household's live-in help, hired as the family and the brand both grow</div>
+    <div><strong>Lucy</strong> — a producer assigned to prep Natalie for her interview in Part Three</div>
+    <div><strong>The Book of Mary</strong> — Mary's bestselling memoir, published five years after leaving Yesteryear Ranch, and the subject of Natalie's prison interview in the Epilogue</div>
+  </div>
+
+  <footer>
+    Complete guide for the reading club — covers the entire novel, Part One through the Epilogue. Chapters 1–57 are page-sourced from your own Kindle highlights (with a handful of Part One quotes from a published study guide where noted). Part Three and the Epilogue are also sourced directly from your highlights. Enjoy the discussion — you made it to the end.
+  </footer>
+
+</div>
+</body>
+</html>

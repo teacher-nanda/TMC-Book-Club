@@ -1,138 +1,923 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Book Club: Peck &amp; Peck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Young+Serif&family=Caveat:wght@500;700&display=swap">
 <style>
-:root{--bg:#fbf7ef;--ink:#2b2a33;--mut:#6a6672;--card:#fff;--line:#e8dfcf;--ac:#c8553d;--ac2:#2f6f6a;--soft:#f3ead9;--hi:#fff3c7}
-@media (prefers-color-scheme: dark){:root:not([data-theme=light]){--bg:#1c1b22;--ink:#f1ece2;--mut:#b4aebd;--card:#27252f;--line:#3a3745;--soft:#302d3a;--hi:#4a4220;--ac:#ef7e66;--ac2:#6fc0b8}}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
-h1,h2,h3,.badge,button,.label,nav{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-a{color:var(--ac2)}
-.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#f6e7c9,#f3d9c0 55%,#e9c7b3);color:#2b2a33;padding:34px 16px 28px}
-@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .hero{background:linear-gradient(160deg,#2b2538,#3a2c3a)}:root:not([data-theme=light]) .hero{color:#f1ece2}}
-.hero-in{max-width:980px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.hero h1{font-size:clamp(34px,6vw,58px);margin:4px 0;line-height:1.05;letter-spacing:-.5px}
-.hero .by{margin:0 0 14px;font-size:19px;opacity:.85}
-.eyebrow{font:700 12px/1 system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;opacity:.8}
-.back{display:inline-block;margin-top:6px;font:600 14px system-ui,sans-serif;text-decoration:none;color:inherit;border:1px solid currentColor;border-radius:99px;padding:6px 14px;opacity:.9}
-.egg{width:150px;height:auto;flex:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
-nav.agenda{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 12px;justify-content:center}
-nav.agenda a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;padding:6px 12px;border-radius:99px}
-nav.agenda a:hover{background:var(--soft)}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
-section.step{padding:34px 0 6px}
-.sec-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.badge{background:var(--ac);color:#fff;border-radius:99px;font-size:12px;font-weight:700;padding:4px 12px;letter-spacing:.5px}
-h2{font-size:clamp(24px,4vw,32px);margin:0}
-h3{margin:0 0 6px;font-size:19px}
-.intro,.tip{color:var(--mut)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
-.label{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ac2)}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-@media (max-width:760px){.grid3,.grid2{grid-template-columns:minmax(0,1fr)}}
-.btn{font-weight:700;font-size:15px;border:0;border-radius:99px;padding:10px 18px;background:var(--ac);color:#fff;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.small{font-size:13px;padding:6px 12px}
-.pick-bar{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
-.card.chosen{outline:3px solid var(--ac);background:var(--hi)}
-.chap{margin-bottom:10px;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
-.chap>button{all:unset;box-sizing:border-box;display:flex;gap:12px;align-items:center;width:100%;padding:12px 16px;cursor:pointer;font:600 16px system-ui,sans-serif}
-.chap>button .n{flex:none;background:var(--soft);color:var(--ac);border-radius:10px;padding:3px 10px;font-size:13px;font-weight:800}
-.chap>button .t{flex:1}
-.chap>button .c{color:var(--mut);transition:.2s}
-.chap.open>button .c{transform:rotate(90deg)}
-.chap .body{display:none;padding:0 16px 14px 16px;color:var(--ink)}
-.chap.open .body{display:block}
-.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media (max-width:860px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.people{grid-template-columns:minmax(0,1fr)}}
-.person .top{display:flex;gap:12px;align-items:center;margin-bottom:8px}
-.av{width:44px;height:44px;border-radius:50%;color:#fff;font:800 20px system-ui,sans-serif;display:flex;align-items:center;justify-content:center;flex:none}
-.role{margin:0;color:var(--mut);font-size:14px}
-.person ul{margin:8px 0 0;padding-left:18px;font-size:15px}
-.tag{display:inline-block;font:700 11px system-ui,sans-serif;background:var(--soft);padding:3px 10px;border-radius:99px;letter-spacing:.5px}
-.theme{border-left:5px solid var(--ac)}
-.quote blockquote{margin:0 0 6px;font-size:19px;font-style:italic;line-height:1.45}
-.quote .ctx{margin:0 0 10px;color:var(--mut);font:600 13px system-ui,sans-serif}
-.reveal{background:var(--hi);border-radius:10px;padding:10px 12px;margin:0 0 10px;font-size:15px}
-.words{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-@media (max-width:900px){.words{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:480px){.words{grid-template-columns:minmax(0,1fr)}.flip{min-height:0}}
-.flip{all:unset;box-sizing:border-box;cursor:pointer;display:block;min-height:150px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
-.flip:hover{border-color:var(--ac)}
-.flip .w{display:block;font:800 18px system-ui,sans-serif;color:var(--ac)}
-.flip .hint{display:block;margin-top:8px;font:13px system-ui,sans-serif;color:var(--mut)}
-.flip .def{display:block;font-size:15px}
-.flip .ex{display:block;margin-top:8px;font-style:italic;font-size:14px;color:var(--mut)}
-.round{margin:18px 0}
-.round h3 small{color:var(--mut);font-weight:500}
-.q{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0}
+/* Layout concept: one lesson, two time layers. Warm museum gold = NOW, cold night blue = THEN (1980).
+   A sticky 50-minute agenda strip drives the flow; a notes drawer stays one tap away. */
+:root{
+  --bg:#F1F3FA; --surface:#FFFFFF; --surface2:#E6EAF5; --ink:#151A33; --muted:#4F5775; --line:#D3D9EC;
+  --accent:#B0214D; --accent-ink:#FFFFFF; --accent-soft:#F8DDE6;
+  --now:#B7791F; --now-soft:#FBEBCB; --then:#3F57C0; --then-soft:#DDE3F8;
+  --night:#0E1230; --night2:#1B2352; --star:#F6E8AE; --on-night:#EEF0FB; --on-night-muted:#B5BCDD;
+  --serif:"Young Serif", Georgia, "Times New Roman", serif;
+  --sans:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --shadow:0 6px 24px rgba(21,26,51,.10);
+  --mark:#FFE7A0;
+  --ok:#1B7A48; --ok-soft:#D6F0E2; --bad:#B3261E; --bad-soft:#FADBD8;
+  --wall:#E3E7F3; --dot:#C1C9DF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B0F20; --surface:#141A38; --surface2:#1C2447; --ink:#E9ECF8; --muted:#A7AFCC; --line:#2B3463;
+    --accent:#F2708F; --accent-ink:#1B0710; --accent-soft:#3A1A2A;
+    --now:#E9B25A; --now-soft:#3A2D14; --then:#8FA2F2; --then-soft:#1F2850;
+    --shadow:0 6px 24px rgba(0,0,0,.4); --mark:#5C4A12; --ok:#6FD39B; --ok-soft:#153A29; --bad:#F2877F; --bad-soft:#43211F; --wall:#111735; --dot:#232C5A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B0F20; --surface:#141A38; --surface2:#1C2447; --ink:#E9ECF8; --muted:#A7AFCC; --line:#2B3463;
+  --accent:#F2708F; --accent-ink:#1B0710; --accent-soft:#3A1A2A;
+  --now:#E9B25A; --now-soft:#3A2D14; --then:#8FA2F2; --then-soft:#1F2850;
+  --shadow:0 6px 24px rgba(0,0,0,.4); --mark:#5C4A12; --ok:#6FD39B; --ok-soft:#153A29; --bad:#F2877F; --bad-soft:#43211F; --wall:#111735; --dot:#232C5A; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:19px;line-height:1.6;margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:20px}
+mark.k{background:var(--mark);color:inherit;border-radius:4px;padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+p,li,.qt,.gt,.fb,.hint,.reveal{text-wrap:pretty}
+.label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* HERO */
+.hero{position:relative;background:linear-gradient(180deg,var(--night) 0%,var(--night2) 100%);color:var(--on-night);overflow:hidden}
+.hero-art{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;padding-block:56px 72px;max-width:1080px}
+.hero .eyebrow{color:var(--star);margin-bottom:14px}
+.hero h1{font-size:clamp(3.6rem,11vw,7rem);letter-spacing:-.01em}
+.hero .by{font-size:1.25rem;color:var(--on-night-muted);margin-top:6px}
+.hero .lede{max-width:34ch;margin-top:22px;font-size:1.25rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips span{border:1.5px solid rgba(246,232,174,.55);color:var(--star);border-radius:999px;padding:5px 15px;font-size:.92rem;font-weight:700;background:rgba(14,18,48,.55)}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.twinkle{animation:tw 3.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.twinkle{animation:none}html{scroll-behavior:auto}}
+
+/* AGENDA STRIP */
+.agenda{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.agenda-scroll{overflow-x:auto;scrollbar-width:thin}
+.agenda ol{list-style:none;margin:0;padding:0;display:flex;min-width:max-content}
+.agenda li{flex:1 1 auto}
+.agenda a{display:flex;align-items:baseline;gap:9px;padding:12px 16px;justify-content:center;text-decoration:none;color:var(--muted);border-bottom:4px solid transparent;font-weight:700;white-space:nowrap}
+.agenda a .n{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
+.agenda a .m{font-size:.8rem;font-weight:400;opacity:.85}
+.agenda a:hover{color:var(--ink)}
+.agenda a.on{color:var(--ink);border-bottom-color:var(--accent);background:var(--surface2)}
+
+/* SECTIONS */
+section.step{padding-block:68px 8px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:10px}
+.badge{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:3px 14px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.sec-head h2{font-size:clamp(2rem,4.6vw,3rem);flex-basis:100%}
+.intro{max-width:60ch;color:var(--muted);margin-bottom:28px;font-size:1.08rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:10px 18px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.small{padding:6px 12px;font-size:.88rem}
+
+/* WARM-UP */
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.pick .card{display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s}
+.pick .card .label{color:var(--accent)}
+.pick .card.hi{border-color:var(--accent);transform:translateY(-4px);outline:3px solid var(--accent-soft)}
+.pick-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
+
+/* STORY */
+.sixty{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:34px}
+.sixty .card{padding:18px 20px}
+.sixty .lead{display:block;font-family:var(--serif);font-weight:400;font-size:1.25rem;margin-bottom:4px}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lane{border-radius:16px;padding:26px 24px 20px;border:1px solid var(--line)}
+.lane.now{background:var(--now-soft)}
+.lane.then{background:var(--then-soft)}
+.lane h3{font-size:1.7rem}
+.lane .where{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.lane.now .where,.lane.now h3{color:var(--now)}
+.lane.then .where,.lane.then h3{color:var(--then)}
+.beats{list-style:none;margin:20px 0 0;padding:0 0 0 26px;position:relative}
+.beats::before{content:"";position:absolute;left:7px;top:8px;bottom:12px;width:3px;border-radius:2px;background:currentColor;opacity:.3}
+.lane.now .beats{color:var(--now)} .lane.then .beats{color:var(--then)}
+.beats li{position:relative;color:var(--ink);padding-bottom:16px}
+.beats li::before{content:"";position:absolute;left:-26px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--surface);border:4px solid currentColor}
+.lane.now .beats li::before{border-color:var(--now)} .lane.then .beats li::before{border-color:var(--then)}
+.beats .lead{display:block}
+.bridge{text-align:center;margin:22px 0 0;color:var(--muted);font-size:1rem}
+.bridge strong{color:var(--accent)}
+
+/* PEOPLE */
+.tree{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:30px}
+.tree .t{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 16px;font-weight:700;line-height:1.25}
+.tree .t small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+.tree .t.hot{border-color:var(--accent);background:var(--accent-soft)}
+.tree .arrow{color:var(--accent);font-size:1.5rem;font-weight:700}
+.tree-title{flex-basis:100%;color:var(--muted)}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.person{display:flex;flex-direction:column;gap:12px;min-width:0}
+.person .top{display:flex;gap:14px;align-items:center}
+.av{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:1.35rem;color:#fff}
+.person h3{font-size:1.4rem}
+.person .role{font-size:.9rem;color:var(--muted)}
+.person ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.tag{align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 10px;border-radius:999px}
+.tag.now{background:var(--now-soft);color:var(--now)} .tag.then{background:var(--then-soft);color:var(--then)} .tag.both{background:var(--accent-soft);color:var(--accent)}
+
+/* QUOTES */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;margin-bottom:46px}
+.quote{display:flex;flex-direction:column;gap:14px;min-width:0}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:1.3rem;line-height:1.35;position:relative;padding-top:30px}
+.quote blockquote::before{content:"\201C";position:absolute;top:-14px;left:-4px;font-size:4.2rem;color:var(--accent);line-height:1}
+.quote .ctx{color:var(--muted);font-size:.9rem}
+.qactions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.reveal{background:var(--surface2);border-radius:10px;padding:14px 16px;font-size:1rem}
+.words-head{margin-bottom:14px}
+.words-head h3{font-size:1.9rem}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.flip{display:block;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;min-height:150px;box-shadow:var(--shadow);transition:border-color .2s}
+.flip:hover{border-color:var(--accent)}
+.flip .w{font-family:var(--serif);font-size:1.4rem}
+.flip .hint{display:block;font-size:.78rem;color:var(--muted);margin-top:8px}
+.flip .def{font-size:1rem}
+.flip .ex{display:block;margin-top:8px;font-style:italic;color:var(--muted);font-size:.92rem}
+.flip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+
+/* DISCUSS */
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:22px;color:var(--muted);font-weight:700}
+.bar{flex:1;height:10px;background:var(--surface2);border-radius:99px;overflow:hidden;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.round{margin-bottom:30px}
+.round h3{font-size:1.6rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:12px}
+.round h3 small{font-family:var(--sans);font-size:.9rem;color:var(--muted)}
+.q{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:opacity .2s}
 .q.done{opacity:.6}
-.qn{flex:none;background:var(--ac2);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font:800 14px system-ui,sans-serif}
-.q .body{flex:1}
-.qt{font-weight:600;font-family:system-ui,sans-serif;font-size:16px}
-.qrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
-.hint{background:var(--hi);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:15px}
-.chk{font:14px system-ui,sans-serif;color:var(--mut);display:inline-flex;gap:6px;align-items:center}
-.progress{display:flex;align-items:center;gap:12px;font:600 14px system-ui,sans-serif;color:var(--mut)}
-.bar{flex:1;max-width:260px;height:8px;background:var(--soft);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--ac2);transition:.3s}
-.bonus{margin-top:22px;border:2px dashed var(--ac)}
-.gq{margin:14px 0}.gt{margin:0 0 8px;font-weight:600}
-.tfrow{display:flex;gap:8px;flex-wrap:wrap}
-.tf{font:600 15px system-ui,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:10px;cursor:pointer}
-.tf.ok{background:#cfeedd;border-color:#4aa36c;color:#14472b}.tf.bad{background:#fbd5cf;border-color:#d0604c;color:#6d1e12}
-.fb{margin-top:8px;font-size:15px}
-.gscore{font:800 15px system-ui,sans-serif}
-.game-head{display:flex;justify-content:space-between;align-items:center;margin:10px 0}
-.steps span{font:600 13px system-ui,sans-serif;color:var(--mut);margin-right:10px}.steps .on{color:var(--ac);text-decoration:underline}
-.big{font:800 44px system-ui,sans-serif;color:var(--ac)}
-.notesbar{position:fixed;right:16px;bottom:16px;z-index:9}
-.fab{font:700 15px system-ui,sans-serif;border:0;border-radius:99px;background:var(--ac2);color:#fff;padding:12px 18px;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);background:#fffdf5;color:#2b2a33;border-left:1px solid #e6dcc3;padding:16px;transform:translateX(100%);transition:.25s;z-index:20;display:flex;flex-direction:column;gap:10px;box-shadow:-8px 0 24px rgba(0,0,0,.12)}
-.drawer.open{transform:none}
-.drawer h3{margin:0}.drawer textarea{flex:1;border:1px solid #e6dcc3;border-radius:12px;padding:12px;font:16px/1.5 Georgia,serif;background:#fff;color:#2b2a33;resize:none}
-.drawer .row{display:flex;gap:8px;flex-wrap:wrap}
-.wrapgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-@media (max-width:760px){.wrapgrid{grid-template-columns:minmax(0,1fr)}}
-footer{max-width:980px;margin:40px auto 90px;padding:0 16px;color:var(--mut);font-size:14px}
+.q.done .qt{text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.qn{font-family:var(--serif);font-size:2rem;line-height:1;color:var(--accent);min-width:2ch}
+.qt{font-size:1.15rem;font-weight:700;min-width:0}
+.q .body{grid-column:2;display:flex;flex-direction:column;gap:10px;min-width:0}
+.q .hint{background:var(--surface2);border-radius:10px;padding:12px 14px;font-size:1rem}
+.q .qrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chk{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--accent)}
+.tip{font-size:1rem;color:var(--muted);margin-bottom:18px}
+.game-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:14px 0 16px}
+.steps{display:flex;flex-wrap:wrap;gap:8px}
+.steps span{padding:4px 14px;border-radius:99px;border:1.5px solid var(--line);font-size:.85rem;font-weight:700;color:var(--muted)}
+.steps span.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.steps span.done{background:var(--surface2);color:var(--ink)}
+.gscore{font-weight:700;font-variant-numeric:tabular-nums}
+.gq{display:grid;gap:12px;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;transition:border-color .2s}
+.gq.ok{border-color:var(--ok)}.gq.bad{border-color:var(--bad)}
+.gq .gt{font-size:1.15rem;font-weight:700}
+.tfrow{display:flex;flex-wrap:wrap;gap:10px}
+.tf{flex:1 1 140px;min-height:50px;border-radius:12px;border:2px solid var(--line);background:var(--surface2);font-weight:700;font-size:1.05rem;transition:border-color .15s,transform .15s}
+.tf:hover:not(:disabled){border-color:var(--accent);transform:translateY(-2px)}
+.tf:disabled{cursor:default}
+.tf.pok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.tf.pbad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.tf.right{border-color:var(--ok);box-shadow:inset 0 0 0 2px var(--ok)}
+.fb{border-radius:10px;padding:12px 14px;background:var(--surface2);font-size:1rem}
+.fb.ok{background:var(--ok-soft)}.fb.bad{background:var(--bad-soft)}
+.fb .vr{font-weight:700;margin-right:6px}
+.fb.ok .vr{color:var(--ok)}.fb.bad .vr{color:var(--bad)}
+.gsum{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;background:var(--accent-soft);border-radius:12px;padding:14px 18px;margin-top:6px}
+.gsum .gres{font-family:var(--serif);font-size:1.3rem}
+.gfinal{text-align:center;padding:26px 16px}
+.gfinal .big{font-family:var(--serif);font-size:3.2rem;line-height:1.1;color:var(--accent)}
+.gfinal p{margin:6px 0 16px}
+.pr-only{display:none}
+.bonus{margin-top:36px}
+.bonus h3{font-size:1.7rem;margin-bottom:6px}
+
+/* WRAP */
+.wrapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.wrapgrid h3{font-size:1.45rem;margin-bottom:10px}
+.wrapgrid ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.locked{border-style:dashed;background:transparent;box-shadow:none;display:flex;flex-direction:column;justify-content:center;gap:6px;color:var(--muted)}
+.locked h3{color:var(--ink)}
+.intro,.sixty .card,.beats li,.tip{text-wrap:pretty}
+.nextlink{display:inline-block;color:var(--accent);font-weight:700;text-decoration:none;border-bottom:2px solid currentColor}
+footer{padding-block:60px 120px;color:var(--muted);font-size:.95rem;text-align:center}
+
+/* NOTES DRAWER */
+html{--dw:min(460px,45vw)}
+body{transition:padding .25s ease}
+body.notes-open{padding-right:var(--dw)}
+body.notes-open .fab{display:none}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:14px 22px;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.drawer{position:fixed;z-index:50;top:0;right:0;bottom:0;width:var(--dw);background:var(--surface);border-left:1px solid var(--line);box-shadow:-10px 0 40px rgba(0,0,0,.25);display:flex;flex-direction:column;transform:translateX(104%);visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;padding-top:env(safe-area-inset-top,0px)}
+.drawer.open{transform:none;visibility:visible;transition:transform .25s ease}
+.dhead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dhead h3{font-size:1.4rem}
+.tb{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--surface2);align-items:center}
+.tb button{min-width:38px;height:38px;border:1.5px solid var(--line);background:var(--surface);border-radius:8px;font-weight:700;padding:0 8px}
+.tb button:hover{border-color:var(--accent)}
+.tb .sep{width:1px;height:26px;background:var(--line);margin:0 4px}
+.sw{width:38px;height:38px;display:grid;place-items:center}
+.sw i{display:block;width:20px;height:20px;border-radius:50%;border:2px solid rgba(0,0,0,.25)}
+.sw.none i{background:var(--surface);position:relative;border-color:var(--muted)}
+.sw.none i::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--accent);transform:rotate(45deg)}
+.editor{flex:1;overflow:auto;padding:16px 18px;font-size:.9rem;line-height:1.55;outline:none;min-height:0}
+.editor h3{font-size:1.05rem;margin:14px 0 4px;color:var(--accent)}
+.editor p{margin:0 0 8px}
+.editor ul,.editor ol{margin:0 0 8px;padding-left:24px}
+.editor [style*="background"]{color:#151A33 !important}
+.editor [style*="transparent"],.editor [style*="rgba(0, 0, 0, 0)"]{color:var(--ink) !important}
+.dfoot{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.dfoot .st{margin-right:auto;color:var(--muted);font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-weight:700;opacity:0;pointer-events:none;transition:.25s;z-index:70;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.hl{border-radius:3px;padding:0 3px;color:#151A33}
+
+@media (max-width:820px){
+  .lanes{grid-template-columns:1fr}
+  body.notes-open{padding-right:0;padding-bottom:86vh}
+  .drawer{top:auto;height:86%;width:100%;border-left:0;border-top:1px solid var(--line);transform:translateY(104%);border-radius:18px 18px 0 0}
+  .drawer.open{transform:none}
+  body{font-size:18px}
+  .hero-inner{padding-block:40px 56px}
+  .q{grid-template-columns:1fr}.q .body{grid-column:1}
+}
+/* HOME: COVER AND POST-IT MURAL */
+.hero .back{display:inline-block;margin-bottom:18px;color:var(--star);text-decoration:none;font-weight:700;border:1.5px solid rgba(246,232,174,.55);border-radius:999px;padding:4px 14px;font-size:.92rem;background:rgba(14,18,48,.55)}
+.hero .back:hover{background:rgba(14,18,48,.85)}
+.home-hero .hero-inner{padding-block:84px 96px}
+.chapters{display:grid;grid-template-columns:repeat(4,max-content);gap:14px;margin-top:34px}
+@media (max-width:760px){.chapters{grid-template-columns:repeat(2,minmax(0,1fr))}.chapters .chbtn{justify-content:center;padding-inline:14px}}
+.chbtn{display:inline-flex;align-items:center;gap:12px;background:var(--star);color:#14183A;font-weight:700;font-size:1.3rem;text-decoration:none;padding:14px 30px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s}
+.chbtn:hover{transform:translateY(-3px)}
+.wallsec{padding-block:30px 20px}
+.wallbar{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center;margin-bottom:16px}
+.wallbar .spacer{flex:1 1 20px}
+.cdots{display:flex;gap:9px;align-items:center}
+.cdot{width:32px;height:32px;border-radius:50%;border:2px solid rgba(0,0,0,.22);background:var(--c);padding:0}
+.cdot[aria-pressed="true"]{outline:3px solid var(--accent);outline-offset:2px}
+.board{--ps:210px;position:relative;min-height:560px;border-radius:16px;background-color:var(--wall);background-image:radial-gradient(var(--dot) 1.3px,transparent 1.6px);background-size:26px 26px;border:1px solid var(--line);overflow:hidden}
+.empty-add{position:absolute;inset:0;margin:auto;width:min(340px,86%);height:150px;border:2.5px dashed var(--muted);border-radius:14px;background:transparent;color:var(--muted);font-weight:700;font-size:1.15rem}
+.empty-add:hover{border-color:var(--accent);color:var(--accent)}
+.pit{position:absolute;width:var(--ps);height:var(--ps);background:var(--pc);color:#2B2B2B;display:flex;flex-direction:column;border-radius:2px 2px 16px 2px;transform:rotate(var(--rot));box-shadow:0 12px 20px rgba(0,0,0,.28),inset 0 -22px 26px -22px rgba(0,0,0,.2)}
+.pit.drag{box-shadow:0 22px 30px rgba(0,0,0,.34),inset 0 -22px 26px -22px rgba(0,0,0,.2);transform:rotate(0deg) scale(1.03)}
+.pit-bar{display:flex;align-items:center;justify-content:space-between;height:36px;padding:0 6px;background:rgba(0,0,0,.07);cursor:grab;touch-action:none;user-select:none}
+.pit.drag .pit-bar{cursor:grabbing}
+.pit-bar button{border:0;background:transparent;color:#2B2B2B;font-weight:700;font-size:.82rem;min-width:30px;height:28px;border-radius:6px;padding:0 6px}
+.pit-bar button:hover{background:rgba(0,0,0,.12)}
+.pit-bar .grip{width:36px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(0,0,0,.35) 0 4px,transparent 4px 8px)}
+.pit-text{flex:1;min-height:0;border:0;background:transparent;resize:none;outline:none;font-family:"Caveat","Segoe Script","Bradley Hand","Comic Sans MS",cursive;font-weight:500;font-size:1.55rem;line-height:1.12;padding:8px 12px 14px;color:#2B2B2B}
+.pit-text:focus-visible{outline:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.35)}
+.homefoot{padding-block:8px 60px;color:var(--muted);font-size:.9rem;text-align:center}
+#printWall{display:none}
+.pr-head{display:none}
+@media (max-width:560px){.board{--ps:168px}.pit-text{font-size:1.4rem}.home-hero .hero-inner{padding-block:56px 64px}}
+
+/* PRINT / SAVE AS PDF */
 .print-notes{display:none}
-@media print{.hero,nav.agenda,main,.notesbar,.drawer,footer{display:none!important}.print-notes{display:block!important;color:#000;background:#fff}body{background:#fff}}
-</style></head><body>
-<header class="hero"><div class="hero-in"><div>
-<div class="eyebrow">Book Club · Session 1 · Chapters 1–14</div>
-<h1>Peck &amp; Peck</h1><p class="by">Bonnie&nbsp;Garmus</p>
-<a class="back" href="books.html">← All our books</a></div>
-<svg class="egg" viewBox="0 0 120 150" role="img" aria-label="A speckled quail egg"><defs><radialGradient id="eg" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#f7ecd3"/><stop offset="1" stop-color="#cdb487"/></radialGradient></defs>
-<path d="M60 8C88 8 108 62 108 96c0 28-22 46-48 46S12 124 12 96C12 62 32 8 60 8Z" fill="url(#eg)"/>
-<g fill="#6b4a2b" opacity=".75"><circle cx="44" cy="52" r="3"/><circle cx="70" cy="40" r="2.2"/><circle cx="82" cy="70" r="3.4"/><circle cx="38" cy="86" r="2.6"/><circle cx="64" cy="96" r="3.8"/><circle cx="90" cy="108" r="2.4"/><circle cx="50" cy="118" r="3"/><circle cx="72" cy="124" r="2"/><circle cx="28" cy="108" r="2"/><circle cx="60" cy="68" r="2"/></g></svg>
-</div></header>
-<nav class="agenda"><a href="#warmup">1 Warm-up</a><a href="#story">2 The story</a><a href="#people">3 People</a><a href="#topics">4 Topics</a><a href="#close">5 Quotes &amp; words</a><a href="#discuss">6 Discuss</a><a href="#wrapup">7 Wrap-up</a></nav>
+@media print{
+  @page{size:A4;margin:12mm}
+  html:root:root:root{--bg:#FFFFFF;--surface:#FFFFFF;--surface2:#EEF1F8;--ink:#151A33;--muted:#4F5775;--line:#C9D0E6;--accent:#B0214D;--accent-ink:#FFFFFF;--accent-soft:#F8DDE6;--now:#B7791F;--now-soft:#FBEBCB;--then:#3F57C0;--then-soft:#DDE3F8;--shadow:none;--mark:#FFE7A0;--ok:#1B7A48;--ok-soft:#D6F0E2;--bad:#B3261E;--bad-soft:#FADBD8;color-scheme:light}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none !important}
+  html{scroll-behavior:auto}
+  body.notes-open{padding:0 !important}
+  #home>*:not(#printWall):not(.home-hero){display:none !important}
+  .home-hero .chapters{display:none !important}
+  .home-hero .hero-inner{padding-block:24px 28px}
+  .home-hero h1{font-size:3.6rem}
+  .home-hero .by{margin-top:2px}
+  .pr-head{display:block;margin-top:16px}
+  .pr-head .pr-big{font-family:var(--serif);font-size:1.7rem;color:var(--star);line-height:1.15}
+  .pr-head .pr-sub{color:var(--on-night-muted);margin-top:4px;font-size:1rem}
+  .pr-head a{display:inline-block;margin-top:8px;background:var(--star);color:#14183A !important;font-weight:700;font-size:1.05rem;text-decoration:none;padding:6px 18px;border-radius:999px}
+  #printWall{margin-top:18px}
+  #printWall{display:block}
+  #printWall h2{font-size:2rem;margin-bottom:4px}
+  #printWall .sub{color:var(--muted);margin-bottom:16px}
+  .pw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pw{min-height:170px;padding:14px 16px;border-radius:2px 2px 14px 2px;color:#2B2B2B;font-family:"Caveat","Segoe Script","Comic Sans MS",cursive;font-size:21px;line-height:1.2;white-space:pre-wrap;overflow-wrap:anywhere;break-inside:avoid}
+  .hero .back{display:none !important}
+  body{font-size:14px;line-height:1.5}
+  .agenda,.fab,.drawer,.toast,.btn,.chk,.progress,.pick-bar,.flip .hint,.tip{display:none !important}
+  .wrap{max-width:none;padding-inline:0}
+  .hero-inner{padding-block:28px 34px}
+  .hero h1{font-size:4rem}
+  section.step{padding-block:0 0;break-before:page}
+  section.step#warmup,section.step#c2-warmup,section.step#c3-warmup,section.step#c4-warmup{break-before:auto;padding-top:22px}
+  .sec-head h2{font-size:2rem}
+  .intro{margin-bottom:16px}
+  .card,.q,.lane,.person,.flip,.quote,.tree,.round>h3,.gq{break-inside:avoid}
+  .reveal[hidden],.hint[hidden],.fb[hidden],.gr[hidden]{display:block !important}
+  .gr[data-r="3"],.gsum,.steps,.gscore,.tf{display:none !important}
+  .pr-only{display:block;margin:8px 0}
+  .reveal,.q .hint,.ans{margin-top:2px}
+  .flip .front[hidden],.flip .back[hidden]{display:block !important}
+  .flip{min-height:0;padding:10px 14px}
+  .flip .w{font-size:1.15rem}
+  .flip .front,.flip .back{display:block}
+  .flip[aria-pressed="true"]{background:var(--surface);border-color:var(--line)}
+  .q.done{opacity:1}.q.done .qt{text-decoration:none}
+  .print-notes{display:none;break-before:page}
+  .print-notes.has{display:block}
+  .print-notes h2{font-size:2rem;margin-bottom:12px}
+  .pn-body{font-size:14px;line-height:1.6}
+  .pn-body h3{font-size:1.1rem;margin:12px 0 4px;color:var(--accent)}
+  .pn-body p{margin:0 0 8px}.pn-body ul,.pn-body ol{margin:0 0 8px;padding-left:24px}
+  .pn-body [style*="background"]{color:#151A33 !important}
+  .pn-body [style*="transparent"],.pn-body [style*="rgba(0, 0, 0, 0)"]{color:var(--ink) !important}
+  footer{padding-block:20px 0}
+}
+
+.cover-img{display:block;border-radius:4px 10px 10px 4px;box-shadow:-5px 6px 0 rgba(0,0,0,.25),0 18px 34px rgba(0,0,0,.45)}
+@media (min-width:761px){.home-hero .hero-inner{position:relative;padding-right:250px}.home-hero .cover-img{position:absolute;right:16px;top:50%;width:178px;transform:translateY(-50%) rotate(3deg)}}
+@media (max-width:760px){.home-hero .cover-img{width:120px;margin-top:18px}}
+@media (min-width:761px) and (max-width:1100px){.home-hero .chapters{grid-template-columns:repeat(2,max-content)}}
+:root{--bg:#FBF6EE;--surface2:#F3E9DB;--line:#E6D8C3;--accent:#B8472E;--accent-soft:#F8DED3;--night:#2A1B2E;--night2:#6B3A3A;--star:#F8DDA8;--on-night:#FBF3E6;--on-night-muted:#E3CFC0;--wall:#F1E7D6;--dot:#D9C7AA;--then:#3F57C0;--now:#B7791F}
+</style>
+
+</head>
+<body>
+<div id="home">
+  <header class="hero home-hero">
+    <svg class="hero-art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="glow2" cx="22%" cy="100%" r="70%"><stop offset="0" stop-color="#F7C46A" stop-opacity=".55"/><stop offset="1" stop-color="#F7C46A" stop-opacity="0"/></radialGradient></defs><rect x="0" y="0" width="1200" height="480" fill="url(#glow2)"/><g id="stars2"></g><g fill="#1d1226" opacity=".55"><rect x="470" y="316" width="52" height="164"/><rect x="527" y="331" width="47" height="149"/><rect x="579" y="333" width="45" height="147"/><rect x="629" y="357" width="47" height="123"/><rect x="676" y="336" width="70" height="144"/><rect x="935" y="383" width="54" height="97"/><rect x="992" y="387" width="44" height="93"/><rect x="1038" y="369" width="45" height="111"/><rect x="1089" y="275" width="52" height="205"/><rect x="1146" y="355" width="63" height="125"/></g><g fill="#F7C46A"><rect x="742" y="372" width="5" height="7" opacity="0.4"/><rect x="978" y="409" width="5" height="7" opacity="0.6"/><rect x="920" y="350" width="5" height="7" opacity="0.25"/><rect x="834" y="324" width="5" height="7" opacity="0.85"/><rect x="1047" y="259" width="5" height="7" opacity="0.85"/><rect x="1173" y="417" width="5" height="7" opacity="0.4"/><rect x="780" y="293" width="5" height="7" opacity="0.4"/><rect x="1015" y="372" width="5" height="7" opacity="0.6"/><rect x="860" y="425" width="5" height="7" opacity="0.6"/><rect x="1100" y="333" width="5" height="7" opacity="0.85"/><rect x="613" y="441" width="5" height="7" opacity="0.4"/><rect x="1058" y="310" width="5" height="7" opacity="0.4"/><rect x="855" y="257" width="5" height="7" opacity="0.25"/><rect x="920" y="427" width="5" height="7" opacity="0.85"/><rect x="482" y="407" width="5" height="7" opacity="0.25"/><rect x="710" y="262" width="5" height="7" opacity="0.85"/><rect x="935" y="319" width="5" height="7" opacity="0.4"/><rect x="903" y="318" width="5" height="7" opacity="0.6"/><rect x="687" y="381" width="5" height="7" opacity="0.4"/><rect x="1097" y="311" width="5" height="7" opacity="0.85"/><rect x="696" y="211" width="5" height="7" opacity="0.25"/><rect x="847" y="364" width="5" height="7" opacity="0.4"/><rect x="782" y="288" width="5" height="7" opacity="0.4"/><rect x="1180" y="247" width="5" height="7" opacity="0.4"/><rect x="651" y="225" width="5" height="7" opacity="0.85"/><rect x="1138" y="468" width="5" height="7" opacity="0.25"/><rect x="930" y="365" width="5" height="7" opacity="0.25"/><rect x="1019" y="191" width="5" height="7" opacity="0.4"/><rect x="798" y="252" width="5" height="7" opacity="0.85"/><rect x="788" y="327" width="5" height="7" opacity="0.25"/><rect x="961" y="457" width="5" height="7" opacity="0.6"/><rect x="516" y="192" width="5" height="7" opacity="0.6"/><rect x="822" y="269" width="5" height="7" opacity="0.85"/><rect x="1053" y="462" width="5" height="7" opacity="0.85"/><rect x="708" y="296" width="5" height="7" opacity="0.6"/><rect x="512" y="382" width="5" height="7" opacity="0.4"/><rect x="629" y="322" width="5" height="7" opacity="0.85"/><rect x="1180" y="300" width="5" height="7" opacity="0.6"/><rect x="915" y="310" width="5" height="7" opacity="0.6"/><rect x="730" y="337" width="5" height="7" opacity="0.85"/><rect x="688" y="369" width="5" height="7" opacity="0.85"/><rect x="519" y="352" width="5" height="7" opacity="0.85"/><rect x="951" y="234" width="5" height="7" opacity="0.25"/><rect x="526" y="192" width="5" height="7" opacity="0.6"/><rect x="674" y="420" width="5" height="7" opacity="0.85"/><rect x="1047" y="389" width="5" height="7" opacity="0.6"/><rect x="542" y="338" width="5" height="7" opacity="0.85"/><rect x="620" y="265" width="5" height="7" opacity="0.25"/><rect x="594" y="378" width="5" height="7" opacity="0.4"/><rect x="703" y="347" width="5" height="7" opacity="0.6"/><rect x="1097" y="388" width="5" height="7" opacity="0.6"/><rect x="514" y="367" width="5" height="7" opacity="0.4"/><rect x="582" y="374" width="5" height="7" opacity="0.85"/><rect x="932" y="412" width="5" height="7" opacity="0.25"/><rect x="839" y="463" width="5" height="7" opacity="0.6"/><rect x="612" y="215" width="5" height="7" opacity="0.6"/><rect x="650" y="469" width="5" height="7" opacity="0.4"/><rect x="485" y="317" width="5" height="7" opacity="0.4"/><rect x="571" y="435" width="5" height="7" opacity="0.6"/><rect x="552" y="366" width="5" height="7" opacity="0.6"/><rect x="698" y="214" width="5" height="7" opacity="0.4"/><rect x="1162" y="312" width="5" height="7" opacity="0.85"/><rect x="679" y="391" width="5" height="7" opacity="0.25"/><rect x="1040" y="216" width="5" height="7" opacity="0.25"/><rect x="1108" y="260" width="5" height="7" opacity="0.6"/><rect x="1026" y="393" width="5" height="7" opacity="0.6"/><rect x="632" y="469" width="5" height="7" opacity="0.6"/><rect x="747" y="234" width="5" height="7" opacity="0.6"/><rect x="533" y="205" width="5" height="7" opacity="0.4"/><rect x="495" y="244" width="5" height="7" opacity="0.6"/></g><rect x="708" y="150" width="214" height="330" fill="#2a1a2f"/><rect x="700" y="140" width="230" height="13" fill="#3b2640"/><g><rect x="728" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="775" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="220" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="822" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="364" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="822" y="412" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="172" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/></g></svg>
+    <div class="wrap hero-inner">
+      <a class="back" href="index.html">← All our books</a>
+      <p class="label eyebrow">Book Club</p>
+      <h1>Peck &amp; Peck</h1>
+      <p class="by">a novel by Bonnie Garmus</p>
+      <div class="chapters"><a class="chbtn" href="#chapter1">Session 1 · Chapters 1–14 <span aria-hidden="true">→</span></a></div>
+      <img class="cover-img" src="covers/peck-and-peck.jpg" alt="Cover of Peck &amp; Peck by Bonnie Garmus" width="178">
+      <div class="pr-head"><p class="pr-big">Check out our Book Club!</p><p class="pr-sub">Read along with us, and see what we think, at</p><a href="https://teacher-nanda.github.io/Whistler/">teacher-nanda.github.io/Whistler</a></div>
+    </div>
+  </header>
+  <main class="wrap wallsec">
+    <div class="wallbar">
+      <div class="cdots" role="group" aria-label="Color for new post-its" id="cdots">
+        <button class="cdot" type="button" style="--c:#FFE76B" data-c="#FFE76B" aria-pressed="true" aria-label="Yellow"></button>
+        <button class="cdot" type="button" style="--c:#FFB8CF" data-c="#FFB8CF" aria-pressed="false" aria-label="Pink"></button>
+        <button class="cdot" type="button" style="--c:#B5EFC4" data-c="#B5EFC4" aria-pressed="false" aria-label="Green"></button>
+        <button class="cdot" type="button" style="--c:#B3D4FF" data-c="#B3D4FF" aria-pressed="false" aria-label="Blue"></button>
+        <button class="cdot" type="button" style="--c:#FFC98B" data-c="#FFC98B" aria-pressed="false" aria-label="Orange"></button>
+      </div>
+      <button class="btn" id="addPit" type="button">Add post-it</button>
+      <span class="spacer"></span>
+      <button class="btn" id="savePits" type="button">Save post-its</button>
+      <button class="btn ghost small" id="clearPits" type="button">Clear wall</button>
+    </div>
+    <div class="board" id="board"><button class="empty-add" id="ghostAdd" type="button">+ Add your first post-it</button></div>
+  </main>
+  <p class="homefoot">Page version 1</p>
+  <section id="printWall"><h2>Our post-its</h2><p class="sub" id="pwDate"></p><div class="pw-grid" id="pwGrid"></div></section>
+</div>
+
+<div id="ch1" hidden>
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="glow3" cx="22%" cy="100%" r="70%"><stop offset="0" stop-color="#F7C46A" stop-opacity=".55"/><stop offset="1" stop-color="#F7C46A" stop-opacity="0"/></radialGradient></defs><rect x="0" y="0" width="1200" height="480" fill="url(#glow3)"/><g id="stars3"></g><g fill="#1d1226" opacity=".55"><rect x="470" y="256" width="42" height="224"/><rect x="513" y="325" width="53" height="155"/><rect x="568" y="275" width="40" height="205"/><rect x="610" y="289" width="65" height="191"/><rect x="678" y="323" width="43" height="157"/><rect x="935" y="299" width="56" height="181"/><rect x="997" y="298" width="52" height="182"/><rect x="1055" y="352" width="69" height="128"/><rect x="1125" y="348" width="53" height="132"/><rect x="1178" y="359" width="40" height="121"/></g><g fill="#F7C46A"><rect x="825" y="204" width="5" height="7" opacity="0.25"/><rect x="760" y="294" width="5" height="7" opacity="0.85"/><rect x="893" y="414" width="5" height="7" opacity="0.25"/><rect x="1136" y="247" width="5" height="7" opacity="0.6"/><rect x="665" y="238" width="5" height="7" opacity="0.85"/><rect x="1006" y="289" width="5" height="7" opacity="0.6"/><rect x="943" y="301" width="5" height="7" opacity="0.85"/><rect x="768" y="446" width="5" height="7" opacity="0.6"/><rect x="584" y="252" width="5" height="7" opacity="0.25"/><rect x="765" y="333" width="5" height="7" opacity="0.25"/><rect x="508" y="272" width="5" height="7" opacity="0.85"/><rect x="596" y="459" width="5" height="7" opacity="0.25"/><rect x="915" y="435" width="5" height="7" opacity="0.4"/><rect x="1027" y="387" width="5" height="7" opacity="0.85"/><rect x="796" y="438" width="5" height="7" opacity="0.85"/><rect x="927" y="403" width="5" height="7" opacity="0.25"/><rect x="742" y="432" width="5" height="7" opacity="0.85"/><rect x="721" y="420" width="5" height="7" opacity="0.85"/><rect x="548" y="263" width="5" height="7" opacity="0.85"/><rect x="753" y="415" width="5" height="7" opacity="0.25"/><rect x="895" y="406" width="5" height="7" opacity="0.25"/><rect x="835" y="378" width="5" height="7" opacity="0.85"/><rect x="749" y="372" width="5" height="7" opacity="0.6"/><rect x="1022" y="286" width="5" height="7" opacity="0.25"/><rect x="1123" y="430" width="5" height="7" opacity="0.6"/><rect x="577" y="388" width="5" height="7" opacity="0.25"/><rect x="515" y="288" width="5" height="7" opacity="0.6"/><rect x="505" y="190" width="5" height="7" opacity="0.6"/><rect x="1014" y="373" width="5" height="7" opacity="0.6"/><rect x="596" y="207" width="5" height="7" opacity="0.4"/><rect x="683" y="190" width="5" height="7" opacity="0.4"/><rect x="736" y="446" width="5" height="7" opacity="0.6"/><rect x="666" y="317" width="5" height="7" opacity="0.4"/><rect x="1098" y="359" width="5" height="7" opacity="0.6"/><rect x="857" y="206" width="5" height="7" opacity="0.4"/><rect x="1000" y="291" width="5" height="7" opacity="0.6"/><rect x="982" y="386" width="5" height="7" opacity="0.4"/><rect x="877" y="469" width="5" height="7" opacity="0.6"/><rect x="979" y="206" width="5" height="7" opacity="0.4"/><rect x="1138" y="409" width="5" height="7" opacity="0.85"/><rect x="827" y="235" width="5" height="7" opacity="0.6"/><rect x="585" y="256" width="5" height="7" opacity="0.4"/><rect x="535" y="262" width="5" height="7" opacity="0.4"/><rect x="744" y="439" width="5" height="7" opacity="0.85"/><rect x="608" y="468" width="5" height="7" opacity="0.85"/><rect x="532" y="244" width="5" height="7" opacity="0.6"/><rect x="857" y="467" width="5" height="7" opacity="0.85"/><rect x="908" y="255" width="5" height="7" opacity="0.85"/><rect x="707" y="236" width="5" height="7" opacity="0.4"/><rect x="656" y="265" width="5" height="7" opacity="0.25"/><rect x="1164" y="303" width="5" height="7" opacity="0.6"/><rect x="1089" y="213" width="5" height="7" opacity="0.85"/><rect x="959" y="326" width="5" height="7" opacity="0.85"/><rect x="810" y="229" width="5" height="7" opacity="0.6"/><rect x="543" y="467" width="5" height="7" opacity="0.25"/><rect x="550" y="408" width="5" height="7" opacity="0.25"/><rect x="532" y="277" width="5" height="7" opacity="0.25"/><rect x="480" y="346" width="5" height="7" opacity="0.25"/><rect x="618" y="384" width="5" height="7" opacity="0.4"/><rect x="484" y="420" width="5" height="7" opacity="0.85"/><rect x="987" y="460" width="5" height="7" opacity="0.25"/><rect x="783" y="231" width="5" height="7" opacity="0.6"/><rect x="734" y="334" width="5" height="7" opacity="0.25"/><rect x="1041" y="310" width="5" height="7" opacity="0.25"/><rect x="846" y="247" width="5" height="7" opacity="0.25"/><rect x="887" y="385" width="5" height="7" opacity="0.85"/><rect x="780" y="367" width="5" height="7" opacity="0.6"/><rect x="509" y="319" width="5" height="7" opacity="0.4"/><rect x="768" y="349" width="5" height="7" opacity="0.4"/><rect x="1016" y="416" width="5" height="7" opacity="0.25"/></g><rect x="708" y="150" width="214" height="330" fill="#2a1a2f"/><rect x="700" y="140" width="230" height="13" fill="#3b2640"/><g><rect x="728" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="220" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="728" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="775" y="364" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="775" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="822" y="364" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="822" y="412" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="172" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="268" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/></g></svg>
+  <div class="wrap hero-inner">
+    <a class="back" href="#home">← Cover</a>
+    <p class="label eyebrow">Book Club · Meeting&nbsp;1</p>
+    <h1>Peck &amp; Peck</h1>
+    <p class="by">a novel by Bonnie&nbsp;Garmus</p>
+    <div class="chips"><span>Chapters 1–14</span><span>50 minutes</span><span>Bring your highlights</span></div>
+  </div>
+</header>
+
+<nav class="agenda" aria-label="Lesson plan">
+  <div class="agenda-scroll wrap">
+    <ol>
+      <li><a href="#c2-warmup" data-s="c2-warmup"><span class="n">1</span>Warm-up</a></li>
+      <li><a href="#c2-story" data-s="c2-story"><span class="n">2</span>The&nbsp;story</a></li>
+      <li><a href="#c2-people" data-s="c2-people"><span class="n">3</span>The&nbsp;people</a></li>
+      <li><a href="#c2-close" data-s="c2-close"><span class="n">4</span>Words &amp;&nbsp;quotes</a></li>
+      <li><a href="#c2-discuss" data-s="c2-discuss"><span class="n">5</span>Discuss</a></li>
+      <li><a href="#c2-wrapup" data-s="c2-wrapup"><span class="n">6</span>Wrap-up</a></li>
+    </ol>
+  </div>
+</nav>
+
 <main class="wrap">
-<section class="step" id="warmup"><div class="sec-head"><span class="badge">Step 1 · 5 min</span><h2>Warm-up</h2></div><p class="intro">We read the sample of the book, Chapters 1 to 14. Start with one easy&nbsp;question.</p><div class="grid3" id="pick"><div class="card"><span class="label">Question A</span><p>If you could be anything, not just do something, when you grow up, what would you&nbsp;be?</p></div><div class="card"><span class="label">Question B</span><p>Have you ever told a small lie to protect someone you&nbsp;love?</p></div><div class="card"><span class="label">Question C</span><p>Do you read poetry? If not, what do you read when you want to&nbsp;think?</p></div></div><div class="pick-bar"><button class="btn" id="pickBtn" type="button">Pick a question for us</button><span class="tip">Or choose your own.</span></div></section><section class="step" id="story"><div class="sec-head"><span class="badge">Step 2 · 8 min</span><h2>The story so far</h2></div><p class="intro">Tap a chapter to open a short reminder. Only what we read in the&nbsp;sample.</p><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 1</span><span class="t">Meet Batter</span><span class="c">›</span></button><div class="body"><p>The narrator introduces himself from prison. He has been called a thief, a rebel, an upstart and a traitor, and he is Prisoner 83A0956. Most people call him Batter, after a dog he never met. He is an identical twin, and his brother was&nbsp;stillborn.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 2</span><span class="t">Sugar pills</span><span class="c">›</span></button><div class="body"><p>In the spring of 1967, Batter is ten. His mother, Rainey, is a type designer and his father, John, is a historian. Batter finds his mother with a pile of capsules and learns they are sugar pills: she takes them so his anxious father feels&nbsp;better.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 3</span><span class="t">Career Week</span><span class="c">›</span></button><div class="body"><p>Mrs. Barksdale asks the fourth graders what they will be, not do, when they grow up. Batter says a poet, and some children laugh. On the museum trip she tells the story of the dodo and explains&nbsp;extinction.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 4</span><span class="t">Why not a poet?</span><span class="c">›</span></button><div class="body"><p>Batter’s mother explains why Helvetica is boring, and why poetry is the kind of thing that “didn’t rate a serif.” Batter learns why his parents want financial stability for him, and that being world-famous brings its own&nbsp;problems.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 5</span><span class="t">Typefaces and practice</span><span class="c">›</span></button><div class="body"><p>Batter goes from A. A. Milne to Bukowski in five years. His mother says a typeface can change how we see a poem. Batter says his ear for poetry was built through practice, and his father says no one “goes into”&nbsp;poetry.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 6</span><span class="t">Paul</span><span class="c">›</span></button><div class="body"><p>It is 1975 and Batter arrives at a New England university. His roommate, Paul, already knows his future: the Senate before thirty. Paul has opinions about everything, including poetry, and every college student must declare a&nbsp;major.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 7</span><span class="t">A flight plan</span><span class="c">›</span></button><div class="body"><p>Batter’s adviser, Dr. Doug Payne, tells him to make a flight plan and writes “Math major” on his form. Paul charms Batter’s parents on the phone and invents a Neuroscience story to help Batter. Batter still has not written any&nbsp;poetry.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 8</span><span class="t">Peck & Peck</span><span class="c">›</span></button><div class="body"><p>In the library, Batter remembers Issue 274 of a rare quarterly, Peck & Peck, which his school librarian once let him read. The cover always shows a quail egg. The first poem he reads in it is “Come&nbsp;Home.”</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 9</span><span class="t">The suite</span><span class="c">›</span></button><div class="body"><p>Paul bribes the room lottery people and gets them a suite. He could join a fraternity, but he prefers Batter’s company. They begin to share stories about their&nbsp;families.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 10</span><span class="t">Majors and Peck & Peck</span><span class="c">›</span></button><div class="body"><p>In sophomore year Batter becomes the person to ask for help with a paper, but he gets no dates. He tries many subjects, keeps returning to Peck & Peck, and finds that Advanced Poetic Theory feels like a math&nbsp;class.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 11</span><span class="t">The plane crash</span><span class="c">›</span></button><div class="body"><p>Dr. Payne lists all of Batter’s majors so far and says he was a graduate student with Batter’s father, who “quit everything, too.” Then he hands Batter a flyer for a Poetry Writing&nbsp;Workshop.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 12</span><span class="t">The workshop</span><span class="c">›</span></button><div class="body"><p>Batter applies to the workshop and writes that he has been writing since age seven. He gets in, but the sessions are painful and he drops out and declares pre-law. Then he hears that Peck & Peck has gone out of&nbsp;business.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 13</span><span class="t">Poetry as a tool</span><span class="c">›</span></button><div class="body"><p>Batter promises himself to become a serious person, but he is soon back to poetry. He uses poems to understand hardship, politics and feelings, while Paul calls it annoying and&nbsp;elitist.</p></div></div><div class="chap"><button type="button" aria-expanded="false"><span class="n">Chapter 14</span><span class="t">Graduation day</span><span class="c">›</span></button><div class="body"><p>Paul plans law school at Georgetown and expects Batter to join him. Batter panics and tells his parents he has a job in New York City, which he does not. He feels he went to college to become something and became&nbsp;nothing.</p></div></div></section><section class="step" id="people"><div class="sec-head"><span class="badge">Step 3 · 7 min</span><h2>Who is who</h2></div><div class="people"><article class="card person"><div class="top"><div class="av" style="background:#c8553d">B</div><div><h3>Batter (Batter Gray)</h3><p class="role">The&nbsp;narrator</p></div></div><span class="tag">Narrator</span><ul><li>Tells his story from prison, as Prisoner&nbsp;83A0956</li><li>Named after a dog he never&nbsp;met</li><li>Loves poetry but has not written any&nbsp;yet</li><li>Lies to his parents when he is afraid to show&nbsp;failure</li></ul></article><article class="card person"><div class="top"><div class="av" style="background:#6a8fb5">R</div><div><h3>Rainey Gray</h3><p class="role">Batter’s&nbsp;mother</p></div></div><span class="tag">Parent</span><ul><li>A professional type&nbsp;designer</li><li>Believes letters can push people to make better&nbsp;choices</li><li>Takes sugar pills so her husband will feel&nbsp;better</li><li>Tells long, loving stories about Batter the&nbsp;dog</li></ul></article><article class="card person"><div class="top"><div class="av" style="background:#7b9a6d">J</div><div><h3>John Gray</h3><p class="role">Batter’s&nbsp;father</p></div></div><span class="tag">Parent</span><ul><li>A historian at a community&nbsp;college</li><li>Never finished his&nbsp;Ph.D.</li><li>Worries a lot and wants a safe future for his&nbsp;son</li><li>Calls poetry the kind of thing no one “goes&nbsp;into”</li></ul></article><article class="card person"><div class="top"><div class="av" style="background:#b08a3e">P</div><div><h3>Paul Acheson</h3><p class="role">Batter’s&nbsp;roommate</p></div></div><span class="tag">Friend</span><ul><li>Wants to be a politician and in the Senate before&nbsp;thirty</li><li>Confident, popular and sure of&nbsp;everything</li><li>Charms Batter’s parents within&nbsp;minutes</li><li>Thinks Batter’s poetry habit is annoying and&nbsp;elitist</li></ul></article><article class="card person"><div class="top"><div class="av" style="background:#8a6aa8">D</div><div><h3>Dr. Doug Payne</h3><p class="role">Batter’s&nbsp;adviser</p></div></div><span class="tag">Adviser</span><ul><li>A history&nbsp;professor</li><li>Tells Batter to make a flight&nbsp;plan</li><li>Knew Batter’s father in graduate&nbsp;school</li><li>Hands Batter the flyer for the poetry&nbsp;workshop</li></ul></article><article class="card person"><div class="top"><div class="av" style="background:#4f9a94">M</div><div><h3>Mrs. Martin and Pete</h3><p class="role">The two&nbsp;librarians</p></div></div><span class="tag">Librarians</span><ul><li>Mrs. Martin, the school librarian, shows Batter Peck &&nbsp;Peck</li><li>Pete, the university librarian, saves the last issue for&nbsp;him</li><li>Both help Batter find&nbsp;poetry</li></ul></article></div></section><section class="step" id="topics"><div class="sec-head"><span class="badge">Step 4 · 5 min</span><h2>Big topics to talk about</h2></div><div class="grid2"><div class="card theme"><h3>Poetry or a safe job?</h3><p>Batter’s parents want “financial stability.” Batter wants to be a poet. Whose dream should&nbsp;win?</p></div><div class="card theme"><h3>The power of typefaces</h3><p>Rainey believes the shape of letters changes how we feel about words. Do fonts really change&nbsp;meaning?</p></div><div class="card theme"><h3>White lies and self-deception</h3><p>Sugar pills, a made-up girlfriend, a made-up job. When does a small lie become a big&nbsp;problem?</p></div><div class="card theme"><h3>Who tells history?</h3><p>Batter’s father says history depends on who is telling it. Can we ever know the truth of the&nbsp;past?</p></div><div class="card theme"><h3>Practice versus talent</h3><p>Batter says an ear is built “through practice, not gifts.” Do you&nbsp;agree?</p></div><div class="card theme"><h3>A mysterious magazine</h3><p>Peck & Peck has no pictures, one egg on every cover, and only an issue number. Why would anyone make a magazine like&nbsp;this?</p></div></div></section><section class="step" id="close"><div class="sec-head"><span class="badge">Step 5 · 10 min</span><h2>Close reading: quotes and words</h2></div><p class="intro">Eight short lines from the chapters. Tap “Think about it” for a question. Use “Add to notes” to save a&nbsp;line.</p><div class="grid2"><article class="card quote"><blockquote>“Choice and action. As it turns out, morality requires both. But so does&nbsp;crime.”</blockquote><p class="ctx">Chapter&nbsp;2</p><div class="reveal" hidden>Why does Batter connect morality and crime in the same sentence?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“Use it or lose it—that’s evolution’s&nbsp;motto.”</blockquote><p class="ctx">Chapter&nbsp;3</p><div class="reveal" hidden>Is this true for people and skills too? Give an example.</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“Typefaces are both practical and&nbsp;emotional.”</blockquote><p class="ctx">Chapter&nbsp;5</p><div class="reveal" hidden>Name a typeface or a style of writing that feels cold or warm to you.</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“That is how an ear is built. Not through gifts, through&nbsp;practice.”</blockquote><p class="ctx">Chapter&nbsp;5</p><div class="reveal" hidden>What have you built through practice and not talent?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“Make a flight plan. Because until you do, I’ll be making one for&nbsp;you.”</blockquote><p class="ctx">Chapter&nbsp;7</p><div class="reveal" hidden>Is Dr. Payne helping Batter or controlling him?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“I was back to the poetry crap. And like every good addict, I pretended it wasn’t a&nbsp;problem.”</blockquote><p class="ctx">Chapter&nbsp;13</p><div class="reveal" hidden>Why does Batter compare poetry to an addiction?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“I’d gone to college to become something but in the process had managed to become nothing at&nbsp;all.”</blockquote><p class="ctx">Chapter&nbsp;14</p><div class="reveal" hidden>Is Batter really “nothing”? What would you tell him?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article><article class="card quote"><blockquote>“It was a math class disguised as&nbsp;poetry.”</blockquote><p class="ctx">Chapter&nbsp;10</p><div class="reveal" hidden>What do you think the narrator wants poetry classes to be like?</div><div class="qrow" style="margin:0"><button class="btn ghost small rv" type="button">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div></article></div><h3 style="margin-top:26px">Words from the chapters</h3><p class="tip">Tap a card to see the meaning and where it&nbsp;appears.</p><div class="words"><button class="flip" type="button"><span class="front"><span class="w">upstart</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a person who has quickly gained status and is disliked for&nbsp;it</span><span class="ex">“a thief, a rebel, an upstart, a&nbsp;traitor”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">stillborn</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">born&nbsp;dead</span><span class="ex">“my brother was&nbsp;stillborn”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">guilt complex</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a strong, ongoing feeling of guilt, even after you have said&nbsp;sorry</span><span class="ex">“your father also suffers from a guilt&nbsp;complex”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">self-deception</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">telling yourself something untrue until you believe&nbsp;it</span><span class="ex">“It’s called&nbsp;self&#8209;deception.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">diorama</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a small model scene, often seen in a&nbsp;museum</span><span class="ex">a photo of a diorama at the Natural History&nbsp;Museum</span></span></button><button class="flip" type="button"><span class="front"><span class="w">foresight</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">the ability to think ahead and plan for the&nbsp;future</span><span class="ex">“short-term goals and zero&nbsp;foresight”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">serif / sans serif</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">small lines at the end of letter strokes / a typeface without&nbsp;them</span><span class="ex">“‘Sans’ means without, and ‘serif’ means, well, you know,&nbsp;serif.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">anthology</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a book that collects poems or stories by many&nbsp;writers</span><span class="ex">a poetry anthology from the school&nbsp;librarian</span></span></button><button class="flip" type="button"><span class="front"><span class="w">subjective</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">based on personal opinion, not on&nbsp;facts</span><span class="ex">“history and typography aren’t subjective. Poetry&nbsp;is.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">registrar</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">the university office that keeps student records and course&nbsp;choices</span><span class="ex">“I made an immediate return to the&nbsp;registrar.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">devoid of</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">completely without&nbsp;something</span><span class="ex">“completely devoid of any of the trademarks of a modern&nbsp;publication”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">mottled</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">covered with spots of different&nbsp;colors</span><span class="ex">“a mottled quail&nbsp;egg”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">separate the wheat from the chaff</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">to separate the good from the worthless&nbsp;(idiom)</span><span class="ex">a quarterly that “knew how to separate the wheat from the&nbsp;chaff”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">go belly-up</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">to fail, especially a business&nbsp;(idiom)</span><span class="ex">“It went&nbsp;belly&#8209;up.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">elitist</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">believing that only a small, special group deserves&nbsp;respect</span><span class="ex">“It’s annoying and&nbsp;elitist.”</span></span></button><button class="flip" type="button"><span class="front"><span class="w">retribution</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">punishment for something wrong that was&nbsp;done</span><span class="ex">“love, war, hate, jealousy, crime, retribution, revenge, or&nbsp;reconciliation”</span></span></button></div></section><section class="step" id="discuss"><div class="sec-head"><span class="badge">Step 6 · 15 min</span><h2>Let’s discuss</h2></div><p class="tip">You do not need every question. Choose <b>the ones your group likes</b>. Tick a question when you have talked about&nbsp;it.</p><div class="progress"><span id="progTxt">0 of 11 discussed</span><div class="bar"><i id="progBar"></i></div></div><div class="round"><h3>Round 1 · Getting started <small>about 3 min</small></h3><div class="q"><span class="qn">1</span><div class="body"><div class="qt">Which three details from Chapters 1 and 2 surprised you most about Batter and his&nbsp;family?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about the prison, the twin, and the sugar&nbsp;pills.</div></div></div><div class="q"><span class="qn">2</span><div class="body"><div class="qt">In your own words, why does Batter’s mother take sugar&nbsp;pills?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about anxiety, marriage and&nbsp;“helping.”</div></div></div><div class="q"><span class="qn">3</span><div class="body"><div class="qt">Which character do you like most so far, and&nbsp;why?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Choose one person from the people&nbsp;section.</div></div></div></div><div class="round"><h3>Round 2 · Digging deeper <small>about 8 min</small></h3><div class="q"><span class="qn">4</span><div class="body"><div class="qt">Batter says he wants to be a poet. Why do his parents, Mrs. Barksdale and his father keep pushing other&nbsp;careers?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Look at money, fame and “what’s&nbsp;useful.”</div></div></div><div class="q"><span class="qn">5</span><div class="body"><div class="qt">Rainey says a typeface can change how a poem feels. Do you agree? Try imagining one poem in two different&nbsp;fonts.</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Helvetica versus a serif&nbsp;font.</div></div></div><div class="q"><span class="qn">6</span><div class="body"><div class="qt">Paul is confident and Batter is unsure. How does each of them hide the truth from other&nbsp;people?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about the neuroscience story and the made-up&nbsp;girlfriend.</div></div></div><div class="q"><span class="qn">7</span><div class="body"><div class="qt">Why is Peck & Peck so special to Batter? What does the magazine seem to&nbsp;promise?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Quail egg, issue number, no pictures, an hour of&nbsp;reading.</div></div></div><div class="q"><span class="qn">8</span><div class="body"><div class="qt">Batter changes majors again and again. Is that a failure, or a way of&nbsp;searching?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Remember Dr. Payne’s list in Chapter&nbsp;11.</div></div></div></div><div class="round"><h3>Round 3 · Your opinion <small>about 4 min</small></h3><div class="q"><span class="qn">9</span><div class="body"><div class="qt">In Chapter 13 Batter uses poetry “to understand the world.” Have you used a book, song or film that&nbsp;way?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Hughes and&nbsp;hardship.</div></div></div><div class="q"><span class="qn">10</span><div class="body"><div class="qt">Batter lies to his parents about a job. Would you lie, too? What would you do in his&nbsp;place?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Panic, pride and fear of&nbsp;failing.</div></div></div><div class="q"><span class="qn">11</span><div class="body"><div class="qt">Predict: what do you think the prison in Chapter 1 has to do with Chapter&nbsp;14?</div><div class="qrow"><button class="btn ghost small hn" type="button">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>The first chapter promised a second&nbsp;crime.</div></div></div></div><div class="card bonus" id="game"><h3>Bonus game: who is it?</h3><p class="tip" style="margin:0">Read each clue and choose the right person. Two rounds of&nbsp;three.</p><div class="game-head"><div class="steps"><span class="on" data-r="1">Round 1</span><span data-r="2">Round 2</span><span data-r="3">Final score</span></div><div class="gscore" id="gScore">Score: 0 / 6</div></div><div class="gr" data-r="1"><div class="gq" data-a="Paul"><p class="gt">1. He said he wanted to be in the Senate before he was&nbsp;thirty.</p><div class="tfrow"><button class="tf" type="button" data-v="Paul">Paul</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button><button class="tf" type="button" data-v="Mr. Gray">Mr. Gray</button></div><div class="fb" hidden><b></b> Paul told Batter his plan in Chapter 6.</div></div><div class="gq" data-a="Mrs. Barksdale"><p class="gt">2. She told the children that extinction is caused by people with short-term&nbsp;goals.</p><div class="tfrow"><button class="tf" type="button" data-v="Mrs. Barksdale">Mrs. Barksdale</button><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button></div><div class="fb" hidden><b></b> This was on the Natural History Museum trip in Chapter 3.</div></div><div class="gq" data-a="Dr. Payne"><p class="gt">3. He wrote “Math major” on Batter’s form in&nbsp;ink.</p><div class="tfrow"><button class="tf" type="button" data-v="Pete">Pete</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button><button class="tf" type="button" data-v="Paul">Paul</button></div><div class="fb" hidden><b></b> He was Batter’s adviser in Chapter 7.</div></div><div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">Start Round 2</button></div></div><div class="gr" data-r="2" hidden><div class="gq" data-a="Mrs. Martin"><p class="gt">4. She let Batter read Issue 274 of Peck &&nbsp;Peck.</p><div class="tfrow"><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Mrs. Barksdale">Mrs. Barksdale</button><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button></div><div class="fb" hidden><b></b> This was in Chapter 8, when Batter was eleven.</div></div><div class="gq" data-a="Pete"><p class="gt">5. He told Batter that Peck & Peck had gone out of&nbsp;business.</p><div class="tfrow"><button class="tf" type="button" data-v="Paul">Paul</button><button class="tf" type="button" data-v="Pete">Pete</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button></div><div class="fb" hidden><b></b> Pete saved Issue 313 for Batter, in Chapter 12.</div></div><div class="gq" data-a="Rainey Gray"><p class="gt">6. She is a professional type&nbsp;designer.</p><div class="tfrow"><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Clara">Clara</button></div><div class="fb" hidden><b></b> She appears in Chapter 2.</div></div><div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">See my final score</button></div></div><div class="gr" data-r="3" hidden><div class="big" id="gBig">0 / 6</div><p id="gMsg"></p><button class="btn" id="gAgain" type="button">Play again</button></div></div></section><section class="step" id="wrapup"><div class="sec-head"><span class="badge">Step 7 · 5 min</span><h2>Wrap-up</h2></div><p class="intro">Before we stop, share one thought&nbsp;each.</p><div class="wrapgrid"><div class="card"><h3>Final thoughts</h3><ul><li>Which chapter did you enjoy most so far, and&nbsp;why?</li><li>What do you think Peck & Peck really&nbsp;is?</li><li>What will Batter do after&nbsp;graduation?</li></ul><div class="pick-bar"><button class="btn small" id="predNote" type="button">Add these to my notes</button></div></div><div class="card"><span class="label">Next time</span><h3>Chapter 15 and beyond</h3><p>We will start by checking our predictions about&nbsp;Batter.</p></div></div></section><section class="print-notes" id="printNotes"><h2>My notes · Peck &amp; Peck</h2><div id="pnBody"></div></section></main><footer>Based on the club’s reading highlights from Chapters 1–14 of Peck &amp; Peck by Bonnie Garmus (sample).</footer><div class="notesbar"><button class="fab" id="fab" type="button">✎ My notes</button></div><aside class="drawer" id="drawer" aria-label="My notes"><h3>My notes</h3><textarea id="notes" placeholder="Write here. Everything you add from the page lands here."></textarea><div class="row"><button class="btn small" id="savePdf" type="button">Save notes as PDF</button><button class="btn ghost small" id="clr" type="button">Clear</button><button class="btn ghost small" id="close" type="button">Close</button></div></aside><script>
+
+<!-- 1 WARM-UP -->
+<section class="step" id="c2-warmup">
+  <div class="sec-head"><span class="badge">Step 1 · 5 min</span><h2>Warm-up</h2></div>
+  <p class="intro">We read the sample of the book, Chapters 1 to 14. Start with one easy&nbsp;question.</p>
+  <div class="pick" id="c2-pick">
+    <div class="card"><span class="label">Question A</span><p>If you could <b>be</b> anything, not just do something, when you grow up, what would you&nbsp;be?</p></div>
+    <div class="card"><span class="label">Question B</span><p>Have you ever told a small lie to protect someone you love? What&nbsp;happened?</p></div>
+    <div class="card"><span class="label">Question C</span><p>Do you read poetry? If not, what do you read when you want to&nbsp;think?</p></div>
+  </div>
+  <div class="pick-bar"><button class="btn" id="c2-pickBtn" type="button">Pick a question for us</button><span class="tip" style="margin:0">Or choose your own.</span></div>
+</section>
+
+<!-- 2 STORY -->
+<section class="step" id="c2-story">
+  <div class="sec-head"><span class="badge">Step 2 · 8 min</span><h2>The story so far</h2></div>
+  <p class="intro">A one-minute reminder of the sample, then the two parts of Batter’s&nbsp;life.</p>
+  <div class="sixty">
+    <div class="card"><b class="lead">Who is Batter?</b>A man in prison who tells his own story. He was named after a dog and loves <mark class="k">poetry</mark>, but he has not written&nbsp;any.</div>
+    <div class="card"><b class="lead">What is Peck &amp; Peck?</b>A rare, expensive <mark class="k">poetry quarterly</mark> with a quail egg on every cover. Batter first read it as a child, and it later&nbsp;closed.</div>
+    <div class="card"><b class="lead">Where are we?</b>Batter has just graduated from college. He lies to his parents about a <mark class="k">job in New York</mark> that does not&nbsp;exist.</div>
+  </div>
+  <div class="lanes">
+    <div class="lane then">
+      <p class="where">Yuba City, California · 1967 and&nbsp;after</p>
+      <h3>Childhood</h3>
+      <ol class="beats">
+        <li><b class="lead">Chapter 2</b>His mother takes sugar pills so his anxious father feels&nbsp;better.</li>
+        <li><b class="lead">Chapter 3</b>Career Week and the dodo: extinction comes from short-term&nbsp;thinking.</li>
+        <li><b class="lead">Chapter 4</b>His mother explains Helvetica, and why poetry “didn’t rate a&nbsp;serif.”</li>
+        <li><b class="lead">Chapter 5</b>Typefaces change feelings. His father says no one “goes into”&nbsp;poetry.</li>
+      </ol>
+    </div>
+    <div class="lane now">
+      <p class="where">A New England university · 1975 and&nbsp;after</p>
+      <h3>College</h3>
+      <ol class="beats">
+        <li><b class="lead">Chapters 6–7</b>His roommate Paul has a plan. Dr. Payne tells Batter to make a flight&nbsp;plan.</li>
+        <li><b class="lead">Chapters 8–10</b>Batter remembers Peck &amp; Peck, changes majors, and finds poetry classes too much like&nbsp;math.</li>
+        <li><b class="lead">Chapters 11–12</b>The workshop goes badly, and he hears that Peck &amp; Peck has&nbsp;closed.</li>
+        <li><b class="lead">Chapters 13–14</b>Poetry helps him understand the world. At graduation he invents a&nbsp;job.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="bridge">Chapter 1 shows us the ending first: Batter is already in prison. How did he get&nbsp;there?</p>
+</section>
+
+<!-- 3 PEOPLE -->
+<section class="step" id="c2-people">
+  <div class="sec-head"><span class="badge">Step 3 · 7 min</span><h2>Who is who</h2></div>
+  <div class="tree" aria-label="Batter’s journey so far, in order">
+    <p class="tree-title label">Batter’s journey so&nbsp;far</p>
+    <div class="t">Yuba City<small>childhood</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="t">New England<small>college</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="t hot">New York City<small>the job he invented</small></div>
+  </div>
+  <div class="people">
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#C8553D">B</div><div><h3>Batter (Batter Gray)</h3><p class="role">The&nbsp;narrator</p></div></div>
+      <span class="tag now">Narrator</span>
+      <ul><li>Tells his story from prison, as Prisoner&nbsp;83A0956</li><li>Named after a dog he never&nbsp;met</li><li>Loves poetry but has not written any&nbsp;yet</li><li>Lies to his parents when he is afraid to show&nbsp;failure</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#3F57C0">R</div><div><h3>Rainey Gray</h3><p class="role">Batter’s&nbsp;mother</p></div></div>
+      <span class="tag then">Childhood</span>
+      <ul><li>A professional type&nbsp;designer</li><li>Believes letters can push people to make better&nbsp;choices</li><li>Takes sugar pills so her husband will feel&nbsp;better</li><li>Tells long, loving stories about Batter the&nbsp;dog</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#555F7D">J</div><div><h3>John Gray</h3><p class="role">Batter’s&nbsp;father</p></div></div>
+      <span class="tag then">Childhood</span>
+      <ul><li>A historian at a community&nbsp;college</li><li>Never finished his&nbsp;Ph.D.</li><li>Worries a lot and wants a safe future for his&nbsp;son</li><li>Says no one “goes into”&nbsp;poetry</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#B7791F">P</div><div><h3>Paul Acheson</h3><p class="role">Batter’s&nbsp;roommate</p></div></div>
+      <span class="tag now">College</span>
+      <ul><li>Wants to be a politician, in the Senate before&nbsp;thirty</li><li>Confident, popular and sure of&nbsp;everything</li><li>Charms Batter’s parents within&nbsp;minutes</li><li>Calls Batter’s poetry habit annoying and&nbsp;elitist</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#7A4FA3">D</div><div><h3>Dr. Doug Payne</h3><p class="role">Batter’s&nbsp;adviser</p></div></div>
+      <span class="tag now">College</span>
+      <ul><li>A history&nbsp;professor</li><li>Tells Batter to make a flight&nbsp;plan</li><li>Knew Batter’s father in graduate&nbsp;school</li><li>Hands Batter the flyer for the poetry&nbsp;workshop</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#0F8B8D">M</div><div><h3>Mrs. Martin and Pete</h3><p class="role">The two&nbsp;librarians</p></div></div>
+      <span class="tag both">Both times</span>
+      <ul><li>Mrs. Martin, the school librarian, shows Batter Peck &amp;&nbsp;Peck</li><li>Pete, the university librarian, saves the last issue for&nbsp;him</li><li>Both help Batter find&nbsp;poetry</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- 4 WORDS AND QUOTES -->
+<section class="step" id="c2-close">
+  <div class="sec-head"><span class="badge">Step 4 · 10 min</span><h2>Close reading: quotes and words</h2></div>
+  <p class="intro">Take a few minutes on <b>six lines</b> from the chapters. Tap “Think about it” for a question. Use “Add to notes” to save a line to your&nbsp;notes.</p>
+  <div class="quotes">
+    <article class="card quote">
+      <blockquote>“Choice and action. As it turns out, morality requires both. But so does&nbsp;crime.”</blockquote>
+      <p class="ctx">Batter, about his mother’s&nbsp;lesson</p>
+      <div class="reveal" hidden>Why does Batter put <mark class="k">morality</mark> and <mark class="k">crime</mark> in the same&nbsp;sentence?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“Use it or lose it—that’s evolution’s&nbsp;motto.”</blockquote>
+      <p class="ctx">Mrs. Barksdale, about the&nbsp;dodo</p>
+      <div class="reveal" hidden>Is this true for <mark class="k">people and skills</mark> too? Give an&nbsp;example.</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“Typefaces are both practical and&nbsp;emotional.”</blockquote>
+      <p class="ctx">Batter’s mother, about&nbsp;type</p>
+      <div class="reveal" hidden>Name a <mark class="k">font or style of writing</mark> that feels cold or warm to&nbsp;you.</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“That is how an ear is built. Not through gifts, through&nbsp;practice.”</blockquote>
+      <p class="ctx">Batter, about&nbsp;poetry</p>
+      <div class="reveal" hidden>What have you built through <mark class="k">practice</mark> and not&nbsp;talent?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“Make a flight plan. Because until you do, I’ll be making one for&nbsp;you.”</blockquote>
+      <p class="ctx">Dr.&nbsp;Payne</p>
+      <div class="reveal" hidden>Is Dr. Payne <mark class="k">helping</mark> Batter or <mark class="k">controlling</mark>&nbsp;him?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“I’d gone to college to become something but in the process had managed to become nothing at&nbsp;all.”</blockquote>
+      <p class="ctx">Batter, at&nbsp;graduation</p>
+      <div class="reveal" hidden>Is Batter really <mark class="k">nothing</mark>? What would you tell&nbsp;him?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+  </div>
+
+  <div class="words-head"><h3>Words from the chapters</h3><p class="tip">Tap a card to see the meaning and the sentence from the&nbsp;story.</p></div>
+  <div class="words">
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">upstart</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a person who has quickly gained status and is disliked for&nbsp;it</span><span class="ex">“a thief, a rebel, an upstart, a&nbsp;traitor”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">guilt complex</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a strong, ongoing feeling of guilt, even after saying&nbsp;sorry</span><span class="ex">“your father also suffers from a guilt&nbsp;complex”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">self-deception</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">telling yourself something untrue until you believe&nbsp;it</span><span class="ex">“It’s called&nbsp;self-deception.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">foresight</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">the ability to think ahead and plan for the&nbsp;future</span><span class="ex">“short-term goals and zero&nbsp;foresight”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">serif</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">a small line at the end of a letter stroke; sans serif means without&nbsp;it</span><span class="ex">“‘Sans’ means without, and ‘serif’ means, well, you know,&nbsp;serif.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">subjective</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">based on personal opinion, not on&nbsp;facts</span><span class="ex">“history and typography aren’t subjective. Poetry&nbsp;is.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">registrar</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">the university office that keeps student records and course&nbsp;choices</span><span class="ex">“I made an immediate return to the&nbsp;registrar.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">mottled</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">covered with spots of different&nbsp;colors</span><span class="ex">“a mottled quail&nbsp;egg”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">go belly-up</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">to fail, especially a business&nbsp;(idiom)</span><span class="ex">“It went&nbsp;belly-up.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">elitist</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">believing that only a small, special group deserves&nbsp;respect</span><span class="ex">“It’s annoying and&nbsp;elitist.”</span></span></button>
+  </div>
+</section>
+
+<!-- 5 DISCUSS -->
+<section class="step" id="c2-discuss">
+  <div class="sec-head"><span class="badge">Step 5 · 15 min</span><h2>Let’s discuss</h2></div>
+
+  <p class="tip">You do not need every question. Choose <b>the ones your group likes</b>. Tick a question when you have talked about&nbsp;it.</p>
+  <div class="progress"><span id="c2-progTxt">0 of 11 discussed</span><div class="bar"><i id="c2-progBar"></i></div></div>
+
+  <div class="round">
+    <h3>Round 1 · Understanding <small>about 3 min</small></h3>
+    <div class="q"><span class="qn">1</span><div class="qt">Which details from Chapters 1 and 2 surprised you most about Batter and his&nbsp;family?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about the prison, the twin brother, and the sugar&nbsp;pills.</div></div></div>
+    <div class="q"><span class="qn">2</span><div class="qt">In your own words, why does Batter’s mother take sugar&nbsp;pills?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about anxiety, marriage and&nbsp;“helping.”</div></div></div>
+    <div class="q"><span class="qn">3</span><div class="qt">Which character do you like most so far, and&nbsp;why?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Choose one person from the people&nbsp;section.</div></div></div>
+  </div>
+
+  <div class="round">
+    <h3>Round 2 · Digging deeper <small>about 8 min</small></h3>
+    <div class="q"><span class="qn">4</span><div class="qt">Batter wants to be a poet. Why do his parents, his teacher and his adviser keep pushing other&nbsp;careers?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Look at money, fame and “what’s&nbsp;useful.”</div></div></div>
+    <div class="q"><span class="qn">5</span><div class="qt">Batter’s mother says a typeface can change how a poem feels. Do you agree? Imagine one poem in two different&nbsp;fonts.</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Helvetica versus a serif&nbsp;font.</div></div></div>
+    <div class="q"><span class="qn">6</span><div class="qt">Paul is confident and Batter is unsure. How does each of them hide the truth from other&nbsp;people?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about the Neuroscience story and the made-up&nbsp;girlfriend.</div></div></div>
+    <div class="q"><span class="qn">7</span><div class="qt">Why is Peck &amp; Peck so special to Batter? What does the magazine seem to&nbsp;promise?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Quail egg, issue number, no pictures, an hour of&nbsp;reading.</div></div></div>
+    <div class="q"><span class="qn">8</span><div class="qt">Batter changes majors again and again. Is that a failure, or a way of&nbsp;searching?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Remember Dr. Payne’s list in Chapter&nbsp;11.</div></div></div>
+  </div>
+
+  <div class="round">
+    <h3>Round 3 · The big picture <small>about 4 min</small></h3>
+    <div class="q"><span class="qn">9</span><div class="qt">In Chapter 13 Batter uses poetry “to understand the world.” Have you used a book, song or film that&nbsp;way?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Langston Hughes and&nbsp;hardship.</div></div></div>
+    <div class="q"><span class="qn">10</span><div class="qt">Batter lies to his parents about a job. Would you lie, too? What would you do in his&nbsp;place?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Panic, pride and fear of&nbsp;failing.</div></div></div>
+    <div class="q"><span class="qn">11</span><div class="qt">Predict: what does the prison in Chapter 1 have to do with Chapter&nbsp;14?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>The first chapter promises a second&nbsp;crime.</div></div></div>
+  </div>
+
+  <div class="card bonus" id="c2-game">
+    <h3>Bonus game: who is it?</h3>
+    <p class="tip" style="margin:0">Read each clue and choose the right person. Two rounds of&nbsp;three.</p>
+    <div class="game-head"><div class="steps" id="c2-gSteps"><span class="on" data-r="1">Round 1</span><span data-r="2">Round 2</span><span data-r="3">Final score</span></div><div class="gscore" id="c2-gScore">Score: 0 / 6</div></div>
+    <div class="gr" data-r="1">
+      <p class="pr-only label">Round&nbsp;1</p>
+      <div class="gq" data-a="Paul">
+        <p class="gt">1. He said he wanted to be in the Senate before he was&nbsp;thirty.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Paul">Paul</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button><button class="tf" type="button" data-v="Mr. Gray">Mr. Gray</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Paul.</b> Paul told Batter his plan in Chapter 6.</div>
+      </div>
+      <div class="gq" data-a="Mrs. Barksdale">
+        <p class="gt">2. She told the children that extinction is caused by people with short-term&nbsp;goals.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Mrs. Barksdale">Mrs. Barksdale</button><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Mrs. Barksdale.</b> This was on the Natural History Museum trip in Chapter 3.</div>
+      </div>
+      <div class="gq" data-a="Dr. Payne">
+        <p class="gt">3. He wrote “Math major” on Batter’s form in&nbsp;ink.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Pete">Pete</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button><button class="tf" type="button" data-v="Paul">Paul</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Dr. Payne.</b> He was Batter’s adviser in Chapter 7.</div>
+      </div>
+      <div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">Start Round 2</button></div>
+    </div>
+    <div class="gr" data-r="2" hidden>
+      <p class="pr-only label">Round&nbsp;2</p>
+      <div class="gq" data-a="Mrs. Martin">
+        <p class="gt">4. She let Batter read Issue 274 of Peck &amp;&nbsp;Peck.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Mrs. Barksdale">Mrs. Barksdale</button><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Mrs. Martin.</b> This was in Chapter 8.</div>
+      </div>
+      <div class="gq" data-a="Pete">
+        <p class="gt">5. He told Batter that Peck &amp; Peck had gone out of&nbsp;business.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Paul">Paul</button><button class="tf" type="button" data-v="Pete">Pete</button><button class="tf" type="button" data-v="Dr. Payne">Dr. Payne</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Pete.</b> Pete saved Issue 313 for Batter, in Chapter 12.</div>
+      </div>
+      <div class="gq" data-a="Rainey Gray">
+        <p class="gt">6. She is a professional type&nbsp;designer.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="Rainey Gray">Rainey Gray</button><button class="tf" type="button" data-v="Mrs. Martin">Mrs. Martin</button><button class="tf" type="button" data-v="Clara">Clara</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is Rainey Gray.</b> She appears in Chapter 2.</div>
+      </div>
+      <div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">See my final score</button></div>
+    </div>
+    <div class="gr gfinal" data-r="3" hidden>
+      <div class="big" id="c2-gBig">0 / 6</div>
+      <p id="c2-gMsg"></p>
+      <button class="btn" id="c2-gAgain" type="button">Play again</button>
+    </div>
+  </div>
+</section>
+
+<!-- 6 WRAP-UP -->
+<section class="step" id="c2-wrapup">
+  <div class="sec-head"><span class="badge">Step 6 · 5 min</span><h2>Wrap-up</h2></div>
+  <p class="intro">Before we stop, share one thought&nbsp;each.</p>
+  <div class="wrapgrid">
+    <div class="card"><h3>Final thoughts</h3><ul><li>Which chapter did you enjoy most so far, and&nbsp;why?</li><li>What do you think Peck &amp; Peck really&nbsp;is?</li><li>What will Batter do after&nbsp;graduation?</li></ul><div class="pick-bar"><button class="btn small" id="c2-predNote" type="button">Add these to my notes</button></div></div>
+    <div class="card locked"><span class="label">Next time</span><h3>Chapter 15 and beyond</h3><p>We will start by checking our predictions about&nbsp;Batter.</p></div>
+  </div>
+</section>
+
+<section class="print-notes" id="c2-printNotes"><h2>My notes</h2><div class="pn-body" id="c2-pnBody"></div></section>
+
+</main>
+
+<footer class="wrap">Based on the club’s reading highlights from Chapters 1–14 of Peck &amp; Peck by Bonnie Garmus (Kindle sample).</footer>
+
+<button class="fab" id="c2-fab" type="button" aria-controls="c2-drawer" aria-expanded="false">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+  My notes
+</button>
+<aside class="drawer" id="c2-drawer" aria-label="My notes" role="dialog">
+  <div class="dhead"><h3>My notes</h3><button class="btn ghost small" id="c2-closeN" type="button">Close</button></div>
+  <div class="tb" id="c2-tb" role="toolbar" aria-label="Formatting">
+    <button type="button" data-c="bold" title="Bold" aria-label="Bold"><b>B</b></button>
+    <button type="button" data-c="underline" title="Underline" aria-label="Underline"><u>U</u></button>
+    <button type="button" data-c="strikeThrough" title="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
+    <span class="sep"></span>
+    <button type="button" class="sw" data-h="#FFE55C" title="Highlight yellow" aria-label="Highlight yellow"><i style="background:#FFE55C"></i></button>
+    <button type="button" class="sw" data-h="#FFB3C7" title="Highlight pink" aria-label="Highlight pink"><i style="background:#FFB3C7"></i></button>
+    <button type="button" class="sw" data-h="#A8F0C0" title="Highlight green" aria-label="Highlight green"><i style="background:#A8F0C0"></i></button>
+    <button type="button" class="sw" data-h="#A9CBFF" title="Highlight blue" aria-label="Highlight blue"><i style="background:#A9CBFF"></i></button>
+    <button type="button" class="sw none" data-h="transparent" title="Remove highlight" aria-label="Remove highlight"><i></i></button>
+  </div>
+  <div class="editor" id="c2-editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" aria-label="Notes"></div>
+  <div class="dfoot"><span class="st" id="c2-st">Saved on this device</span><button class="btn small" id="c2-savePdf" type="button">Save PDF</button><button class="btn ghost small" id="c2-clearN" type="button">Clear all</button></div>
+</aside>
+</div><!-- /ch1 -->
+
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
 (function(){
-var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-var KEY="peck-ch1-14-notes-v1",ta=$("#notes");
-function ld(){try{return localStorage.getItem(KEY)||""}catch(e){return ""}}
-function sv(){try{localStorage.setItem(KEY,ta.value)}catch(e){}}
-ta.value=ld();ta.addEventListener("input",sv);
-function add(t){ta.value=(ta.value?ta.value+"\n\n":"")+t;sv();$("#drawer").classList.add("open")}
-$("#fab").onclick=function(){$("#drawer").classList.toggle("open")};$("#close").onclick=function(){$("#drawer").classList.remove("open")};
-$("#clr").onclick=function(){ta.value="";sv()};
-$("#savePdf").onclick=function(){var b=$("#pnBody");b.innerHTML="";ta.value.split(/\n\n+/).forEach(function(x){if(!x.trim())return;var p=document.createElement("p");p.textContent=x;b.appendChild(p)});document.title="Peck and Peck - notes";window.print()};
-$$(".chap>button").forEach(function(b){b.onclick=function(){var c=b.parentNode,o=c.classList.toggle("open");b.setAttribute("aria-expanded",o)}});
-var cards=$$("#pick .card");$("#pickBtn").onclick=function(){cards.forEach(function(c){c.classList.remove("chosen")});cards[Math.floor(Math.random()*cards.length)].classList.add("chosen")};
-$$(".rv").forEach(function(b){b.onclick=function(){var r=b.closest(".quote").querySelector(".reveal");r.hidden=!r.hidden}});
-$$(".quote .an").forEach(function(b){b.onclick=function(){var q=b.closest(".quote");add(q.querySelector("blockquote").textContent+" ("+q.querySelector(".ctx").textContent+")")}});
-$$(".q .an").forEach(function(b){b.onclick=function(){add("Q: "+b.closest(".q").querySelector(".qt").textContent)}});
-$$(".hn").forEach(function(b){b.onclick=function(){var h=b.closest(".body").querySelector(".hint");h.hidden=!h.hidden}});
-$$(".flip").forEach(function(f){f.onclick=function(){var fr=$(".front",f),bk=$(".back",f);fr.hidden=!fr.hidden;bk.hidden=!bk.hidden}});
-var dn=$$(".dn");function pr(){var n=dn.filter(function(x){return x.checked}).length;$("#progTxt").textContent=n+" of "+dn.length+" discussed";$("#progBar").style.width=(n/dn.length*100)+"%"}
-dn.forEach(function(x){x.onchange=function(){x.closest(".q").classList.toggle("done",x.checked);pr()}});
-$("#predNote").onclick=function(){add("Final thoughts:\n"+$$("#wrapup li").map(function(l){return "- "+l.textContent}).join("\n"))};
-var score=0,done=0;
-function show(r){$$(".gr").forEach(function(g){g.hidden=g.getAttribute("data-r")!=r});$$(".steps span").forEach(function(s){s.classList.toggle("on",s.getAttribute("data-r")==r)})}
-$$(".gq").forEach(function(g){$$(".tf",g).forEach(function(b){b.onclick=function(){if(g.getAttribute("data-done"))return;g.setAttribute("data-done","1");var ok=b.getAttribute("data-v")===g.getAttribute("data-a");b.classList.add(ok?"ok":"bad");if(!ok)$$(".tf",g).forEach(function(x){if(x.getAttribute("data-v")===g.getAttribute("data-a"))x.classList.add("ok")});if(ok)score++;$("#gScore").textContent="Score: "+score+" / 6";var fb=$(".fb",g);fb.hidden=false;$("b",fb).textContent=ok?"Correct!":"The answer is "+g.getAttribute("data-a")+".";var gr=g.closest(".gr");if($$(".gq[data-done]",gr).length===3){var s=$(".gsum",gr);s.hidden=false;$(".gres",s).textContent="You have "+$$(".tf.ok",gr).length+" correct answers in this round."}}})});
-$$(".gnext").forEach(function(b,i){b.onclick=function(){if(i==0)show(2);else{$("#gBig").textContent=score+" / 6";$("#gMsg").textContent=score>=5?"Great memory!":score>=3?"Nice work!":"Time to reread a few chapters!";show(3)}}});
-$("#gAgain").onclick=function(){score=0;$("#gScore").textContent="Score: 0 / 6";$$(".gq").forEach(function(g){g.removeAttribute("data-done");$$(".tf",g).forEach(function(x){x.className="tf"});$(".fb",g).hidden=true});$$(".gsum").forEach(function(s){s.hidden=true});show(1)};
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var KEY="peck-ch1-notes-v1";
+  function store(k,v){try{if(v===undefined){return localStorage.getItem(k)}localStorage.setItem(k,v);}catch(e){return null}}
+
+  /* stars */
+  ["stars2","stars3"].forEach(function(id){
+    var g=document.getElementById(id), seed=7, ns="http://www.w3.org/2000/svg";
+    function r(){seed=(seed*16807)%2147483647;return seed/2147483647}
+    for(var i=0;i<90;i++){
+      var c=document.createElementNS(ns,"circle");
+      c.setAttribute("cx",(480+r()*720).toFixed(1));c.setAttribute("cy",(r()*300).toFixed(1));
+      c.setAttribute("r",(0.6+r()*1.8).toFixed(2));c.setAttribute("fill","#F6E8AE");
+      c.setAttribute("opacity",(0.35+r()*0.6).toFixed(2));
+      if(i%3===0){c.setAttribute("class","twinkle");c.style.animationDelay=(r()*3).toFixed(1)+"s"}
+      g.appendChild(c);
+    }
+  });
+
+  /* toast */
+  var toastEl=$("#toast"), tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove("on")},2200)}
+
+  function initCh(root,P,KEY,PRED){
+    var $=function(s,r){return (r||root).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||root).querySelectorAll(s))};
+  /* scroll spy */
+  var links=$$(".agenda a");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){var on=a.getAttribute("data-s")===e.target.id;a.classList.toggle("on",on);if(on&&a.scrollIntoView&&window.innerWidth<900){var sc=a.closest(".agenda-scroll");sc.scrollTo({left:a.offsetLeft-20,behavior:"smooth"})}})}})},{rootMargin:"-30% 0px -60% 0px"});
+    $$("section.step").forEach(function(s){io.observe(s)});
+  }
+
+  /* warm-up picker */
+  var cards=$$("#"+P+"pick .card"), last=-1;
+  $("#"+P+"pickBtn").addEventListener("click",function(){
+    var n;do{n=Math.floor(Math.random()*cards.length)}while(n===last&&cards.length>1);
+    last=n;cards.forEach(function(c,i){c.classList.toggle("hi",i===n)});
+    cards[n].scrollIntoView({block:"nearest",behavior:"smooth"});
+  });
+
+  /* quote reveals / hints / answers */
+  function bindToggle(btnSel,openLabel,closeLabel,getTarget){
+    $$(btnSel).forEach(function(b){b.addEventListener("click",function(){
+      var t=getTarget(b), open=t.hidden;t.hidden=!open;b.setAttribute("aria-expanded",open);b.textContent=open?closeLabel:openLabel});});
+  }
+  bindToggle(".rv","Think about it","Hide",function(b){return $(".reveal",b.closest(".quote"))});
+  bindToggle(".hn","Hint","Hide hint",function(b){return $(".hint",b.closest(".q"))});
+
+  /* flip cards */
+  $$(".flip").forEach(function(f){f.addEventListener("click",function(){
+    var on=f.getAttribute("aria-pressed")!=="true";f.setAttribute("aria-pressed",on);
+    $(".front",f).hidden=on;$(".back",f).hidden=!on;})});
+
+
+
+  /* true or false game */
+  (function(){
+    var rs=$$("#"+P+"game .gr"), pills=$$("#"+P+"gSteps span"), scoreEl=$("#"+P+"gScore"), score=0, cur=1;
+    function show(n){cur=n;rs.forEach(function(r){r.hidden=(+r.getAttribute("data-r")!==n)});
+      pills.forEach(function(p){var k=+p.getAttribute("data-r");p.classList.toggle("on",k===n);p.classList.toggle("done",k<n)})}
+    $$("#"+P+"game .gq").forEach(function(q){
+      $$(".tf",q).forEach(function(b){b.addEventListener("click",function(){
+        if(q.getAttribute("data-done"))return;q.setAttribute("data-done","1");
+        var ans=q.getAttribute("data-a"), ok=b.getAttribute("data-v")===ans;
+        $$(".tf",q).forEach(function(x){x.disabled=true;if(x.getAttribute("data-v")===ans&&!ok)x.classList.add("right")});
+        b.classList.add(ok?"pok":"pbad");q.classList.add(ok?"ok":"bad");
+        var fb=$(".fb",q);fb.classList.add(ok?"ok":"bad");$(".vr",fb).textContent=ok?"Correct!":"Not quite.";fb.hidden=false;
+        if(ok){score++;scoreEl.textContent="Score: "+score+" / 6"}
+        var r=q.closest(".gr"), all=$$(".gq",r);
+        if(all.every(function(x){return x.getAttribute("data-done")})){
+          var c=all.filter(function(x){return x.classList.contains("ok")}).length;
+          var sm=$(".gsum",r);$(".gres",sm).textContent="Round "+r.getAttribute("data-r")+": "+c+" of 3 correct";sm.hidden=false;
+        }
+      })});
+    });
+    $$("#"+P+"game .gnext").forEach(function(b){b.addEventListener("click",function(){
+      var n=cur+1;show(n);
+      if(n===3){$("#"+P+"gBig").textContent=score+" / 6";
+        $("#"+P+"gMsg").textContent=score===6?"Perfect! You read very carefully.":score>=4?"Great job! You remember the chapter well.":"Good try! Look at the story again and play one more time.";}
+      var g=$("#"+P+"game");if(g.scrollIntoView)g.scrollIntoView({block:"start",behavior:"smooth"});
+    })});
+    $("#"+P+"gAgain").addEventListener("click",function(){
+      score=0;scoreEl.textContent="Score: 0 / 6";
+      $$("#"+P+"game .gq").forEach(function(q){q.removeAttribute("data-done");q.classList.remove("ok","bad");
+        $$(".tf",q).forEach(function(x){x.disabled=false;x.classList.remove("pok","pbad","right")});
+        var fb=$(".fb",q);fb.hidden=true;fb.classList.remove("ok","bad")});
+      $$("#"+P+"game .gsum").forEach(function(x){x.hidden=true});show(1);
+    });
+  })();
+
+  /* progress */
+  var dn=$$(".dn"), pt=$("#"+P+"progTxt"), pb=$("#"+P+"progBar");
+  function prog(){var c=dn.filter(function(x){return x.checked}).length;pt.textContent=c+" of "+dn.length+" discussed";pb.style.width=(c/dn.length*100)+"%"}
+  dn.forEach(function(x){x.addEventListener("change",function(){x.closest(".q").classList.toggle("done",x.checked);prog()})});
+  prog();
+
+  /* notes drawer */
+  var drawer=$("#"+P+"drawer"), fab=$("#"+P+"fab"), ed=$("#"+P+"editor"), st=$("#"+P+"st");
+  var starter="";
+  var oldStarter="<h3>My first reactions</h3><p><br></p><h3>Questions I have</h3><p><br></p><h3>Words to remember</h3><p><br></p><h3>My predictions</h3><p><br></p>";
+  var saved=store(KEY);
+  ed.innerHTML=(saved&&saved!==oldStarter)?saved:starter;
+  function setOpen(o){drawer.classList.toggle("open",o);document.body.classList.toggle("notes-open",o);fab.setAttribute("aria-expanded",o);if(o){setTimeout(function(){ed.focus()},260)}}
+  fab.addEventListener("click",function(){setOpen(!drawer.classList.contains("open"))});
+  $("#"+P+"closeN").addEventListener("click",function(){setOpen(false);fab.focus()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&drawer.classList.contains("open")){setOpen(false)}});
+  var sv;function save(){st.textContent="Saving…";clearTimeout(sv);sv=setTimeout(function(){var ok=store(KEY,ed.innerHTML);st.textContent=ok===null?"Notes stay on this page only":"Saved on this device"},400)}
+  ed.addEventListener("input",save);
+
+  function inEd(){var s=window.getSelection();return s&&s.rangeCount&&ed.contains(s.anchorNode)}
+  var tb=$("#"+P+"tb");
+  tb.addEventListener("mousedown",function(e){if(e.target.closest("button"))e.preventDefault()});
+  tb.addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    if(!inEd()){ed.focus();toast("Select some of your text first");return}
+    try{document.execCommand("styleWithCSS",false,true)}catch(x){}
+    var c=b.getAttribute("data-c"),h=b.getAttribute("data-h"),bl=b.getAttribute("data-b");
+    if(c){document.execCommand(c,false,null)}
+    else if(h){var ok=document.execCommand("hiliteColor",false,h);if(!ok){document.execCommand("backColor",false,h)}}
+    else if(bl){document.execCommand("formatBlock",false,bl)}
+    save();
+  });
+
+  function addToNotes(html){
+    var d=document.createElement("div");d.innerHTML=html;
+    while(d.firstChild){ed.appendChild(d.firstChild)}
+    save();toast("Added to your notes");
+  }
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+  $$(".quote .an").forEach(function(b){b.addEventListener("click",function(){
+    var q=b.closest(".quote");
+    addToNotes('<p><span class="hl" style="background-color:#FFE55C">'+esc($("blockquote",q).textContent)+'</span><br><i>'+esc($(".ctx",q).textContent)+'</i></p><p><br></p>');})});
+  $$(".q .an").forEach(function(b){b.addEventListener("click",function(){
+    var q=b.closest(".q");
+    addToNotes('<h3>Question '+esc($(".qn",q).textContent)+'</h3><p>'+esc($(".qt",q).textContent)+'</p><p><b>My answer:</b> </p>');})});
+  $("#"+P+"predNote").addEventListener("click",function(){
+    addToNotes(PRED);});
+
+  $("#"+P+"savePdf").addEventListener("click",function(){
+    toast("In the print window, choose Save as PDF");
+    setTimeout(function(){try{window.print()}catch(e){}},350);
+  });
+  var cl=$("#"+P+"clearN"),ct;
+  cl.addEventListener("click",function(){
+    if(cl.getAttribute("data-arm")==="1"){ed.innerHTML=starter;save();cl.removeAttribute("data-arm");cl.textContent="Clear all";toast("Notes cleared");return}
+    cl.setAttribute("data-arm","1");cl.textContent="Tap again to clear";clearTimeout(ct);
+    ct=setTimeout(function(){cl.removeAttribute("data-arm");cl.textContent="Clear all"},3000);
+  });
+
+    var pn=$("#"+P+"printNotes"), pnb=$("#"+P+"pnBody");
+    return {root:root,setOpen:setOpen,prep:function(ttl){pnb.innerHTML=ed.innerHTML;pn.classList.toggle("has",ed.innerText.trim().length>0);document.title=ttl}};
+  }
+
+  /* ---- chapters and router ---- */
+  var ch1=initCh($("#ch1"),"c2-","peck-ch1-notes-v1",'<h3>Final thoughts on Peck &amp; Peck</h3><ul><li>Which chapter did you enjoy most so far, and why?</li><li>What do you think Peck &amp; Peck really is?</li><li>What will Batter do after graduation?</li></ul>'), chs=[ch1];
+  var TITLES=[ "Peck and Peck - Chapters 1-14 slides and notes" ], origTitle=document.title;
+  var homeEl=$("#home"), first=true, curKey="home";
+  window.addEventListener("beforeprint",function(){
+    origTitle=document.title;
+    if(!homeEl.hidden){buildWall();document.title="Peck and Peck - post-it mural";return}
+    chs.forEach(function(c,i){if(!c.root.hidden)c.prep(TITLES[i])});
+  });
+  window.addEventListener("afterprint",function(){document.title=origTitle});
+  function route(){
+    var h=location.hash, toHome=(h===""||h==="#"||h==="#home");
+    var key=toHome?"home":"ch1";
+    homeEl.hidden=key!=="home";chs.forEach(function(c,i){c.root.hidden=key!=="ch"+(i+1)});
+    if(key!==curKey){chs.forEach(function(c){c.setOpen(false)})}
+    if(key==="home"){layoutPits()}
+    if(first||key!==curKey){window.scrollTo(0,0)}
+    curKey=key;first=false;
+  }
+  window.addEventListener("hashchange",route);
+
+  /* ---- post-it mural ---- */
+  var KEYP="peck-postits-v1", COLORS=["#FFE76B","#FFB8CF","#B5EFC4","#B3D4FF","#FFC98B"], pits=[], selColor=COLORS[0], zTop=10;
+  var board=$("#board"), ghost=$("#ghostAdd");
+  try{var rawp=localStorage.getItem(KEYP);pits=rawp?JSON.parse(rawp):[]}catch(e){pits=[]}
+  if(!Array.isArray(pits))pits=[];
+  var psv;function savePits(){clearTimeout(psv);psv=setTimeout(function(){try{localStorage.setItem(KEYP,JSON.stringify(pits))}catch(e){}},250)}
+  function pSize(){return parseFloat(getComputedStyle(board).getPropertyValue("--ps"))||210}
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function clampPit(p){var ps=pSize(),bw=board.clientWidth;p.x=Math.max(0,Math.min(p.x,Math.max(0,bw-ps)));p.y=Math.max(0,p.y)}
+  function fitBoard(){var ps=pSize(),m=0;pits.forEach(function(p){m=Math.max(m,p.y+ps+30)});board.style.minHeight=Math.max(560,m)+"px"}
+  function layoutPits(){if(homeEl.hidden||!board.clientWidth)return;pits.forEach(function(p){clampPit(p)});renderPits()}
+  function renderPits(){
+    $$(".pit",board).forEach(function(n){n.remove()});
+    ghost.hidden=pits.length>0;
+    pits.forEach(function(p){board.appendChild(buildPit(p))});
+    fitBoard();
+  }
+  function buildPit(p){
+    var d=document.createElement("div");d.className="pit";d.setAttribute("data-id",p.id);
+    d.style.left=p.x+"px";d.style.top=p.y+"px";d.style.setProperty("--pc",p.c);d.style.setProperty("--rot",p.r+"deg");d.style.zIndex=p.z||1;
+    d.innerHTML='<div class="pit-bar"><button type="button" class="pc" aria-label="Change post-it color" title="Change color">Color</button><span class="grip" aria-hidden="true"></span><button type="button" class="pd" aria-label="Delete post-it" title="Delete">×</button></div><textarea class="pit-text" aria-label="Post-it text" maxlength="400"></textarea>';
+    var ta=$("textarea",d);ta.value=p.t||"";
+    ta.addEventListener("input",function(){p.t=ta.value;savePits()});
+    $(".pc",d).addEventListener("click",function(){var i=COLORS.indexOf(p.c);p.c=COLORS[(i+1)%COLORS.length];d.style.setProperty("--pc",p.c);savePits()});
+    var pd=$(".pd",d),pdt;
+    pd.addEventListener("click",function(){
+      if(pd.getAttribute("data-arm")==="1"){pits=pits.filter(function(x){return x!==p});savePits();renderPits();return}
+      pd.setAttribute("data-arm","1");pd.textContent="Sure?";clearTimeout(pdt);pdt=setTimeout(function(){pd.removeAttribute("data-arm");pd.textContent="×"},2500);
+    });
+    var bar=$(".pit-bar",d);
+    bar.addEventListener("pointerdown",function(e){
+      if(e.target.closest("button"))return;
+      e.preventDefault();bar.setPointerCapture(e.pointerId);
+      var sx=e.clientX,sy=e.clientY,ox=p.x,oy=p.y;d.classList.add("drag");p.z=++zTop;d.style.zIndex=p.z;
+      function mv(ev){p.x=ox+ev.clientX-sx;p.y=oy+ev.clientY-sy;clampPit(p);d.style.left=p.x+"px";d.style.top=p.y+"px";fitBoard()}
+      function up(){bar.removeEventListener("pointermove",mv);bar.removeEventListener("pointerup",up);bar.removeEventListener("pointercancel",up);d.classList.remove("drag");savePits()}
+      bar.addEventListener("pointermove",mv);bar.addEventListener("pointerup",up);bar.addEventListener("pointercancel",up);
+    });
+    return d;
+  }
+  function addPit(){
+    var ps=pSize(),bw=board.clientWidth||900,cols=Math.max(1,Math.floor((bw-20)/(ps+24))),i=pits.length;
+    var p={id:Date.now()+"-"+Math.floor(Math.random()*1e4),t:"",c:selColor,r:Math.round(rnd(-3,3)*10)/10,z:++zTop,
+      x:20+(i%cols)*(ps+24)+rnd(-6,6),y:24+Math.floor(i/cols)*(ps+28)+rnd(-4,4)};
+    clampPit(p);pits.push(p);savePits();renderPits();
+    var ta=$('.pit[data-id="'+p.id+'"] textarea',board);if(ta)ta.focus();
+  }
+  $("#addPit").addEventListener("click",addPit);ghost.addEventListener("click",addPit);
+  $$("#cdots .cdot").forEach(function(b){b.addEventListener("click",function(){
+    selColor=b.getAttribute("data-c");$$("#cdots .cdot").forEach(function(x){x.setAttribute("aria-pressed",x===b)})})});
+  var cp=$("#clearPits"),cpt;
+  cp.addEventListener("click",function(){
+    if(cp.getAttribute("data-arm")==="1"){pits=[];savePits();renderPits();cp.removeAttribute("data-arm");cp.textContent="Clear wall";toast("Wall cleared");return}
+    cp.setAttribute("data-arm","1");cp.textContent="Tap again to clear";clearTimeout(cpt);cpt=setTimeout(function(){cp.removeAttribute("data-arm");cp.textContent="Clear wall"},3000);
+  });
+  function buildWall(){
+    var g=$("#pwGrid");g.innerHTML="";
+    try{$("#pwDate").textContent="Saved on "+new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"})}catch(e){}
+    pits.slice().sort(function(a,b){return Math.round(a.y/70)-Math.round(b.y/70)||a.x-b.x}).forEach(function(p){
+      var d=document.createElement("div");d.className="pw";d.style.background=p.c;d.textContent=p.t||"";g.appendChild(d)});
+  }
+  $("#savePits").addEventListener("click",function(){
+    if(!pits.length){toast("Add a post-it first");return}
+    toast("In the print window, choose Save as PDF");
+    setTimeout(function(){try{window.print()}catch(e){}},350);
+  });
+  var rz;window.addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(layoutPits,150)});
+  $$(".pr-head a").forEach(function(a){try{var u=new URL("./",location.href);a.href=u.href;a.textContent=(u.host+u.pathname).replace(/\/$/,"")}catch(e){}});
+  route();
 })();
-</script></body></html>
+</script>
+
+</body>
+</html>

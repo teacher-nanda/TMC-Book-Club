@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chorus File — Letters & Postcards</title>
+<style>
+  :root{
+    --paper:#f5f2ea;
+    --paper-2:#eae3d2;
+    --ink:#212a38;
+    --ink-soft:#5c6472;
+    --line:#d8d1bd;
+    --burgundy:#20375c;
+    --burgundy-soft:#4d76ad;
+    --gold:#d99a2b;
+    --green:#3f8f6f;
+    --blue:#3f6b8a;
+    --purple:#8a5fb0;
+    --pink:#c1548a;
+    --teal:#1f7a72;
+    --coral:#d9643a;
+    --card:#fffdf9;
+    --radius:14px;
+    --shadow:0 2px 14px rgba(20,30,45,0.10);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: var(--font);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(32,55,92,0.06) 1px, transparent 0) 0 0/24px 24px,
+      var(--paper);
+    color: var(--ink);
+    line-height:1.6;
+    font-size: 20px;
+  }
+  .wrap{ max-width: 1100px; margin:0 auto; padding: 0 28px 90px; }
+
+  header.hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(217,154,43,0.16) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(31,122,114,0.18) 0%, transparent 45%),
+      linear-gradient(160deg, var(--burgundy) 0%, #0e1a2c 100%);
+    color: #f7ecd9;
+    padding: 40px 20px 34px;
+    text-align:center;
+    border-bottom: 6px solid var(--gold);
+    overflow:hidden;
+  }
+  header.hero .kicker{
+    letter-spacing: 3px; text-transform: uppercase; font-size: 14px;
+    color: #e6c98a; margin-bottom: 10px;
+  }
+  header.hero h1{ font-size: 2.5em; margin: 0 0 8px; font-weight: 700; }
+  header.hero p.sub{
+    font-style: italic; color: #eaddc4; max-width: 640px; margin: 0 auto; font-size: 1.05em;
+  }
+  header.hero a.back{
+    display:inline-block; margin-top:18px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 8px 18px; border-radius: 30px;
+    font-size: 15px; color:#f7ecd9; text-decoration:none;
+  }
+  header.hero a.back:hover{ background: rgba(255,255,255,0.22); }
+
+  .intro-card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px 26px;
+    margin: 26px 0;
+  }
+  .intro-card p{ margin: 6px 0; font-size: 0.92em; color: var(--ink-soft); }
+  .intro-card p.note{
+    background:#fbf3de; border-left:4px solid var(--gold);
+    padding:10px 14px; border-radius:6px; font-style:italic; margin-top:14px;
+  }
+
+  /* who received what */
+  .tracker{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 10px;
+    margin: 20px 0 30px;
+  }
+  .tracker .item{
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align:center;
+  }
+  .tracker .item .who{ font-weight:bold; font-size:0.95em; }
+  .tracker .item .cnt{ font-size:0.8em; color: var(--ink-soft); margin-top:3px; }
+
+  /* section block */
+  .doc-section{
+    margin: 40px 0;
+  }
+  .doc-section-head{
+    display:flex; align-items:center; gap:14px; margin-bottom: 16px;
+  }
+  .doc-icon{
+    width:56px; height:56px; border-radius:50%;
+    background: var(--burgundy); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px; flex-shrink:0;
+  }
+  .doc-icon.postcard{ background: var(--gold); }
+  .doc-icon.mystery{ background: var(--burgundy-soft); }
+  .doc-titles h2{ margin:0 0 3px; font-size:1.25em; }
+  .doc-titles .meta{
+    font-size:0.75em; color: var(--ink-soft); font-style:italic;
+  }
+  .doc-titles .meta .chip{
+    display:inline-block; background:var(--paper-2); border:1px solid var(--line);
+    border-radius:20px; padding:2px 10px; font-size:0.9em; margin-right:6px; font-style:normal;
+  }
+
+  /* letter/postcard document card */
+  .doc-card{
+    background:#fffdf7;
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--burgundy);
+    border-radius: 10px;
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+  }
+  .doc-card.postcard-card{ border-left-color: var(--gold); }
+  .doc-fragment{
+    margin: 0 0 14px;
+    padding: 0 0 14px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .doc-fragment:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .doc-fragment p{
+    margin: 0 0 4px;
+    font-style: italic;
+    font-size: 1.05em;
+    color: #3a2e1a;
+  }
+  .doc-fragment .cite{
+    font-size: 0.68em;
+    color: var(--ink-soft);
+    font-style: normal;
+  }
+  .doc-card .signature{
+    text-align:right;
+    font-weight:bold;
+    color: var(--burgundy);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  .decoded-box{
+    background:#f3eaf7;
+    border: 1px dashed var(--purple);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 16px;
+  }
+  .decoded-box .lbl{
+    font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px;
+    color: var(--purple); font-weight:bold; margin-bottom:6px;
+  }
+  .decoded-box p{ margin: 4px 0; font-size: 0.95em; }
+
+  .missing-note{
+    background:#eae3d2; border:1px dashed var(--line); border-radius:10px;
+    padding:12px 16px; font-size:0.85em; color:var(--ink-soft); font-style:italic;
+  }
+
+  footer{ text-align:center; color: var(--ink-soft); font-size: 14px; margin-top: 40px; }
+
+  @media (max-width: 600px){
+    header.hero h1{ font-size: 1.8em; }
+    .doc-card{ padding:16px 18px; }
+  }
+</style>
+</head>
+<body>
+<div style="font:600 14px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;padding:12px 16px"><a href="index.html" style="color:inherit;opacity:.85;text-decoration:none">← All our books</a></div>
+
+
+<header class="hero">
+  <div class="kicker">Guilty by Definition · Evidence Board</div>
+  <h1>The Chorus File</h1>
+  <p class="sub">Every letter and postcard Nanda highlighted, in the order they appear — Chapters 1–25</p>
+  <a class="back" href="guilty-by-definition.html">← Back to the discussion guide</a>
+</header>
+
+<div class="wrap">
+
+  <div class="intro-card">
+    <p>This page pulls together every piece of correspondence from "Chorus" that shows up in the highlights — the two full letters to the CED office, and every postcard sent to Martha, Alex, Mike, Gabriel, Safi, Brin, and the rest of the team.</p>
+    <p>Quotes are shown as separate fragments in the order they were highlighted, with page numbers, rather than stitched into one invented paragraph — some narration and dialogue is naturally mixed in with the actual letter text in the book.</p>
+    <p class="note">📌 Where a postcard's content wasn't captured in the highlights (like the second one found in Charlie's room), that's marked clearly instead of guessed at.</p>
+  </div>
+
+  <div class="tracker">
+    <div class="item"><div class="who">✉️ The whole team</div><div class="cnt">Letter One + Letter Two</div></div>
+    <div class="item"><div class="who">📮 Alex</div><div class="cnt">"I DO DESPISE A LIAR"</div></div>
+    <div class="item"><div class="who">📮 Mike Orme</div><div class="cnt">One every year since 2011</div></div>
+    <div class="item"><div class="who">📮 Gabriel</div><div class="cnt">Found in Charlie's room</div></div>
+    <div class="item"><div class="who">📮 Martha</div><div class="cnt">Found in Charlie's room</div></div>
+    <div class="item"><div class="who">📮 Safi</div><div class="cnt">"Tis thou that must help me"</div></div>
+    <div class="item"><div class="who">📮 Brin Edwards</div><div class="cnt">"What traitors have we here?"</div></div>
+    <div class="item"><div class="who">📮 Tom & Tanya</div><div class="cnt">"Wilt thou betray..." / "False friends"</div></div>
+    <div class="item"><div class="who">🖋️ George's postcard</div><div class="cnt">Found in Charlie's shoebox</div></div>
+    <div class="item"><div class="who">📮 Jonathan</div><div class="cnt">"Thou art a scholar, speak to it!"</div></div>
+    <div class="item"><div class="who">✉️ Newest letter</div><div class="cnt">Fourteen lines — a sonnet clue</div></div>
+  </div>
+
+  <!-- LETTER ONE -->
+  <div class="doc-section" id="letter1">
+    <div class="doc-section-head">
+      <div class="doc-icon">✉️</div>
+      <div class="doc-titles">
+        <h2>Letter One — addressed to "The Editors"</h2>
+        <div class="meta"><span class="chip">Chapter 1</span>Arrives at the CED office in the morning post · pages 13–17</div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-fragment"><p>"Dear Editors, This is not a confession, but it contains one."</p><div class="cite">Page 13 · Loc 132</div></div>
+      <div class="doc-fragment"><p>"I have kept secrets."</p><div class="cite">Page 13 · Loc 133</div></div>
+      <div class="doc-fragment"><p>"You are the secretaries of English, and I've decided to make you mine."</p><div class="cite">Page 13 · Loc 136</div></div>
+      <div class="doc-fragment"><p>"You are detectives too, are you not? Have you the appetite?"</p><div class="cite">Page 13 · Loc 137</div></div>
+      <div class="doc-fragment"><p>"…you are upholders of the truth."</p><div class="cite">Page 13 · Loc 138</div></div>
+      <div class="doc-fragment"><p>"Your first loyalty is to the evidence, and no legacy is so rich as honesty."</p><div class="cite">Page 14 · Loc 139</div></div>
+      <div class="doc-fragment"><p>"We look at the story before it has even started."</p><div class="cite">Page 14 · Loc 142</div></div>
+      <div class="doc-fragment"><p>"If circumstances lead me, I will find where truth is hid," <span class="cite" style="display:inline;">— a line from Polonius in Hamlet</span></p><div class="cite">Page 14 · Loc 144</div></div>
+      <div class="doc-fragment"><p>"Truth will come to light. Murder cannot be hid long." <span class="cite" style="display:inline;">— from The Merchant of Venice</span></p><div class="cite">Page 14 · Loc 146</div></div>
+      <div class="doc-fragment"><p>"Some of you at least should make common cause with me…"</p><div class="cite">Page 16 · Loc 171</div></div>
+      <div class="signature">— Chorus</div>
+    </div>
+    <div class="decoded-box">
+      <div class="lbl">🔓 Decoded</div>
+      <p>The first words of each paragraph spell out an acrostic: <b>"This Time You Have Made Two Maidens Cross."</b> (Page 28)</p>
+      <p>"Two maidens and a cross," read as Roman numerals, gives <b>MMX — the year 2010.</b> "Chorus" is Old English for "voice of freemen" — the root of the name <b>Charlotte.</b> The letter is about Charlie.</p>
+    </div>
+  </div>
+
+  <!-- POSTCARD: ALEX -->
+  <div class="doc-section" id="postcard-alex">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcard to Alex</h2>
+        <div class="meta"><span class="chip">Chapter 5</span>A picture of the CED building · page 46</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;"><p>"I DO DESPISE A LIAR"</p><div class="cite">Page 46 · Loc 555</div></div>
+    </div>
+  </div>
+
+  <!-- POSTCARDS: MIKE, ARCHIVE -->
+  <div class="doc-section" id="postcards-mike">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcards to Mike Orme</h2>
+        <div class="meta"><span class="chip">Chapter 7</span>One every year, on Charlie's birthday, since 2011 · page 58</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;">
+        <p>"FALSEDICT: AN UNTRUE DELIVERANCE OR UTTERANCE" <span class="cite" style="display:inline;">— the one Safi finds filed away, address and message in neat block capitals</span></p>
+        <div class="cite">Page 58 · Loc 708</div>
+      </div>
+    </div>
+    <div class="decoded-box">
+      <div class="lbl">🔓 Pattern</div>
+      <p>Every card is a picture of the dictionary building, and every message revolves around words for falsehood and lying — sent to Mike alone, never signed "Chorus."</p>
+    </div>
+  </div>
+
+  <!-- POSTCARDS FOUND IN CHARLIE'S ROOM -->
+  <div class="doc-section" id="postcards-room">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Two Postcards Found in Charlie's Room</h2>
+        <div class="meta"><span class="chip">Chapter 6</span>Martha finds them the morning after her father catches her in the room · page 54</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment"><p>To Gabriel: "This young gentlewoman had a father…"</p><div class="cite">Page 54 · Loc 659</div></div>
+      <div class="missing-note" style="margin-top:10px;">📌 The second postcard is addressed to Martha herself — its message isn't shown in the highlights.</div>
+    </div>
+  </div>
+
+  <!-- POSTCARD: SAFI -->
+  <div class="doc-section" id="postcard-safi">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcard to Safi</h2>
+        <div class="meta"><span class="chip">Chapter 7</span>Part of the same round the whole team receives · page 56</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;"><p>"'Tis thou that must help me"</p><div class="cite">Page 56 · Loc 680</div></div>
+    </div>
+  </div>
+
+  <!-- LETTER TWO -->
+  <div class="doc-section" id="letter2">
+    <div class="doc-section-head">
+      <div class="doc-icon mystery">✉️</div>
+      <div class="doc-titles">
+        <h2>Letter Two — addressed to "The Editors"</h2>
+        <div class="meta"><span class="chip">Chapters 11–12</span>Arrives on a Tuesday, decoded over the following days · pages 84–94</div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-fragment"><p>"Dear Editors,"</p><div class="cite">Page 84 · Loc 1025</div></div>
+      <div class="doc-fragment"><p>"Confessing sins, where a captive of the past might expect sanctuary, will help you find your level."</p><div class="cite">Page 84 · Loc 1031</div></div>
+      <div class="doc-fragment"><p>"One person there had nothing to lose, nothing to confess. In the course of justice none of us should see salvation."</p><div class="cite">Page 84 · Loc 1032</div></div>
+      <div class="doc-fragment"><p>"Alas poor world, what treasure hast thou lost!"</p><div class="cite">Page 91 · Loc 1114</div></div>
+      <div class="doc-fragment"><p>"…Shall we dance?"</p><div class="cite">Page 91 · Loc 1119</div></div>
+      <div class="doc-fragment"><p>"This dark place between what I fear, what I know, and what is right."</p><div class="cite">Page 92 · Loc 1139</div></div>
+      <div class="doc-fragment"><p>"Many are bound where a captive had nothing to lose when making known his identity."</p><div class="cite">Page 94 · Loc 1159</div></div>
+      <div class="signature">— Chorus</div>
+    </div>
+    <div class="decoded-box">
+      <div class="lbl">🔓 Decoded</div>
+      <p>Hidden inside: a "time signature" written as a fraction — a signal to count on through each paragraph. It points to a real 17th-century prisoner: <b>ANTHONY SEDLEY, 1649, PRISNER</b> — carved into a church font in Burford, where Leveller prisoners were held and executed during the Civil War.</p>
+      <p>That trail leads straight to <b>Brin Edwards</b>, the Burford book dealer Charlie once worked for.</p>
+    </div>
+  </div>
+
+  <!-- NEW POSTCARDS: WHOLE TEAM -->
+  <div class="doc-section" id="postcards-team">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>New Postcards — the Whole Team, Including Brin</h2>
+        <div class="meta"><span class="chip">Chapter 14</span>Delivered to everyone's homes the week before · page 106</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;">
+        <p>Brin's card: "What traitors have we here?"</p>
+        <div class="cite">Page 106 · Loc 1318</div>
+      </div>
+    </div>
+    <div class="missing-note" style="margin-top:14px;">📌 Brin confirms everyone got one last week, each with a different Shakespeare quote — only his is shown in the highlights.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcards to Martha, Tom, and Tanya</h2>
+        <div class="meta"><span class="chip">Chapter 16</span>Turns out Chorus reached Tom and Tanya too · pages 122–123</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment"><p>Martha's card: "Where have you been, sister?"</p><div class="cite">Page 122 · Loc 1524</div></div>
+      <div class="doc-fragment"><p>Tom's card: "Wilt thou betray thy noble mistress thus?"</p><div class="cite">Page 123 · Loc 1533</div></div>
+      <div class="doc-fragment" style="border-bottom:none;"><p>Tanya's card: "God keep me from false friends"</p><div class="cite">Page 123 · Loc 1533</div></div>
+    </div>
+    <div class="missing-note" style="margin-top:14px;">📌 Each postcard used the same photo of Charlie that appeared on the original "missing" posters.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-head">
+      <div class="doc-icon mystery">🖋️</div>
+      <div class="doc-titles">
+        <h2>The Postcard in Charlie's Shoebox</h2>
+        <div class="meta"><span class="chip">Chapters 19–20</span>Found tucked away, printed by the British Library · pages 143–151</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;">
+        <p>"You dazzle me."</p>
+        <div class="cite">Page 126 (recalled) / re-examined pages 143, 150–151</div>
+      </div>
+    </div>
+    <div class="decoded-box">
+      <div class="lbl">Investigation notes</div>
+      <p>The dates on this postcard were written in an odd mixed-numeral style — Arabic day, lowercase Latin month, uppercase Latin year — that Martha recognized from Alex's own habit. When shown to Alex directly, she identified it instantly: it's her husband George's handwriting.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcard to Brin Edwards</h2>
+        <div class="meta"><span class="chip">Chapter 21</span>Confirmed by Detective Caldwell · page 159</div>
+      </div>
+    </div>
+    <div class="missing-note">📌 Caldwell reveals Brin got a postcard of his own — "I'm beginning to think your Chorus has his own suspect pool." Exact wording wasn't captured in the highlights.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-head">
+      <div class="doc-icon postcard">📮</div>
+      <div class="doc-titles">
+        <h2>Postcard to Jonathan</h2>
+        <div class="meta"><span class="chip">Chapter 24</span>Revealed when the team asks him directly · page 181</div>
+      </div>
+    </div>
+    <div class="doc-card postcard-card">
+      <div class="doc-fragment" style="border-bottom:none;"><p>"Thou art a scholar, speak to it!"</p><div class="cite">Page 181 · Loc 2303</div></div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-head">
+      <div class="doc-icon">✉️</div>
+      <div class="doc-titles">
+        <h2>The Newest Letter — Fourteen Lines</h2>
+        <div class="meta"><span class="chip">Chapters 24–25</span>Arrives the Friday before the bank holiday · page 177</div>
+      </div>
+    </div>
+    <div class="missing-note">📌 The letter's text wasn't fully captured in the highlights — but Safi notices it has exactly fourteen lines, the length of a Shakespeare sonnet. The team's best guess so far is Sonnet 116, "my dad's favourite," per Safi.</div>
+  </div>
+
+</div>
+
+<footer>The Chorus File · Guilty by Definition, Susie Dent · Built from Nanda's highlights, Chapters 1–25</footer>
+
+</body>
+</html>

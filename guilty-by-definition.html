@@ -1,0 +1,2896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guilty by Definition — Book Club Guide</title>
+<style>
+  :root{
+    --paper:#f5f2ea;
+    --paper-2:#eae3d2;
+    --ink:#212a38;
+    --ink-soft:#5c6472;
+    --line:#d8d1bd;
+    --burgundy:#20375c;
+    --burgundy-soft:#4d76ad;
+    --gold:#d99a2b;
+    --green:#3f8f6f;
+    --blue:#3f6b8a;
+    --purple:#8a5fb0;
+    --pink:#c1548a;
+    --teal:#1f7a72;
+    --coral:#d9643a;
+    --card:#fffdf9;
+    --radius:14px;
+    --shadow:0 2px 14px rgba(20,30,45,0.10);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: var(--font);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(32,55,92,0.06) 1px, transparent 0) 0 0/24px 24px,
+      var(--paper);
+    color: var(--ink);
+    line-height:1.6;
+    font-size: 21px;
+  }
+  .page{
+    display:flex;
+    align-items:flex-start;
+    max-width: 1680px;
+    margin: 0 auto;
+  }
+  .wrap{
+    max-width: 1320px;
+    flex: 1 1 auto;
+    margin: 0 auto;
+    padding: 0 32px 90px;
+    min-width: 0;
+  }
+
+  /* HEADER */
+  header.hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(217,154,43,0.16) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(31,122,114,0.18) 0%, transparent 45%),
+      linear-gradient(160deg, var(--burgundy) 0%, #0e1a2c 100%);
+    color: #f7ecd9;
+    padding: 22px 20px 18px;
+    text-align:center;
+    border-bottom: 5px solid var(--gold);
+    overflow:hidden;
+  }
+  header.hero .kicker{
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #e6c98a;
+    margin-bottom: 6px;
+  }
+  header.hero h1{
+    font-size: 1.9em;
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  header.hero p.sub{
+    font-style: italic;
+    color: #eaddc4;
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.9em;
+  }
+  header.hero .badges{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:10px;
+  }
+  header.hero .badge{
+    display:inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+  header.hero .badge.next{
+    background: rgba(0,0,0,0.15);
+    border-style: dashed;
+    color: #d9c9a8;
+  }
+  header.hero .progress{
+    max-width: 380px;
+    margin: 10px auto 0;
+  }
+  header.hero .progress-bar{
+    height: 6px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 6px;
+    overflow:hidden;
+  }
+  header.hero .progress-fill{
+    height:100%;
+    width: 100%;
+    background: var(--gold);
+  }
+  header.hero .progress-label{
+    font-size: 11px;
+    color: #e6c98a;
+    margin-top: 5px;
+  }
+
+  /* SLIDE SELECTOR NAV — compact bar, not a pill wall */
+  nav.toc{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 20px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  nav.toc button{
+    font-family: var(--font);
+    font-size: 13.5px;
+    color: var(--burgundy);
+    background:var(--card);
+    text-decoration: none;
+    padding: 6px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    cursor:pointer;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  nav.toc button:hover{ border-color: var(--burgundy); }
+  nav.toc button.special{ color: var(--teal); font-weight:bold; }
+  nav.toc button.current{ background: var(--burgundy); color:#fff; border-color:var(--burgundy); }
+  nav.toc .chapter-jump{
+    font-family: var(--font);
+    font-size: 13.5px;
+    color: var(--ink);
+    background:var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor:pointer;
+    flex: 1 1 220px;
+    max-width: 360px;
+  }
+  nav.toc .chapter-jump:hover{ border-color: var(--burgundy); }
+
+  /* INTRO */
+  .intro-card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 24px;
+    margin: 22px 0;
+  }
+  .intro-card p{ margin: 6px 0; font-size:0.95em; color:var(--ink-soft); }
+
+  /* SLIDE DECK */
+  .deck{ margin: 22px 0; scroll-margin-top: 64px; }
+  .slide-controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .nav-btn{
+    background: var(--burgundy);
+    color:#fff;
+    border:none;
+    border-radius: 28px;
+    padding: 13px 24px;
+    font-size: 17px;
+    font-family: var(--font);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .nav-btn:disabled{ background:#cbb; opacity:0.4; cursor:default; }
+  .dots{ display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
+  .dot{
+    width:11px;height:11px;border-radius:50%;
+    background: var(--line);
+    cursor:pointer;
+    border:none;
+    padding:0;
+  }
+  .dot.active{ background: var(--burgundy); width:26px; border-radius:7px; }
+  .counter{ font-size:15px; color:var(--ink-soft); white-space:nowrap; }
+
+  .slide{
+    display:none;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px 48px 46px;
+    min-height: 560px;
+  }
+  .slide.active{ display:block; animation: fadein .3s ease; }
+  @keyframes fadein{ from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+
+  .slide-top{ display:flex; align-items:center; gap:20px; margin-bottom: 10px; }
+  .slide-num{
+    background: var(--burgundy); color:#fff;
+    min-width:66px; height:66px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; font-weight:bold; flex-shrink:0;
+  }
+  .slide-titles h2{ margin:0 0 4px; font-size:1.8em; color:var(--ink); }
+  .slide-titles .hook{ font-size:0.85em; color:var(--ink-soft); font-style:italic; }
+
+  /* beat strip */
+  .beat-strip{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    margin: 32px 0 30px;
+    position:relative;
+    gap: 14px;
+  }
+  .beat-strip::before{
+    content:'';
+    position:absolute;
+    top:35px; left:13%; right:13%;
+    height:3px;
+    background: var(--line);
+    z-index:0;
+  }
+  .beat{ position:relative; z-index:1; flex:1; text-align:center; }
+  .beat .icon{
+    width:72px;height:72px;border-radius:50%;
+    background: var(--paper-2);
+    border:3px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:32px; margin:0 auto 10px;
+  }
+  .beat .txt{ font-size:15px; color:var(--ink-soft); max-width:160px; margin:0 auto; line-height:1.35; }
+
+  /* pull quote */
+  .pull-quote{
+    border-left: 6px solid var(--gold);
+    background: #fbf3de;
+    padding: 22px 28px;
+    margin: 8px 0 28px;
+    border-radius: 8px;
+    position:relative;
+  }
+  .pull-quote .mark{
+    font-size: 3.4em;
+    color: #e6c98a;
+    line-height:0;
+    position:relative;
+    top: 18px;
+    font-family: Georgia, serif;
+  }
+  .pull-quote p{
+    margin: -10px 0 0;
+    font-style: italic;
+    color: #4a3d20;
+    font-size: 1.25em;
+  }
+
+  /* tag grid (highlights + notes) */
+  .tag-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 16px;
+    margin: 22px 0 28px;
+  }
+  .tag-card{
+    border-radius: 12px;
+    padding: 16px 18px;
+    border-left: 6px solid;
+    font-size: 16.5px;
+    line-height:1.45;
+  }
+  .tag-card .badge{
+    font-size: 12.5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing:0.4px;
+    display:flex; align-items:center; gap:6px;
+    margin-bottom: 8px;
+  }
+  .tag-bang{ background:#eaf2fb; border-color:var(--burgundy-soft); }
+  .tag-bang .badge{ color:var(--burgundy-soft); }
+  .tag-plus{ background:#fbf3de; border-color:var(--gold); }
+  .tag-plus .badge{ color:#8a641f; }
+  .tag-q{ background:#f3eaf7; border-color:var(--purple); }
+  .tag-q .badge{ color:var(--purple); }
+  .tag-fun{ background:#fbeaf3; border-color:var(--pink); }
+  .tag-fun .badge{ color:var(--pink); }
+
+  /* character avatars */
+  .char-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 22px;
+    margin: 10px 0 28px;
+  }
+  .char-avatar{ text-align:center; width:120px; }
+  /* investigation / clue trail */
+  .clue-trail{
+    position:relative;
+    display:flex; flex-direction:column; gap:16px;
+    padding-left:26px;
+    margin-top:10px;
+  }
+  .clue-trail::before{
+    content:"";
+    position:absolute; left:9px; top:8px; bottom:8px;
+    width:3px;
+    background: repeating-linear-gradient(180deg, var(--gold) 0 10px, transparent 10px 18px);
+    border-radius:3px;
+  }
+  .clue-card{
+    position:relative;
+    display:flex; gap:16px; align-items:flex-start;
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    box-shadow:var(--shadow);
+  }
+  .clue-card::before{
+    content:"";
+    position:absolute; left:-23px; top:22px;
+    width:14px; height:14px; border-radius:50%;
+    background:var(--gold);
+    border:3px solid var(--paper);
+    box-shadow:0 0 0 2px var(--gold);
+  }
+  .clue-icon{
+    flex-shrink:0;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--paper-2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+  }
+  .clue-body{ flex:1; min-width:0; }
+  .clue-top{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:6px; }
+  .clue-kind{ font-weight:800; color:var(--burgundy); font-size:0.95em; }
+  .clue-to{ color:var(--teal); font-weight:600; font-size:0.9em; }
+  .clue-ch{
+    margin-left:auto;
+    background:var(--paper-2); border:1px solid var(--line);
+    border-radius:20px; padding:2px 10px; font-size:0.78em; color:var(--ink-soft);
+  }
+  .clue-quote{ font-style:italic; color:var(--ink); margin-bottom:8px; line-height:1.4; }
+  .clue-leads{ font-size:0.95em; color:var(--ink-soft); background:#fdf2e3; border-left:3px solid var(--coral); padding:8px 12px; border-radius:6px; }
+  .decode-toggle{
+    font-family:var(--font); font-size:0.82em; font-weight:600;
+    background:none; border:1px dashed var(--teal); color:var(--teal);
+    border-radius:14px; padding:4px 12px; margin-top:10px; cursor:pointer;
+  }
+  .decode-toggle:hover{ background:rgba(31,122,114,0.08); }
+  .clue-decode{
+    margin-top:10px; background:var(--paper-2); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px;
+  }
+  .clue-decode .cd-label{
+    font-size:0.7em; font-weight:800; text-transform:uppercase; letter-spacing:0.6px;
+    color:var(--teal); margin-bottom:6px;
+  }
+  .clue-decode ol{ margin:0; padding-left:20px; font-size:0.88em; color:var(--ink); line-height:1.55; }
+  .clue-verse{ font-style:italic; font-size:0.92em; color:var(--ink); line-height:1.6; }
+  .clue-verse p{ margin:0 0 6px; }
+  .clue-verse p.cv-sig{ margin-top:10px; font-style:normal; font-weight:700; }
+  .clue-decode li{ margin-bottom:5px; }
+  .clue-leads .leads-arrow{ font-weight:700; color:var(--coral); }
+  @media (max-width:640px){
+    .clue-top{ flex-direction:column; align-items:flex-start; gap:4px; }
+    .clue-ch{ margin-left:0; }
+  }
+
+  .poll-card{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:20px 24px; margin:20px 0; box-shadow:var(--shadow); }
+  .poll-q{ font-weight:800; color:var(--burgundy); font-size:1.05em; margin-bottom:6px; }
+  .poll-prompt{ font-size:1.15em; margin-bottom:14px; color:var(--ink); line-height:1.4; }
+  .poll-options{ display:flex; flex-direction:column; gap:10px; }
+  .poll-opt{ position:relative; overflow:hidden; text-align:left; border:2px solid var(--line); border-radius:12px; background:var(--paper); padding:12px 16px; cursor:pointer; font-family:var(--font); font-size:1em; transition: border-color .15s, transform .1s; width:100%; }
+  .poll-opt:hover{ border-color:var(--gold); transform: translateY(-1px); }
+  .poll-opt:active{ transform: translateY(0); }
+  .poll-opt.voted{ border-color:var(--gold); }
+  .poll-opt-fill{ position:absolute; top:0; left:0; bottom:0; width:0%; background:linear-gradient(90deg, rgba(185,138,47,0.45) 0%, rgba(185,138,47,0.18) 100%); transition:width .5s ease; z-index:0; }
+  .poll-opt-content{ position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .poll-opt-text{ color:var(--ink); }
+  .poll-opt-pct{ font-weight:800; color:var(--burgundy); white-space:nowrap; }
+  .poll-footer{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; font-size:0.85em; color:var(--ink-soft); }
+  .poll-reset{ background:none; border:none; color:var(--ink-soft); cursor:pointer; text-decoration:underline; font-size:0.9em; font-family:var(--font); padding:0; }
+  .poll-reset:hover{ color:var(--burgundy); }
+
+  .char-avatar.clickable{ cursor:pointer; }
+  .char-avatar.clickable .circle{ transition: transform 0.15s, box-shadow 0.15s; }
+  .char-avatar.clickable:hover .circle{ transform: scale(1.08); box-shadow: 0 0 0 4px var(--paper-2), 0 0 0 6px var(--gold); }
+  .char-avatar.clickable:hover .nm{ text-decoration: underline; }
+  .char-avatar .circle{
+    width:72px;height:72px;border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:bold; font-size:20px;
+    margin:0 auto 8px;
+  }
+  .char-avatar .nm{ font-size:14.5px; font-weight:bold; line-height:1.25; }
+  .char-avatar .rl{ font-size:13px; color:var(--ink-soft); line-height:1.3; }
+  .char-avatar .hint{ font-size:10.5px; color:var(--gold); font-weight:bold; opacity:0.85; }
+
+  /* vocab flip cards */
+  .vocab-flip-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+    gap: 18px;
+    margin: 8px 0 8px;
+  }
+  .flip-card{ perspective:600px; height:210px; cursor:pointer; }
+  .flip-inner{
+    position:relative; width:100%; height:100%;
+    transition: transform .5s;
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{ transform: rotateY(180deg); }
+  .flip-front,.flip-back{
+    position:absolute; inset:0;
+    backface-visibility:hidden;
+    border-radius:12px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:14px;
+  }
+  .flip-front{
+    background:#eef4ee; border:1px solid #cfe0cf; color:#2f4a2c;
+    gap:10px;
+  }
+  .flip-front .fb-word{ font-weight:bold; font-size:20px; }
+  .flip-front .fb-example{
+    font-style:italic; font-size:15px; color:#3f5c3a;
+    border-top:1px solid #cfe0cf; padding-top:9px; margin-top:2px; line-height:1.42;
+  }
+  .flip-back{
+    background:#2f4a2c; color:#fff;
+    transform: rotateY(180deg);
+    font-size:17px; line-height:1.42;
+  }
+  .flip-back .fb-def-label{
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
+    color:#cfe0cf; margin-bottom:7px;
+  }
+  .flip-card.title-word .flip-front{
+    background:#fdf2e3; border:2px solid var(--gold); color:#7a5a12;
+  }
+  .flip-card.title-word .flip-front::before{
+    content:"📌 chapter word";
+    position:absolute; top:6px; left:0; right:0;
+    font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
+    color:#b98a2f;
+  }
+  .flip-card.title-word .flip-front .fb-example{ border-top-color:#eccf94; color:#8a641f; }
+  .flip-card.title-word .flip-back{ background:#7a5a12; }
+  .flip-card.title-word .flip-back .fb-def-label{ color:#f0d9a8; }
+  .vocab-hint{ font-size:14px; color:var(--ink-soft); margin: 0 0 10px; font-style:italic; }
+
+  .section-label{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ink-soft);
+    margin: 26px 0 10px;
+    font-weight:bold;
+  }
+
+  .summary-card{
+    background: var(--paper-2);
+    border-left: 6px solid var(--blue);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 6px 0 24px;
+  }
+  .key-point{
+    display:flex; gap:14px; align-items:flex-start;
+    background:linear-gradient(135deg, var(--paper-2), var(--card));
+    border:2px solid var(--gold);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    margin:12px 0 20px;
+    box-shadow:var(--shadow);
+  }
+  .key-point .kp-icon{ font-size:1.7em; flex-shrink:0; line-height:1; }
+  .key-point .kp-text{ font-size:1.15em; font-weight:700; color:var(--ink); line-height:1.35; }
+  .key-point .kp-label{ display:block; font-size:0.6em; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:3px; }
+  .summary-card .lbl{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--blue);
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .summary-card p{
+    margin: 0;
+    font-size: 1.05em;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .summary-card p b{ color: var(--burgundy); font-weight: 800; }
+  .summary-card p mark{
+    background: linear-gradient(to bottom, transparent 55%, var(--gold) 55%);
+    color: var(--ink); font-weight: 700; padding: 0 1px;
+  }
+
+  /* character map slide — grouped emoji cards */
+  .map-legend{
+    display:flex; flex-wrap:wrap; gap:10px 18px;
+    margin:14px 0 24px; padding:12px 16px;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:12px;
+    font-size:0.85em; color:var(--ink-soft);
+  }
+  .map-legend span{ display:flex; align-items:center; gap:6px; }
+  .map-legend .sw{ width:12px; height:12px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .map-groups{ display:flex; flex-direction:column; gap:30px; }
+  .map-group-title{
+    font-weight:800; font-size:1.15em; margin-bottom:12px;
+    display:flex; align-items:center; gap:8px; color:var(--ink);
+  }
+  .map-group-title .sw{ width:14px; height:14px; border-radius:50%; display:inline-block; }
+  .map-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(175px,1fr));
+    gap:14px;
+  }
+  .char-card{
+    position:relative;
+    background:var(--card);
+    border:2px solid var(--line);
+    border-top:5px solid var(--accent, var(--line));
+    border-radius:var(--radius);
+    padding:16px 12px 14px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:opacity .3s, box-shadow .2s;
+  }
+  .char-card.dimmed{ opacity:.22; }
+  .char-card.pulsing{ animation:cardPulse 1s ease-in-out 3; }
+  @keyframes cardPulse{
+    0%,100%{ box-shadow:var(--shadow); }
+    50%{ box-shadow:0 0 0 6px rgba(217,154,43,0.4), var(--shadow); }
+  }
+  .char-emoji{ font-size:2.6em; line-height:1; margin-bottom:8px; }
+  .char-card .cname{ font-weight:800; font-size:1.05em; margin-bottom:2px; }
+  .char-card .crole{ font-size:0.8em; color:var(--ink-soft); margin-bottom:10px; min-height:2.2em; }
+  .char-badge{
+    display:inline-block; font-size:0.68em; font-weight:600;
+    background:#fdf2e3; border:1px solid var(--gold); color:#8a641f;
+    border-radius:12px; padding:2px 9px; margin-bottom:8px;
+  }
+  .char-links{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; }
+  .char-link-btn{
+    font-family:var(--font); font-size:0.72em;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:14px;
+    padding:3px 9px; cursor:pointer; color:var(--ink);
+  }
+  .char-link-btn:hover{ border-color:var(--gold); background:#fdf2e3; }
+  .chorus-card{
+    border-style:dashed; border-color:#b0512f; border-top-style:dashed;
+    max-width:640px; margin:0 auto; padding:22px 20px;
+  }
+  .chorus-card .char-emoji{ font-size:3em; }
+  .chorus-targets{ font-size:0.85em; color:var(--ink-soft); margin:10px 0 8px; }
+
+
+  footer{
+    text-align:center;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  /* FLOATING NOTES PANEL */
+  #notes-panel{
+    position: sticky;
+    top: 70px;
+    width: 340px;
+    flex: 0 0 340px;
+    margin: 22px 20px 22px 0;
+    align-self: flex-start;
+    max-height: calc(100vh - 100px);
+    display:flex;
+    flex-direction:column;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    transition: width 0.2s, flex-basis 0.2s;
+  }
+  #notes-panel.collapsed{ width: 52px; flex-basis: 52px; }
+  #notes-panel.collapsed .notes-inner{ display:none; }
+  #notes-panel .notes-head{
+    background: var(--burgundy);
+    color: #f7ecd9;
+    padding: 12px 14px;
+    display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  #notes-panel .notes-head span.title{
+    font-size: 17px; letter-spacing:0.3px; white-space:nowrap; overflow:hidden;
+  }
+  #notes-panel.collapsed .notes-head span.title{ display:none; }
+  #notes-panel .notes-head .toggle-btn{
+    background: rgba(255,255,255,0.15);
+    border: none; color: #fff;
+    width: 26px; height: 26px; border-radius: 6px;
+    cursor:pointer; font-size: 14px; flex-shrink:0;
+  }
+  .notes-inner{ padding: 14px; overflow-y:auto; flex:1; }
+  .notes-inner label{
+    display:block; font-size: 12.5px; text-transform: uppercase;
+    color: var(--ink-soft); margin: 12px 0 5px;
+  }
+  .notes-inner label:first-child{ margin-top:0; }
+  .note-current-label{
+    width:100%; padding: 8px 10px; border-radius: 8px;
+    border: 1px solid var(--line); font-size: 13.5px; font-weight:700;
+    background: var(--paper-2); color: var(--burgundy); font-family: var(--font);
+    margin-bottom: 4px;
+  }
+  .notes-toolbar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    margin-bottom: 6px; padding: 6px; border: 1px solid var(--line);
+    border-radius: 8px; background: var(--paper-2);
+  }
+  .notes-toolbar .fmt-btn{
+    width: 30px; height: 28px; border-radius: 6px; border: 1px solid var(--line);
+    background: #fff; cursor: pointer; font-size: 14px; font-family: inherit;
+    color: var(--ink); display:flex; align-items:center; justify-content:center;
+  }
+  .notes-toolbar .fmt-btn:hover{ background: var(--paper-2); border-color: var(--burgundy); }
+  .toolbar-sep{ width:1px; height: 22px; background: var(--line); margin: 0 2px; }
+  .notes-toolbar .hl-btn{
+    width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line);
+    cursor: pointer; padding: 0;
+  }
+  .notes-toolbar .hl-btn:hover{ border-color: var(--burgundy); }
+  .notes-toolbar .hl-none{
+    background: #fff; display:flex; align-items:center; justify-content:center;
+    font-size: 12px; color: var(--ink-soft); line-height:1;
+  }
+  #notes-panel .note-editor{
+    width:100%; min-height: 260px; border: 1px solid var(--line);
+    border-radius: 8px; padding: 10px 12px; font-family: inherit;
+    font-size: 16px; line-height:1.5; overflow-y:auto;
+    background: #fffdf8; color: var(--ink);
+  }
+  #notes-panel .note-editor:focus{ outline: 2px solid var(--burgundy-soft); outline-offset: 1px; }
+  #notes-panel .note-editor:empty:before{
+    content: attr(data-placeholder); color: #9a9488;
+  }
+  .notes-btn-row{ display:flex; flex-wrap:wrap; gap: 6px; margin-top: 10px; }
+  #notes-panel .clear-btn{
+    font-size: 11.5px; background: none; border: 1px solid var(--line);
+    color: var(--ink-soft); padding: 6px 9px; border-radius: 20px; cursor:pointer;
+    font-family: var(--font); flex: 1 1 auto; white-space:nowrap;
+  }
+  #notes-panel .pdf-btn{
+    font-size: 11.5px; background: var(--burgundy); border: 1px solid var(--burgundy);
+    color: #fff; padding: 6px 9px; border-radius: 20px; cursor:pointer;
+    flex: 1 1 auto; font-family: var(--font); white-space:nowrap;
+  }
+  #notes-panel .pdf-btn:hover{ background: #0e1a2c; }
+  #notes-panel .clear-all-btn{
+    font-size: 11.5px; background: none; border: 1px solid var(--burgundy-soft);
+    color: var(--burgundy-soft); padding: 6px 9px; border-radius: 20px; cursor:pointer;
+    font-family: var(--font); flex: 1 1 auto; white-space:nowrap;
+  }
+  #notes-panel .clear-all-btn:hover{ background: #fdeceb; }
+
+  @media (max-width: 900px){
+    .page{ flex-direction: column; }
+    #notes-panel{
+      position: fixed; top:auto; bottom: 16px; right: 16px; left: 16px;
+      width:auto; flex-basis:auto; max-height: 55vh; margin:0; z-index: 80;
+    }
+    #notes-panel.collapsed{ left:auto; width:52px; }
+  }
+  @media (max-width: 600px){
+    header.hero h1{ font-size: 1.4em; }
+    .slide{ padding: 18px 16px 22px; }
+    .beat-strip::before{ left:20%; right:20%; }
+    .nav-btn span.lbl{ display:none; }
+  }
+</style>
+</head>
+<body>
+<div style="font:600 14px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;padding:12px 16px"><a href="index.html" style="color:inherit;opacity:.85;text-decoration:none">← All our books</a></div>
+
+
+<header class="hero">
+  <div class="kicker">Book Club Discussion Guide</div>
+  <h1>Guilty by Definition</h1>
+  <p class="sub">by Susie Dent — a mystery told through words, letters, and the dictionary that holds them</p>
+  <div class="badges">
+    <div class="badge">📖 Chapters 1–46 + Epilogue · book complete</div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <div class="progress-label">Chapters 1–46 + Epilogue · finished</div>
+  </div>
+</header>
+
+<nav class="toc" id="toc"></nav>
+
+<div class="page">
+  <div class="wrap">
+
+    <div class="deck">
+      <div class="slide-controls">
+        <button class="nav-btn" id="prevBtn">◀ <span class="lbl">Prev</span></button>
+        <div class="dots" id="dots"></div>
+        <button class="nav-btn" id="nextBtn"><span class="lbl">Next</span> ▶</button>
+      </div>
+      <div id="slides"></div>
+      <div style="text-align:center;margin-top:12px;">
+        <span class="counter" id="counter"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <aside id="notes-panel">
+    <div class="notes-head" id="notes-toggle">
+      <span class="title">📝 Discussion Notes</span>
+      <button class="toggle-btn" id="notes-toggle-btn" aria-label="Toggle notes panel">–</button>
+    </div>
+    <div class="notes-inner">
+      <div id="note-current-label" class="note-current-label">🕸️ Character Map</div>
+      <div class="notes-toolbar">
+        <button type="button" class="fmt-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+        <button type="button" class="fmt-btn" data-cmd="underline" title="Underline"><u>U</u></button>
+        <span class="toolbar-sep"></span>
+        <button type="button" class="hl-btn" data-color="#fff3a3" title="Yellow highlight" style="background:#fff3a3"></button>
+        <button type="button" class="hl-btn" data-color="#b8f2c9" title="Green highlight" style="background:#b8f2c9"></button>
+        <button type="button" class="hl-btn" data-color="#ffc9de" title="Pink highlight" style="background:#ffc9de"></button>
+        <button type="button" class="hl-btn" data-color="#bcdcff" title="Blue highlight" style="background:#bcdcff"></button>
+        <button type="button" class="hl-btn hl-none" data-color="transparent" title="Remove highlight">✕</button>
+      </div>
+      <div id="note-editor" class="note-editor" contenteditable="true" data-placeholder="Write your thoughts, theories, and things to remember..."></div>
+      <div class="notes-btn-row">
+        <button class="clear-btn" id="notes-clear">Clear this note</button>
+        <button class="clear-all-btn" id="notes-clear-all">🗑️ Clear all</button>
+        <button class="pdf-btn" id="notes-pdf">🖨️ Save PDF</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>Made for our book club · Guilty by Definition, Susie Dent · Chapters 1–46 + Epilogue, complete</footer>
+
+<script>
+/* ---------- character map data: grouped, emoji-based ---------- */
+const charInfo = {
+  martha:   {emoji:"🔍", name:"Martha",   role:"our narrator, senior editor",     links:["charlie","gabriel","rebecca"]},
+  charlie:  {emoji:"🌟", name:"Charlie",  role:"found — buried at Godstow Abbey", links:["martha","tom","mike","brin"], badge:"📮 received postcards"},
+  gabriel:  {emoji:"👨‍🦳", name:"Gabriel",  role:"father — revealed as Chorus",    links:["martha","rebecca"], badge:"✍️ was Chorus all along"},
+  rebecca:  {emoji:"👩‍🦳", name:"Rebecca",  role:"mother (deceased)",              links:["martha","gabriel"]},
+  alex:     {emoji:"🐱", name:"Alex",     role:"editor",                          links:["george","charlie"], badge:"📮 received a postcard"},
+  simon:    {emoji:"🤫", name:"Simon",    role:"editor — killed by Olivia",       links:["brin"]},
+  safi:     {emoji:"🕵️‍♀️", name:"Safi",     role:"youngest editor",                links:["alex","simon"], badge:"📮 received a postcard"},
+  jonathan: {emoji:"🎭", name:"Jonathan", role:"covered up Olivia's crimes",      links:["charlie","gemma","olivia"], badge:"🚔 arrested for the cover-up"},
+  olivia:   {emoji:"🗡️", name:"Olivia",   role:"Jonathan's wife — the real killer", links:["jonathan"], badge:"🚔 fled the country"},
+  mike:     {emoji:"🧑‍💼", name:"Mike",     role:"former boss",                    links:["charlie"], badge:"📮 postcards, yearly"},
+  tom:      {emoji:"💔", name:"Tom",      role:"Charlie's ex-boyfriend",          links:["tanya","charlie"], badge:"📮 received a postcard"},
+  tanya:    {emoji:"💍", name:"Tanya",    role:"old friend — married to Tom",     links:["tom","charlie"], badge:"📮 received a postcard"},
+  brin:     {emoji:"📚", name:"Brin",     role:"Burford book dealer",             links:["charlie","simon"], badge:"📮 received a postcard"},
+  george:   {emoji:"✉️", name:"George",   role:"Alex's husband",                  links:["alex"]},
+  gemma:    {emoji:"🤐", name:"Gemma",    role:"covered for Jonathan for years",  links:["martha","jonathan"], badge:"🚔 charged with obstruction"},
+  caldwell: {emoji:"👮", name:"Caldwell", role:"detective",                       links:["martha"]}
+};
+const mapGroups = [
+  {title:"👪 The Thornhill Family", accent:"var(--burgundy)", members:["martha","charlie","gabriel","rebecca"]},
+  {title:"📚 The CED Dictionary Team", accent:"var(--blue)", members:["alex","simon","safi","jonathan","mike"]},
+  {title:"🔗 Charlie's Outer Circle", accent:"var(--gold)", members:["tom","tanya","brin","george","gemma","olivia"]},
+  {title:"👮 Police", accent:"var(--teal)", members:["caldwell"]}
+];
+const chorusTargets = ["martha","alex","mike","safi","brin","tom","tanya","jonathan"];
+
+/* ---------- character avatar colours (for chapter slides) ---------- */
+const avatarColors = {
+  martha:"#20375c", charlie:"#20375c", gabriel:"#20375c", rebecca:"#20375c",
+  safi:"#3f6b8a", alex:"#3f6b8a", simon:"#3f6b8a", jonathan:"#3f6b8a", mike:"#3f6b8a",
+  tom:"#d99a2b", brin:"#d99a2b", tanya:"#d99a2b", george:"#d99a2b", gemma:"#d99a2b", olivia:"#d99a2b",
+  caldwell:"#3f8f6f"
+};
+function keyFor(name){
+  return Object.keys(avatarColors).find(k => name.toLowerCase().includes(k)) || null;
+}
+function colorFor(name){
+  const key = keyFor(name);
+  return key ? avatarColors[key] : "#8a8478";
+}
+function highlightMapNode(key){
+  goTo(0);
+  setTimeout(() => {
+    const nodes = document.querySelectorAll('.map-node');
+    const target = document.getElementById('node-' + key);
+    if(!target) return;
+    nodes.forEach(n => { if(n !== target) n.classList.add('dimmed'); });
+    target.classList.add('pulsing');
+    target.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(() => {
+      nodes.forEach(n => { n.classList.remove('dimmed'); n.classList.remove('pulsing'); });
+    }, 3200);
+  }, 350);
+}
+function focusCard(key){
+  const nodes = document.querySelectorAll('.map-node');
+  const target = document.getElementById('node-' + key);
+  if(!target) return;
+  nodes.forEach(n => { if(n !== target) n.classList.add('dimmed'); });
+  target.classList.add('pulsing');
+  target.scrollIntoView({behavior:'smooth', block:'center'});
+  setTimeout(() => {
+    nodes.forEach(n => { n.classList.remove('dimmed'); n.classList.remove('pulsing'); });
+  }, 3200);
+}
+function initials(name){
+  return name.replace(/\(.*?\)/g,'').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+}
+
+/* ---------- chapter data ---------- */
+const chapters = [
+  {
+    n: 1, title: "The Letter Arrives",
+    hook: "A mystery letter, signed 'Chorus,' turns out to be about Martha's missing sister.",
+    summary: "<b>Martha Thornhill</b> and her small team at the Clarendon English Dictionary receive a strange letter, signed only \"<b>Chorus</b>,\" full of Shakespeare quotes about secrets, truth, and murder. Decoding a hidden acrostic, they piece together a date — 2010 — and <mark>Martha realizes the letter is about her older sister Charlie, who vanished that year and was never found</mark>.",
+    quote: "Truth will come to light. Murder cannot be hid long.",
+    beats: [
+      {icon:"✉️", txt:"Mystery letter arrives, signed \"Chorus\""},
+      {icon:"🔤", txt:"Team decodes a hidden acrostic"},
+      {icon:"😱", txt:"MMX = 2010. It's about Charlie."}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Chorus\" = Old English for Charlotte — the letter is about Charlie."},
+      {type:"plus", label:"To discuss", text:"\"Language defines us... dying, renewal, everything in between.\""},
+      {type:"q", label:"Question", text:"Is the letter a joke about Jonathan's book — or something more serious?"},
+      {type:"fun", label:"Fun", text:"Arachibutyrophobia = fear of peanut butter stuck to your mouth."}
+    ],
+    characters: [
+      {n:"Martha Thornhill", d:"senior editor, CED"},
+      {n:"Safi", d:"youngest editor"},
+      {n:"Alex Monroe", d:"loves folklore"},
+      {n:"Simon", d:"applied for Martha's job"},
+      {n:"Jonathan Overton", d:"Shakespeare expert"}
+    ],
+    vocab: [
+      {w:"quaesitum", d:"(17th-century noun) that which is searched for", e:"The letter's real meaning felt like a <b>quaesitum</b> — the very thing the whole team was searching for."},
+      {w:"wool-gathering", d:"daydreaming; aimless thinking", e:"Martha caught herself <b>wool-gathering</b> at her desk, staring out at the street instead of working."},
+      {w:"apace", d:"quickly", e:"New words enter the dictionary <b>apace</b>, faster than anyone can track."},
+      {w:"tepid", d:"lukewarm, unenthusiastic", e:"Safi gave a <b>tepid</b> response to Simon's joke — she'd heard it before."},
+      {w:"crambazzled", d:"aged from drink & excess", e:"By the end of the party he looked thoroughly <b>crambazzled</b>."},
+      {w:"arachibutyrophobia", d:"fear of peanut butter on the roof of your mouth", e:"Safi joked that her fear of peanut butter sticking to the roof of her mouth was a real case of <b>arachibutyrophobia</b>."},
+      {w:"betwittering", d:"chattering on and on", e:"Alex kept <b>betwittering</b> about her cat while everyone tried to focus on the letter."}
+    ],
+    poll: {
+      q: "If a cryptic letter like this landed in your inbox about someone you'd lost, what would you do?",
+      options: ["Decode it immediately — I'd need to know", "Leave it alone — it's too painful to reopen"]
+    }
+  },
+  {
+    n: 2, title: "The Book Launch",
+    hook: "At Jonathan's party, a misquote cracks the letter's code — and confirms it's about Charlie.",
+    summary: "At the launch party for <b>Jonathan Overton</b>'s new book, Martha's godmother <b>Gemma</b> turns out to be his literary agent and an old family friend. Jonathan spots a deliberate misquote in the letter, cracking a second hidden clue, and by the end of the night <mark>it's confirmed: the letter really is about Charlie's 2010 disappearance from the CED</mark>.",
+    quote: "I didn't realise this was a homecoming. You must know half the people here.",
+    beats: [
+      {icon:"🥂", txt:"Museum party for Jonathan's new book"},
+      {icon:"👵", txt:"Gemma is revealed as Jonathan's agent"},
+      {icon:"🔍", txt:"A misquote decodes a second clue"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Confirmed: Charlie vanished in 2010, working at the CED."},
+      {type:"plus", label:"To discuss", text:"\"Leave yourself behind... nothing of your old life counts.\""},
+      {type:"q", label:"Question", text:"Why did one misplaced apostrophe matter so much?"},
+      {type:"fun", label:"Fun", text:"\"I don't want to measure out my life with cocktail sticks.\""}
+    ],
+    characters: [
+      {n:"Gemma Waldegrave", d:"godmother / agent"},
+      {n:"Olivia", d:"Jonathan's wife"},
+      {n:"Jonathan Overton", d:"charismatic, admired"}
+    ],
+    vocab: [
+      {w:"perceivance", d:"(17th-century noun) the capacity or action of perceiving", e:"Martha's <b>perceivance</b> sharpened with every new clue Chorus sent."},
+      {w:"palimpsest", d:"reused, with old traces showing through", e:"Old Oxford felt like a <b>palimpsest</b>, each era faintly visible beneath the next."},
+      {w:"thumbnail", d:"a small, quick summary", e:"Give me the <b>thumbnail</b> version — what did the letter actually say?"},
+      {w:"watch your six", d:"stay alert behind you", e:"Caldwell warned Martha to <b>watch your six</b> until they knew who Chorus really was."},
+      {w:"alliteration", d:"repeating starting sounds", e:"Chorus loved <b>alliteration</b>, weaving it through even the darkest lines."},
+      {w:"scansion", d:"analysing poetic rhythm", e:"Jonathan noticed the <b>scansion</b> was off — one syllable too many, and on purpose."},
+      {w:"nod-crafty", d:"nodding along while tuned out", e:"Simon was <b>nod-crafty</b> in meetings, agreeing with everything while thinking about lunch."}
+    ],
+    poll: {
+      q: "Gemma turns out to be quietly connected to everyone in the room. Does that make you feel...",
+      options: ["Comforted — there's safety in a tight-knit circle", "Suspicious — that's a lot of overlapping ties"]
+    }
+  },
+  {
+    n: 3, title: "Ghosts in Oxford",
+    hook: "Thirteen years on, Martha still sees Charlie everywhere — and her parents grieve very differently.",
+    summary: "Thirteen years after Charlie vanished, Martha still catches herself mistaking strangers for her sister on the street. <mark>Police found Charlie's bike near the ring road and assumed she'd run away</mark>, while Martha's parents — warm, hopeful <b>Rebecca</b> and cool, reserved <b>Gabriel</b> — grieve in completely different ways.",
+    quote: "Truth will come to light. Murder cannot be hid long.",
+    beats: [
+      {icon:"👻", txt:"Martha keeps seeing Charlie's \"ghost\""},
+      {icon:"🚲", txt:"Charlie's bike was found near the ring road"},
+      {icon:"🏠", txt:"Rebecca hopeful, Gabriel closed off"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Most runaways come back in time,\" police told the family."},
+      {type:"q", label:"Question", text:"Could this letter really be from Charlie herself?"},
+      {type:"plus", label:"To discuss", text:"Grief without a body or an ending."}
+    ],
+    characters: [
+      {n:"Rebecca", d:"mother (deceased)"},
+      {n:"Gabriel", d:"father, archivist"}
+    ],
+    vocab: [
+      {w:"eidolon", d:"(17th-century noun) a spirit, phantom, or apparition", e:"Martha still saw Charlie's <b>eidolon</b> in every crowded street."},
+      {w:"aspectabund", d:"very expressive-faced", e:"Gabriel was usually unreadable, but that morning he looked strangely <b>aspectabund</b>."}
+    ],
+    poll: {
+      q: "Whose way of grieving do you think is healthier — Rebecca's hope, or Gabriel's silence?",
+      options: ["Rebecca — staying open and hopeful", "Gabriel — staying quiet and private", "Neither, honestly — both seem stuck"]
+    }
+  },
+  {
+    n: 4, title: "Talking About Charlie",
+    hook: "The team opens up — Charlie wasn't always easy to love.",
+    summary: "The team finally talks openly about Charlie, revealing she was a PhD student who also worked part-time at the CED, and that <mark>she vanished the same week as Jonathan's first book launch</mark>. <b>Simon</b> and <b>Alex</b> admit she could be brilliant and charming but also sharp enough to leave \"invisible wounds\" — complicating the picture of a perfect missing girl.",
+    quote: "A conversation with Charlie left you with tiny wounds dealt by invisible archers, and they festered.",
+    beats: [
+      {icon:"🍷", txt:"Alex & Simon share memories"},
+      {icon:"🎓", txt:"Charlie: PhD student + part-time editor"},
+      {icon:"💔", txt:"Brilliant, but could sting"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Elf-shot\": tiny invisible wounds from Charlie's remarks, that festered."},
+      {type:"q", label:"Question", text:"What if Chorus has written before, unnoticed?"},
+      {type:"plus", label:"To discuss", text:"Is gossip community bonding — or something worse?"}
+    ],
+    characters: [
+      {n:"Mike Orme", d:"former boss, 15 yrs"},
+      {n:"Charlie", d:"brilliant, could hurt"}
+    ],
+    vocab: [
+      {w:"throng", d:"a dense crowd", e:"The launch party was a <b>throng</b> of publishers, critics, and old friends."},
+      {w:"took to task", d:"scolded someone", e:"Martha <b>took Simon to task</b> for missing the deadline."},
+      {w:"conjobble", d:"to chat something over", e:"The team sat down to <b>conjobble</b> over what the postcard could mean."},
+      {w:"newsmongers", d:"gossip-spreaders", e:"Oxford's academic circles were full of <b>newsmongers</b> eager for gossip about Jonathan."},
+      {w:"elf-shot", d:"an invisible, stinging wound", e:"Charlie's sharpest remarks landed like <b>elf-shot</b> — invisible wounds that festered for years."},
+      {w:"platitude", d:"an empty, overused remark", e:"\"Everything happens for a reason\" felt like an empty <b>platitude</b> to Martha."}
+    ],
+    poll: {
+      q: "Would you rather spend time with someone brilliant but sharp-tongued, or kind but unremarkable?",
+      options: ["Brilliant, even if it stings sometimes", "Kind, even if it's less exciting"]
+    }
+  },
+  {
+    n: 5, title: "A Postcard for Alex",
+    hook: "The mystery widens: Alex gets a threatening postcard of her own.",
+    summary: "We see a quieter side of <b>Alex</b> at home with her cat, Rags — until a postcard of the CED building arrives with a chilling message: <mark>\"I DO DESPISE A LIAR.\"</mark> It's now clear Chorus isn't writing only to Martha.",
+    quote: "I DO DESPISE A LIAR",
+    beats: [
+      {icon:"🐱", txt:"Alex, home alone, with her cat Rags"},
+      {icon:"📮", txt:"A CED postcard arrives"},
+      {icon:"⚠️", txt:"\"I DO DESPISE A LIAR\""}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Chorus isn't writing only to Martha anymore."},
+      {type:"q", label:"Question", text:"Was it time to make the call — to the police?"}
+    ],
+    characters: [
+      {n:"Alex", d:"private, still healing from divorce"}
+    ],
+    vocab: [
+      {w:"wone", d:"an old word for a home", e:"The old cottage had been Gabriel's family's <b>wone</b> for three generations."},
+      {w:"cajoled", d:"persuaded through flattery", e:"Alex <b>cajoled</b> Martha into finally opening Charlie's box of postcards."}
+    ],
+    poll: {
+      q: "\"I DO DESPISE A LIAR\" just landed in Alex's mailbox. What would you do next?",
+      options: ["Call the police right now", "Wait and gather more evidence first"]
+    }
+  },
+  {
+    n: 6, title: "Charlie's Room",
+    hook: "Martha steps into Charlie's untouched bedroom — kept exactly as it was in 2010.",
+    summary: "Martha returns to her family home and steps into Charlie's bedroom, preserved untouched since 2010 at her mother's wishes. Her father <b>Gabriel</b> catches her there and refuses to let the room change, and the next morning Martha finds two old postcards — <mark>Chorus has been in contact with the family for far longer than anyone realized</mark>.",
+    quote: "You can't have this room, Martha. This is Charlie's, for as long as I'm allowed to stay.",
+    beats: [
+      {icon:"🚪", txt:"Charlie's room, frozen in time"},
+      {icon:"🌸", txt:"\"Shibui\": beauty in being unseen"},
+      {icon:"📬", txt:"Two old postcards discovered"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Gabriel: \"This is Charlie's, for as long as I'm allowed to stay.\""},
+      {type:"plus", label:"To discuss", text:"Assuming a life path without ever really choosing it."}
+    ],
+    characters: [
+      {n:"Gabriel", d:"can't let go of the room"},
+      {n:"Charlie", d:"feared being ordinary"}
+    ],
+    vocab: [
+      {w:"shrine", d:"(15th-century noun) an object of veneration", e:"Charlie's untouched room had become a kind of <b>shrine</b>, exactly as she'd left it."},
+      {w:"haphazardly", d:"without any plan", e:"The books on Charlie's shelf were stacked <b>haphazardly</b>, as if she'd left in a hurry."},
+      {w:"odds and ends", d:"leftover small items", e:"The shoebox was full of <b>odds and ends</b> — ticket stubs, photos, a stray key."}
+    ],
+    poll: {
+      q: "Gabriel keeps Charlie's room exactly as it was. Is that a comfort — or a trap?",
+      options: ["A comfort — it keeps her close", "A trap — it keeps the family stuck in 2010"]
+    }
+  },
+  {
+    n: 7, title: "One Postcard a Year",
+    hook: "Safi finds proof: Chorus has been writing to the office for over a decade.",
+    summary: "<b>Safi</b> digs through the CED's old correspondence archive and finds proof: <mark>someone has sent one postcard every single year since 2011, always on Charlie's birthday, always to former boss Mike Orme</mark>, always built around words for lying and falsehood — \"pseudologiser\" (an inventor of elaborate lies), \"gobemouche\" (someone who believes anything, a \"fly-swallower\"), and \"falsedict\" among them. The team decides to keep investigating quietly rather than alarm Jonathan.",
+    quote: "FALSEDICT: AN UNTRUE DELIVERANCE OR UTTERANCE",
+    beats: [
+      {icon:"🗂️", txt:"Safi searches the old archive"},
+      {icon:"📅", txt:"One postcard, every year, since 2011"},
+      {icon:"🤐", txt:"The team decides to stay quiet, for now"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Filed under \"Miscellaneous\" for over a decade — nobody had connected the postcards until now."},
+      {type:"q", label:"Question", text:"Why send them to Mike, and not the whole office — until now?"}
+    ],
+    characters: [
+      {n:"Paula, Josh, Yasmin", d:"Safi's housemates"}
+    ],
+    vocab: [
+      {w:"zemblanity", d:"an unhappy discovery you expected", e:"Finding the postcards felt like pure <b>zemblanity</b> — a discovery she'd been dreading all along."},
+      {w:"higgledy-piggledy", d:"a disorderly jumble", e:"The old archive was <b>higgledy-piggledy</b>, decades of letters stuffed into random folders."},
+      {w:"pseudologiser", d:"an inventor of elaborate lies", e:"Whoever sent the postcards clearly admired words for liars — a <b>pseudologiser</b>'s dream."},
+      {w:"gobemouche", d:"someone who believes anything, open-mouthed — literally a \"fly-swallower\"", e:"\"Don't be such a <b>gobemouche</b>,\" Alex said, \"not everything in the papers is true.\""}
+    ],
+    poll: {
+      q: "The team decides to investigate quietly rather than tell Jonathan right away. Good call?",
+      options: ["Yes — protect him a little longer", "No — he deserved to know immediately"]
+    }
+  },
+  {
+    n: 8, title: "Among the Gravestones",
+    hook: "Martha, a self-confessed graveyard-lover, reflects on how different she and Charlie really were.",
+    summary: "Wandering her favourite graveyard — she's a self-confessed \"taphophile\" — Martha reflects on how different she and Charlie really were: Charlie always driven and in motion, Martha always content to stay in her shadow. By the end of the chapter she decides there's no avoiding it any longer: <mark>it's time to go to the police</mark>.",
+    quote: "We define ourselves by comparison with others — I am not like them, so I am like this.",
+    beats: [
+      {icon:"⚰️", txt:"Martha, the \"taphophile\""},
+      {icon:"🔔", txt:"The \"saved by the bell\" story"},
+      {icon:"👮", txt:"Decision: go to the police"}
+    ],
+    tagged: [
+      {type:"plus", label:"To discuss", text:"\"Even in death we are defined in terms of other people.\""},
+      {type:"q", label:"Question", text:"How does Martha define herself, without Charlie?"},
+      {type:"fun", label:"Fun", text:"The (probably false) origin story of \"saved by the bell.\""}
+    ],
+    characters: [
+      {n:"Martha", d:"lifelong graveyard-lover"}
+    ],
+    vocab: [
+      {w:"hethensith", d:"since pagan times", e:"The old stone circle had stood there <b>hethensith</b>, since pagan times."},
+      {w:"louche", d:"shady, but rakish", e:"The bookshop had a <b>louche</b>, slightly disreputable charm."},
+      {w:"taphophile", d:"a lover of graveyards", e:"As a lifelong <b>taphophile</b>, Martha found graveyards more peaceful than parties."},
+      {w:"serried", d:"packed closely in rows", e:"Rows of <b>serried</b> headstones stretched across the old cemetery."},
+      {w:"apocryphal", d:"widely told, doubtful truth", e:"The story of the bell was almost certainly <b>apocryphal</b>, but everyone repeated it anyway."}
+    ],
+    poll: {
+      q: "\"We define ourselves by comparison with others.\" How true is that for you?",
+      options: ["Very true — I measure myself against people around me", "Not really — I try to judge myself on my own terms"]
+    }
+  },
+  {
+    n: 9, title: "At the Police Station",
+    hook: "Martha lays out the facts for Detective Caldwell — and hears an unsettling theory.",
+    summary: "Martha lays out everything for Detective <b>Oliver Caldwell</b> at St Aldates police station, and together they revisit the hard facts of Charlie's disappearance — the ended relationship, the cancelled lunch, the abandoned bike. <mark>Caldwell's verdict: whoever Chorus is, they almost certainly know Martha and her team personally</mark>.",
+    quote: "If it's not just a random person who's read about the case online, then we have to assume it's someone who knows you and your team.",
+    beats: [
+      {icon:"🏢", txt:"St Aldates police station"},
+      {icon:"📋", txt:"The facts, reviewed"},
+      {icon:"🎯", txt:"Chorus likely knows the team personally"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Bike found in the woods, near the C. S. Lewis house."},
+      {type:"plus", label:"To discuss", text:"Is a hard truth always better than a comforting lie?"}
+    ],
+    characters: [
+      {n:"Detective Caldwell", d:"calm, methodical"}
+    ],
+    vocab: [
+      {w:"grob", d:"to sulk or look sullen", e:"Simon tended to <b>grob</b> whenever he didn't get his way."},
+      {w:"onomastics", d:"the study of name origins", e:"Safi's love of <b>onomastics</b> meant she could explain the origin of almost any name."}
+    ],
+    poll: {
+      q: "Caldwell says Chorus almost certainly knows the team personally. Which feels worse to you?",
+      options: ["Scarier — betrayal by someone close", "Easier — at least it isn't a total stranger"]
+    }
+  },
+  {
+    n: 10, title: "Did You Like Charlie?",
+    hook: "Martha asks bluntly — and Alex gives an honest, uncomfortable answer.",
+    summary: "Martha asks the team bluntly whether they actually liked her sister. <b>Alex</b> admits she never really warmed to Charlie, who could be subtly patronising, and <b>Simon</b> recalls a colleague of Charlie's PhD supervisor once calling her \"blithely self-confident\" — someone who saw people who struggled under pressure as weak. Shaken, Alex goes home and <mark>calls Mike Orme, the retired former boss, telling him he needs to come back to Oxford</mark>.",
+    quote: "I don't mean I had anything against Charlie... but if I'm being honest I didn't warm to her.",
+    beats: [
+      {icon:"🗣️", txt:"Martha asks, directly"},
+      {icon:"😬", txt:"Alex: \"I didn't warm to her\""},
+      {icon:"📞", txt:"Alex calls Mike Orme"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Blithely self-confident\" — pressure never seemed to touch her."},
+      {type:"bang", label:"Key moment", text:"Alex: \"Hello, Mike... I really think you need to come back.\""},
+      {type:"q", label:"Question", text:"How hard is it to admit you didn't like someone who's missing?"}
+    ],
+    characters: [
+      {n:"Alex", d:"admits she didn't warm to Charlie"},
+      {n:"Catherine Carmichael", d:"PhD supervisor's colleague"},
+      {n:"Mike Orme", d:"asked to return, by Alex"}
+    ],
+    vocab: [
+      {w:"witship", d:"a rare word for having wit", e:"Even under pressure, Alex never lost her <b>witship</b>."}
+    ],
+    poll: {
+      q: "Is it okay to admit you didn't like someone who's missing?",
+      options: ["Yes — honesty matters, even now", "No — some things are kinder left unsaid"]
+    }
+  },
+  {
+    n: 11, title: "Cracks in the Shakespeare Legend",
+    hook: "A new letter arrives — and Jonathan's Shakespeare expertise quietly takes a hit.",
+    summary: "A new letter arrives, dense with religious language about captives, sanctuary, and salvation, just as the team's regular word-history meeting reveals another crack in <b>Jonathan</b>'s Shakespeare expertise — <mark>a word once credited to him turns out to predate his own plays</mark>. Jonathan, distracted and on edge, barely seems to notice.",
+    quote: "Confessing sins, where a captive of the past might expect sanctuary, will help you find your level.",
+    beats: [
+      {icon:"📜", txt:"New letter: captives, sanctuary"},
+      {icon:"🏛️", txt:"Word-history meeting"},
+      {icon:"🧱", txt:"Another \"Shakespeare word\" predates him"}
+    ],
+    tagged: [
+      {type:"fun", label:"Fun", text:"\"Dog\" — one of English's biggest etymology mysteries."},
+      {type:"q", label:"Question", text:"\"How are things going?\" — a small question hiding real tension."}
+    ],
+    characters: [
+      {n:"Jonathan Overton", d:"restless, distracted"}
+    ],
+    vocab: [
+      {w:"convent", d:"a religious community, esp. for nuns", e:"The letter's language of sanctuary and captives felt almost like a message from a <b>convent</b>."}
+    ],
+    poll: {
+      q: "A small, unnoticed error is quietly cracking Jonathan's expert reputation. Does that matter?",
+      options: ["Yes — accuracy should always matter", "Not much — one small slip shouldn't define a legacy"]
+    }
+  },
+  {
+    n: 12, title: "The Clue in the Church",
+    hook: "A hidden 'time signature' leads the team to a real 17th-century prisoner's carving.",
+    summary: "Martha finally snaps under the pressure of being toyed with by Chorus, but the team pushes on and decodes a hidden \"time signature\" in the letter, leading them to a real historical clue: <mark>a 17th-century prisoner's name carved into a church font in Burford</mark>. Martha connects the dots to <b>Brin Edwards</b>, a book dealer in Burford where Charlie once worked.",
+    quote: "Who the hell is doing this? Turning my sister's disappearance into a parlour game?",
+    beats: [
+      {icon:"🎼", txt:"Hidden \"time signature\" found"},
+      {icon:"⛪", txt:"Points to a 1649 prisoner"},
+      {icon:"📍", txt:"Burford + Brin Edwards"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"ANTHONY SEDLEY 1649 PRISNER — carved into a church font."},
+      {type:"plus", label:"To discuss", text:"Gemma invites Martha to a private dinner — right as the pressure peaks."}
+    ],
+    characters: [
+      {n:"Anthony Sedley", d:"1649 prisoner, historical"},
+      {n:"Brin Edwards", d:"Burford book dealer"}
+    ],
+    vocab: [
+      {w:"mathom", d:"kept, though unwanted (Tolkien)", e:"The old dictionary proofs sat in the archive like a <b>mathom</b> nobody wanted to throw away."}
+    ],
+    poll: {
+      q: "Gemma invites Martha to a private dinner right as the pressure peaks. Your read on that?",
+      options: ["A kind, well-timed gesture", "Odd timing — a little suspicious"]
+    }
+  },
+  {
+    n: 13, title: "On the Road to Burford",
+    hook: "The team drops everything to chase the clue — and Alex asks the question no one else dared.",
+    summary: "The team drops everything and drives to Burford to track down Brin Edwards, hoping he can explain why Chorus pointed them his way. On the road, <b>Alex</b> finally asks Martha <mark>the question no one else has dared — would she rather not know what happened to Charlie</mark> — while Simon's mention of Chaucer's \"The Pardoner's Tale\" leaves a warning about greed hanging over the whole group.",
+    quote: "Martha, would you rather not know what happened to Charlie?",
+    beats: [
+      {icon:"🚗", txt:"The team drives to Burford"},
+      {icon:"❓", txt:"\"Would you rather not know?\""},
+      {icon:"💰", txt:"The Pardoner's Tale: greed kills"}
+    ],
+    tagged: [
+      {type:"plus", label:"To discuss", text:"\"Come on, Martha, we'll make up the hours\" — the team chooses her over office rules."},
+      {type:"fun", label:"Fun", text:"\"Whan that Aprille with his shoures soote...\" — real Chaucer."}
+    ],
+    characters: [
+      {n:"Brin Edwards", d:"who they're travelling to meet"}
+    ],
+    vocab: [
+      {w:"ert", d:"active, busy (opposite of inert)", e:"After weeks of dread, it was strange to feel so <b>ert</b> and ready to act."}
+    ],
+    poll: {
+      q: "\"Martha, would you rather not know what happened to Charlie?\" — your honest answer?",
+      options: ["Know the truth, whatever it costs", "Live with the uncertainty — some things are safer unknown"]
+    }
+  },
+  {
+    n: 14, title: "The Cheshire Cat Bookshop",
+    hook: "At Charlie's old bookshop, Brin Edwards reveals a betrayal nobody knew about.",
+    summary: "The team visits the Cheshire Cat, the antiquarian bookshop where Charlie worked for eight years before she disappeared. Owner <b>Brin Edwards</b> reveals that <mark>she quit that same April — the year she vanished — and lied to her family about why</mark>. He also admits that, months before she left, he discovered <mark>Charlie had been secretly buying the best book lots for herself and reselling them, pocketing the profit</mark>.",
+    quote: "Why would Charlie give up working here and then lie about it?",
+    beats: [
+      {icon:"📚", txt:"Charlie's old bookshop, the Cheshire Cat"},
+      {icon:"🤥", txt:"She quit in 2010 — and lied about why"},
+      {icon:"💰", txt:"Secretly dealing books for herself"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Charlie quit in April 2010 — the year she disappeared — and lied to her family about it."},
+      {type:"bang", label:"Key moment", text:"Brin: \"It turned out she'd been buying the best lots for herself... keeping the profit.\""},
+      {type:"bang", label:"Key moment", text:"Confronted, \"she just laughed\" and told him it was his own fault."},
+      {type:"q", label:"Question", text:"Why would Charlie give up working here and then lie about it?"},
+      {type:"plus", label:"To discuss", text:"\"To enter the shop's doors was to leave all sense of sparring identities behind.\""}
+    ],
+    characters: [
+      {n:"Brin Edwards", d:"bookshop owner, knew Charlie 8 yrs"},
+      {n:"Charlie (through Brin)", d:"enthusiastic, charming — but self-serving"}
+    ],
+    vocab: [
+      {w:"philobiblist", d:"a lover of books", e:"Brin was a true <b>philobiblist</b>, happiest surrounded by rare, dusty volumes."},
+      {w:"busman's holiday", d:"spending free time doing what you do for work", e:"Reading manuscripts on her day off was a total <b>busman's holiday</b> for Martha."},
+      {w:"Verschlimmbesserung", d:"German: an \"improvement\" that makes things worse", e:"Adding more security only made things worse — a real <b>Verschlimmbesserung</b>."},
+      {w:"shorthand", d:"a quick system of writing with symbols", e:"Alex jotted the date down in her own private <b>shorthand</b>."}
+    ],
+    poll: {
+      q: "Charlie was secretly skimming profit from the shop. Does this change how you see her?",
+      options: ["Yes — it changes everything about her image", "No — people are complicated, this doesn't erase the rest"]
+    }
+  },
+  {
+    n: 15, title: "You're a Bolter",
+    hook: "Alex calls out Martha's habit of running away — then it's time to track down Tom.",
+    summary: "Martha and Alex talk over dictionary words like \"apricity\" (the warmth of winter sun) and \"respair\" (a recovery from despair) — and Alex bluntly calls Martha <mark>\"a bolter,\"</mark> someone who flees or retreats into her own head the moment things get hard. Still shaken by what Brin revealed, the team decides their next step is to track down <b>Tom</b>, Charlie's ex-boyfriend, and calls Charlie's old friend <b>Tanya</b> for his number — only to learn Tanya is now Tom's wife of seven years, and not thrilled about the request.",
+    quote: "I know I can deal with the not-knowing. I've done it for years. I just don't know if I can live with the truth.",
+    beats: [
+      {icon:"☀️", txt:"Apricity & respair — new words"},
+      {icon:"🏃", txt:"Alex: \"You're a bolter\""},
+      {icon:"📞", txt:"Tanya — now Tom's wife — has his number"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"He did say he could have killed her\"... \"if he had, it would surely be the last thing he'd say.\""},
+      {type:"plus", label:"To discuss", text:"\"Whenever you are threatened, you flee, or you disappear into your own thoughts.\""},
+      {type:"plus", label:"To discuss", text:"\"Habits of a lifetime are hard to break.\""},
+      {type:"plus", label:"To discuss", text:"\"Once a word went into the CED, it never came out.\""}
+    ],
+    characters: [
+      {n:"Tom", d:"Charlie's ex-boyfriend"},
+      {n:"Tanya", d:"Charlie's old friend — now married to Tom, 7 years"}
+    ],
+    vocab: [
+      {w:"oberration", d:"an old word for wandering off course", e:"Grief sent Martha into a kind of <b>oberration</b>, wandering the city without a plan."},
+      {w:"apricity", d:"the warmth of the sun on a winter's day", e:"Even in December, there was a moment of pure <b>apricity</b> on the office steps."},
+      {w:"respair", d:"a recovery from despair", e:"After years of dread, finding an answer felt like <b>respair</b> — hope rising from despair."}
+    ],
+    poll: {
+      q: "Are you a \"bolter\" like Martha — do you flee or freeze under pressure?",
+      options: ["Yes — I retreat into my own head", "No — I tend to face things head-on", "Depends entirely on the situation"]
+    }
+  },
+  {
+    n: 16, title: "Married to the Past",
+    hook: "Old resentments spill out at Tom and Tanya's — and a small handwriting detail raises a big question about Alex.",
+    summary: "The team visits Tom and Tanya at home, and Tanya — still guarded after all these years — accuses them outright of sending the postcards, before admitting <mark>she got one herself</mark>. Tom explains that after Charlie dumped him weeks before she vanished, police treated him as a suspect and questioned him for hours; both his and Tanya's postcards used the same photo from the original \"missing\" posters. Martha wonders aloud whether Charlie had been having an affair with someone older, someone who could help her career — and as <b>Alex</b> jots the date in her old-fashioned mixed-numeral style, <mark>Martha realizes it matches the handwriting on a postcard she found hidden in Charlie's shoebox</mark>.",
+    quote: "Where have you been, sister?",
+    beats: [
+      {icon:"🚗", txt:"Team visits Tom and Tanya's home"},
+      {icon:"😠", txt:"Tanya: \"Did you send those bloody postcards?\""},
+      {icon:"📅", txt:"Alex's odd dating habit echoes Charlie's postcard"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Both Tom and Tanya got their own postcards — Chorus isn't only writing to the CED team."},
+      {type:"bang", label:"Key moment", text:"Alex's habit of writing dates (day-month-year, mixed numerals) matches handwriting on a postcard from Charlie's own shoebox."},
+      {type:"plus", label:"To discuss", text:"Martha wonders if Charlie was having an affair with someone older — \"someone who could help her career.\""},
+      {type:"q", label:"Question", text:"Could Alex have some real connection to the postcards, or is this just an eerie coincidence?"}
+    ],
+    characters: [
+      {n:"Tanya", d:"suspicious, still resentful of Charlie"},
+      {n:"Tom", d:"once treated as a suspect by police"},
+      {n:"Alex", d:"her handwriting oddly matches a clue"}
+    ],
+    vocab: [
+      {w:"umbrage", d:"offense or annoyance, often taken quickly", e:"Alex took immediate <b>umbrage</b> at the suggestion her husband was involved."},
+      {w:"PPE", d:"an Oxford degree: Politics, Philosophy & Economics", e:"Tanya had read <b>PPE</b> at Oxford before moving into marketing."},
+      {w:"knock into next week", d:"an old-fashioned threat meaning to hit someone very hard", e:"\"I'll <b>knock you into next week</b>,\" Tanya snapped, before realising who she was talking to."}
+    ],
+    poll: {
+      q: "Alex's handwriting habit eerily matches a mysterious postcard. Is this a real clue, or an unfair coincidence to read into?",
+      options: ["A real clue worth investigating", "Just an unfair coincidence"]
+    }
+  },
+  {
+    n: 17, title: "Safi's Discoveries",
+    hook: "Safi looks into Charlie's past online — and stumbles onto a tense, unexplained argument between Brin and Simon.",
+    summary: "While the team is in Burford, <b>Safi</b> searches for Charlie online and finds her described as beautiful but flawed — \"superior and even a little cruel\" — which stirs up Safi's own feelings about being the office's bookish outsider. Wandering the shop, she overhears <b>Brin</b> and <b>Simon</b> arguing in hushed, heated voices, Brin snapping <mark>\"I did you a favour! Don't you dare drag all that up again,\"</mark> before Simon notices her and stops abruptly. Safi then visits St John the Baptist Church to see the Anthony Sedley inscription and a reputedly haunted seventeenth-century tomb for herself.",
+    quote: "I did you a favour! Don't you dare drag all that up again.",
+    beats: [
+      {icon:"🔍", txt:"Safi researches Charlie online"},
+      {icon:"🤫", txt:"Overhears Brin and Simon arguing"},
+      {icon:"⛪", txt:"Visits the church font herself"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Brin snaps at Simon: \"I did you a favour... don't you dare drag all that up again.\""},
+      {type:"plus", label:"To discuss", text:"Safi feels like the office outsider — \"a geek whose love of her own company unsettled those who flourished only in the gaze of others.\""},
+      {type:"q", label:"Question", text:"What favour could Brin have done for Simon — and why is it still a secret?"}
+    ],
+    characters: [
+      {n:"Brin Edwards", d:"snaps at Simon — hiding something"},
+      {n:"Simon", d:"has an unexplained past with Brin"},
+      {n:"Safi", d:"researches Charlie, feels like the outsider"}
+    ],
+    vocab: [
+      {w:"videnda", d:"Latin: things worth seeing — a sightseeing checklist", e:"Safi's guidebook listed the church font among Burford's <b>videnda</b>."}
+    ],
+    poll: {
+      q: "Brin and Simon are clearly hiding something between them. What do you think it is?",
+      options: ["An old business deal gone wrong", "Something to do with Charlie", "Something unrelated and personal", "Not sure yet — need more clues"]
+    }
+  },
+  {
+    n: 18, title: "A Word With Jonathan",
+    hook: "Martha confronts Jonathan at home — and finally asks the question she's avoided for years.",
+    summary: "Martha visits <b>Jonathan</b>'s home to explain why she went to the police, but he seems more concerned that she skipped senior management first than about Charlie herself. <b>Olivia</b>, his wife, denies the family has received any odd postcards. On the doorstep, Martha finally asks Jonathan outright whether Charlie was in love with him — obsessed, even, as he'd once admitted — and <mark>he concedes he wondered if her interest in his work \"wasn't purely intellectual\"</mark>. Rattled, Martha calls Detective Caldwell on her way home.",
+    quote: "I thought she was in love with you. Obsessed, even. You said as much to me at the time.",
+    beats: [
+      {icon:"🚪", txt:"Martha visits Jonathan's home"},
+      {icon:"🙅", txt:"Olivia: \"We haven't had any odd postcards\""},
+      {icon:"❓", txt:"Martha finally asks about Charlie and Jonathan"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Jonathan admits he wondered if Charlie's interest in his work \"wasn't purely intellectual.\""},
+      {type:"plus", label:"To discuss", text:"Jonathan's first concern is protocol — \"you should have consulted senior management\" — not Charlie."},
+      {type:"q", label:"Question", text:"Why does Martha wait until she's leaving to ask the hardest question?"}
+    ],
+    characters: [
+      {n:"Jonathan Overton", d:"defensive about protocol; admits Charlie's obsession"},
+      {n:"Olivia", d:"denies receiving any postcards"}
+    ],
+    vocab: [
+      {w:"velleity", d:"(17th-century noun) the act of wishing or desiring without any accompanying effort", e:"It was only a <b>velleity</b>, a passing wish to leave — not a real decision."},
+      {w:"contristation", d:"an old word for deep sadness or grief", e:"A quiet <b>contristation</b> settled over the room once Jonathan left."}
+    ],
+    poll: {
+      q: "Jonathan seems more upset about protocol than about Charlie. What does that tell you about him?",
+      options: ["He's hiding something", "He's just a rigid, image-conscious person", "Grief just shows up differently for everyone"]
+    }
+  },
+  {
+    n: 19, title: "The Bank Card",
+    hook: "A hidden bank card and a stranger's handwriting turn Martha's suspicions toward someone close to Alex.",
+    summary: "Back home, Martha rechecks the postcard tucked in Charlie's shoebox — printed by the British Library, addressed to Charlie at Somerville and dated 30.iii.MMX, reading simply <mark>\"You dazzle me.\"</mark> The handwriting looks eerily like <b>Alex</b>'s own habit of writing dates. She also finds <mark>a debit card, in Charlie's name but from an unfamiliar bank, hidden behind a photo</mark> of Charlie squinting in the sun outside an unrecognized country house. Alex, visiting, urges her to be more open with the team about Charlie, Brin, and Simon, hinting at old unresolved tension. Alex also admits she's already called <b>Mike Orme</b> — who has now booked the Eurostar home for the following Thursday.",
+    quote: "You dazzle me. — 30.iii.MMX",
+    beats: [
+      {icon:"🔍", txt:"Martha rechecks the postcard in Charlie's shoebox"},
+      {icon:"💳", txt:"A hidden bank card falls out of a photo frame"},
+      {icon:"🚄", txt:"Mike Orme books the Eurostar home"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"You dazzle me.\" — dated 30.iii.MMX, addressed to Charlie at Somerville. The handwriting looks just like Alex's own habit of writing dates."},
+      {type:"bang", label:"Key moment", text:"A debit card in Charlie's name, from a bank the family never used, hidden behind her photo."},
+      {type:"q", label:"Question", text:"Why would Charlie hide a bank card behind her own photograph?"}
+    ],
+    characters: [
+      {n:"Martha", d:"rechecks old evidence, notices the handwriting"},
+      {n:"Alex", d:"urges Martha to be more open with the team"},
+      {n:"Mike", d:"booking his return flight, at last"}
+    ],
+    vocab: [
+      {w:"xenium", d:"an old word for a gift given to a guest or stranger", e:"The postcard felt like a strange <b>xenium</b>, a gift from someone unknown."},
+      {w:"rackups", d:"Cumberland dialect: the consequences of ill-doing", e:"In old Cumberland dialect, <b>rackups</b> meant the consequences finally catching up with you."}
+    ],
+    poll: {
+      q: "Martha found a hidden bank card in her sister's photo frame. What do you think it means?",
+      options: ["Charlie had a secret she was hiding from her family", "It's unrelated — just an old forgotten card", "It's a clue Chorus wants them to find"]
+    }
+  },
+  {
+    n: 20, title: "Whose Handwriting Is This?",
+    hook: "Martha shows Alex the postcard — and the answer hits far too close to home.",
+    summary: "The team gathers to compare notes: Jonathan now wants to get involved, and Olivia was seen at the book launch with her eyes on Jonathan. Martha shows <b>Alex</b> the postcard from Charlie's shoebox — and <mark>Alex recognizes the handwriting instantly as her husband George's</mark>. Furious and rattled, Alex insists there's no way George was having an affair with Charlie, and calls him at once, without success. Meanwhile <b>Safi</b> digs up an unsettling detail: <mark>George's postcard is dated just three days before Charlie quit working for Brin</mark>, and Simon flatly denies being close to Brin at all — despite what Safi overheard.",
+    quote: "It's my husband's handwriting.",
+    beats: [
+      {icon:"🖋️", txt:"Martha shows Alex the postcard"},
+      {icon:"😠", txt:"Alex: \"It's my husband's handwriting\""},
+      {icon:"📅", txt:"Safi: the postcard predates Charlie quitting Brin's shop by 3 days"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"George's handwriting is on the postcard hidden in Charlie's shoebox."},
+      {type:"bang", label:"Key moment", text:"The bank card details go to Caldwell — it's not a bank the family recognizes."},
+      {type:"plus", label:"To discuss", text:"Simon insists he barely knows Brin — despite the argument Safi overheard."},
+      {type:"q", label:"Question", text:"Should Martha have asked Alex privately before showing everyone the postcard?"}
+    ],
+    characters: [
+      {n:"Alex", d:"recognizes her husband George's handwriting"},
+      {n:"George", d:"Alex's husband — his handwriting is on the postcard"},
+      {n:"Simon", d:"denies being close to Brin"},
+      {n:"Safi", d:"spots the timeline connecting the postcard and Charlie's resignation"}
+    ],
+    vocab: [
+      {w:"sardonian", d:"the archaic root of \"sardonic\" — from a Sardinian plant said to cause a grim, deathly smile", e:"His <b>sardonian</b> smile made the whole room uneasy."},
+      {w:"pregret", d:"knowing you'll regret something but doing it anyway", e:"She felt a flash of <b>pregret</b> even as she picked up the phone."}
+    ],
+    poll: {
+      q: "If you were Alex, would you want to know if your spouse had a hidden connection to Charlie?",
+      options: ["Yes — I'd need to know, whatever it costs", "I'd rather not know unless it was truly necessary"]
+    }
+  },
+  {
+    n: 21, title: "What the Detective Knows",
+    hook: "Caldwell lays out the hard truth — and a journalist starts sniffing around the story.",
+    summary: "Martha meets Detective Caldwell at a café, where he reveals the mystery bank card wasn't registered to any account the family recognized, and that Brin also received a postcard — meaning Chorus has a wide pool of suspects. <mark>Caldwell gently tells Martha he now believes Charlie died in 2010</mark>, and warns that if someone got away with murder for over a decade, they'll be careful and clever. That afternoon, <mark>a local journalist calls the CED office asking pointed questions about the mysterious letters</mark> — the story is starting to leak. Shaken, <b>Alex</b> opens up to Safi about her marriage to George: fifteen joyless years that finally ended in divorce.",
+    quote: "Yes, Martha, I'm beginning to think Charlie died in 2010. I am so very sorry to say so.",
+    beats: [
+      {icon:"☕", txt:"Martha meets Caldwell at Brown's café"},
+      {icon:"💔", txt:"Caldwell: \"I think Charlie died in 2010\""},
+      {icon:"📰", txt:"A journalist calls, asking about the letters"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Caldwell confirms the bank card wasn't on any account the family recognized."},
+      {type:"bang", label:"Key moment", text:"Brin got a postcard too — Chorus is watching a wide circle of people."},
+      {type:"plus", label:"To discuss", text:"Alex opens up about her joyless, fifteen-year marriage to George."},
+      {type:"q", label:"Question", text:"Should the team talk to the press, or try to keep this quiet?"}
+    ],
+    characters: [
+      {n:"Caldwell", d:"gently shares his theory that Charlie is dead"},
+      {n:"Alex", d:"opens up about her marriage"}
+    ],
+    vocab: [
+      {w:"addubitation", d:"(16th-century noun) a suggestion of doubt", e:"Simon paused in <b>addubitation</b> before answering Caldwell's question."},
+      {w:"sonder", d:"the realization that everyone around you has a life as vivid and complex as your own", e:"Walking through the market, Martha felt a wave of <b>sonder</b> — everyone around her living a whole hidden life."}
+    ],
+    poll: {
+      q: "The story is about to go public. Good or bad for finding the truth?",
+      options: ["Good — public pressure might turn up new leads", "Bad — it'll scare Chorus into silence, or worse"]
+    }
+  },
+  {
+    n: 22, title: "The Night She Disappeared",
+    hook: "Martha finally asks her father the hardest question of all.",
+    summary: "With reporters circling, Martha tells her father <b>Gabriel</b> everything — the letters, the postcards, her talk with Caldwell. It tips into a raw, painful conversation: Gabriel admits he always sensed Martha's old resentment over being overshadowed by Charlie, and Martha admits it was real, even if it never stopped her loving her sister. Gabriel walks her through <mark>the last ordinary morning: he and Rebecca left for an event, Charlie stayed home saying she'd go to lunch and then the library, and by the time they returned that night the house was locked, her bike and laptop gone</mark>. Gabriel then asks, sharply, whether Martha was ever secretly relieved Charlie was gone — and Martha realizes grief made her sister more present than ever, impossible to compete with, then or now.",
+    quote: "Are you sure you weren't sometimes secretly glad that Charlie was out of the way?",
+    beats: [
+      {icon:"🏠", txt:"Martha tells Gabriel everything"},
+      {icon:"💭", txt:"Gabriel walks through the last ordinary morning"},
+      {icon:"💥", txt:"Gabriel: \"Were you secretly glad she was gone?\""}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"The last sighting: Charlie home alone, planning lunch then the library — then gone."},
+      {type:"bang", label:"Key moment", text:"Gabriel's hardest question: was Martha secretly relieved?"},
+      {type:"q", label:"Question", text:"Is it fair for Gabriel to ask Martha that question?"}
+    ],
+    characters: [
+      {n:"Gabriel", d:"finally opens up about the day Charlie vanished"},
+      {n:"Martha", d:"admits her old resentment toward Charlie"}
+    ],
+    vocab: [
+      {w:"induratise", d:"to harden, especially emotionally", e:"Years of grief seemed to <b>induratise</b> Gabriel's heart."},
+      {w:"procaffeinate", d:"putting everything off until you've had enough coffee", e:"\"I'm not avoiding it,\" Alex said, \"I'm just <b>procaffeinating</b>.\""}
+    ],
+    poll: {
+      q: "Gabriel asks if Martha was secretly glad Charlie was \"out of the way.\" Was that a fair question to ask?",
+      options: ["Fair — grief doesn't excuse avoiding hard truths", "Unfair — a painful thing to ask your own child"]
+    }
+  },
+  {
+    n: 23, title: "Office Gossip",
+    hook: "Over drinks, Safi hears a rumor about Jonathan that changes the shape of every theory.",
+    summary: "Out for drinks with her friend Josh, <b>Safi</b> sees a newspaper photo of Jonathan and Olivia and hears some office gossip: <mark>Jonathan reportedly has a habit of picking a favorite student every year, and once made a young woman's life difficult after his wife found out about his attention to her</mark>. Safi wonders privately whether Charlie — magnetic and ambitious — would have been drawn to charismatic, rising-star Jonathan rather than to Alex's quiet husband George. She decides to keep the gossip between herself and her closest colleagues for now.",
+    quote: "If Charlie was going to have an affair with anyone, wouldn't she be more likely to choose the charismatic up-and-coming Jonathan?",
+    beats: [
+      {icon:"🍻", txt:"Safi hears gossip about Jonathan from Josh"},
+      {icon:"📰", txt:"A photo of Jonathan and Olivia at a public event"},
+      {icon:"🤔", txt:"Safi wonders if Jonathan, not George, is the real story"}
+    ],
+    tagged: [
+      {type:"plus", label:"To discuss", text:"Jonathan reportedly picked a favorite student every year — and his wife made one of their lives difficult."},
+      {type:"q", label:"Question", text:"Is this reliable evidence, or just office gossip getting out of hand?"}
+    ],
+    characters: [
+      {n:"Jonathan", d:"the subject of an unflattering rumor"},
+      {n:"Safi", d:"keeps the gossip close for now"}
+    ],
+    vocab: [
+      {w:"broggle", d:"to poke about, searching clumsily", e:"Safi liked to <b>broggle</b> through old boxes, never quite sure what she'd find."}
+    ],
+    poll: {
+      q: "Is gossip like this worth taking seriously in an investigation?",
+      options: ["Yes — gossip often has a grain of truth", "No — it's unreliable and unfair to Jonathan"]
+    }
+  },
+  {
+    n: 24, title: "Fourteen Lines",
+    hook: "A new letter arrives with a hidden Shakespearean number — and Jonathan's answers start to sound rehearsed.",
+    summary: "As the CED's press office quietly prepares a statement for local media, a new letter arrives just before the bank holiday. When the team meets to decode it with Jonathan, Martha finally asks the question that's haunted her: what does he remember about the day of his book launch, when her parents last saw Charlie at home that morning and Gemma got a text saying she couldn't make lunch? Jonathan bristles, insists he only came to discuss the letter, and eventually admits — irritably — that <mark>Olivia came back to his rooms after the launch for a drink and he put her in a cab in the early hours</mark>. His answers feel rehearsed, and <b>Safi</b> notices something the others missed: <mark>the new letter has exactly fourteen lines — the length of a Shakespearean sonnet</mark>.",
+    quote: "Christ, that's none of your business!",
+    beats: [
+      {icon:"📩", txt:"A new letter arrives before the bank holiday"},
+      {icon:"😤", txt:"Jonathan, questioned about the day Charlie vanished, gets defensive"},
+      {icon:"🔢", txt:"Safi notices: the letter has exactly fourteen lines"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Jonathan admits Olivia stayed at his rooms late the night Charlie disappeared."},
+      {type:"bang", label:"Key moment", text:"\"Search for that lost treasure. I'm no rhymer, but in rhyme resides the truth.\" — the letter opens, exactly fourteen lines long, pointing straight at a Shakespeare sonnet."},
+      {type:"plus", label:"To discuss", text:"Jonathan got a postcard too: \"Thou art a scholar, speak to it!\""},
+      {type:"q", label:"Question", text:"Are Jonathan's answers rehearsed because he's hiding something — or just because he's asked constantly?"}
+    ],
+    characters: [
+      {n:"Jonathan", d:"defensive, evasive about the night Charlie disappeared"},
+      {n:"Safi", d:"spots the fourteen-line clue"}
+    ],
+    vocab: [
+      {w:"ireful", d:"full of anger", e:"Jonathan grew visibly <b>ireful</b> the moment Alex asked about that night."},
+      {w:"parasocial", d:"the false sense of intimacy people feel toward someone they don't really know, like a celebrity", e:"Fans of Jonathan's books often felt a strange <b>parasocial</b> closeness to him."}
+    ],
+    poll: {
+      q: "Jonathan's answers feel rehearsed. What's your read?",
+      options: ["He's hiding something significant", "He's just tired of being grilled about it", "Not sure yet — need more clues"]
+    }
+  },
+  {
+    n: 25, title: "Sonnet 116",
+    hook: "With Jonathan gone, the team turns to the one clue they haven't cracked: which sonnet?",
+    summary: "With the tension gone along with Jonathan, the team wonders whether a specific Shakespeare sonnet might unlock the new letter's meaning. <b>Safi</b> immediately suggests <mark>Sonnet 116 — her father's favorite</mark> — though nobody is certain yet that Chorus is pointing to it specifically.",
+    quote: "116. It's my dad's favourite.",
+    beats: [
+      {icon:"😮‍💨", txt:"The room relaxes once Jonathan leaves"},
+      {icon:"📖", txt:"The team searches for a matching sonnet"},
+      {icon:"💡", txt:"Safi suggests Sonnet 116"}
+    ],
+    tagged: [
+      {type:"q", label:"Question", text:"Sonnet 116 is famously about love that doesn't change. Why might Chorus point there?"}
+    ],
+    characters: [
+      {n:"Safi", d:"suggests Sonnet 116, her father's favorite"}
+    ],
+    vocab: [],
+    poll: {
+      q: "The letter's fourteen lines suggest a sonnet clue. Which theory feels right to you?",
+      options: ["Sonnet 116 — about unchanging love", "A different sonnet entirely", "It's a red herring, not a real clue"]
+    }
+  },
+  {
+    n: 26, title: "Cracking the Sonnet Code",
+    hook: "The rhyme scheme itself is the final key — leading straight to a hidden psalm about a thirsty deer.",
+    summary: "The team finally cracks the third letter's code: unlike the first two, this one uses the sonnet's own rhyme scheme (abab cdcd efef gg) combined with a simple number-substitution cipher (a=1, b=2...) to pick out specific words from each stanza. The decoded message reads: <mark>\"Search the psalm. That is the answer to the universe. Find the thirsty creature.\"</mark> <b>Safi</b> cracks it instantly — the answer to life, the universe, and everything is 42, a nod to The Hitchhiker's Guide to the Galaxy — pointing them to Psalm 42 and its famous line about a deer (\"hart\") panting for water. Meanwhile, <b>Caldwell</b> reports that <mark>Charlie's secret bank account held just under five thousand pounds, funded by legitimate book dealers, with cash withdrawals right up until Easter before she disappeared</mark>.",
+    quote: "Search the psalm. That is the answer to the universe. Find the thirsty creature.",
+    beats: [
+      {icon:"🎼", txt:"Team cracks the sonnet's rhyme-scheme cipher"},
+      {icon:"🦌", txt:"\"42\" points them to Psalm 42 — and a thirsty deer"},
+      {icon:"💷", txt:"Caldwell: the secret account held nearly £5,000"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Forty-two!\" — the Hitchhiker's Guide joke leads straight to Psalm 42 and its \"hart\" (deer)."},
+      {type:"bang", label:"Key moment", text:"The secret account: ~£5,000, funded by real book dealers, last withdrawal just before Easter 2010."},
+      {type:"q", label:"Question", text:"Why would Chorus build a puzzle this literary — is Chorus a fellow word-lover, or testing the team specifically?"}
+    ],
+    characters: [
+      {n:"Safi", d:"cracks the Hitchhiker's Guide reference"},
+      {n:"Alex", d:"works through the cipher with the team"},
+      {n:"Caldwell", d:"reports on the secret bank account"}
+    ],
+    vocab: [
+      {w:"inquilinate", d:"to lodge or live as a tenant in another's home or nest", e:"The postcards had been <b>inquilinate</b> in the office archive for years, hiding in plain sight."}
+    ],
+    poll: {
+      q: "The letter's code was cracked partly using pop culture (Hitchhiker's Guide). Does that feel realistic for \"Chorus,\" or too playful for someone possibly dangerous?",
+      options: ["It fits — Chorus loves games, dangerous or not", "It feels off — too playful for something this serious"]
+    }
+  },
+  {
+    n: 27, title: "Gemma's Truth",
+    hook: "Gemma didn't send the postcard — but she has plenty to say about Charlie, and about Jonathan.",
+    summary: "Over dinner, Martha learns <b>Gemma</b> received a postcard of her own and assumed Martha had sent it — <mark>Martha confirms she didn't, leaving the sender a mystery</mark>. Gemma also reveals this isn't the first attempt to reopen Charlie's case — journalists and even a podcast pitch have circled over the years. More surprisingly, Gemma reveals <mark>what Charlie wanted to discuss with her the day she disappeared: something \"exciting,\" not a novel, that she wanted to offer Gemma first refusal on, as a family friend</mark>. Charlie cancelled their lunch, and Gemma suspects she got cold feet, since Charlie liked drama and the reaction of an audience — the first time Martha has heard anyone describe her sister as anything less than perfect. Gemma also reveals <b>Jonathan</b> has a history of anonymously trashing rivals' work online under a false name — quietly resolved once, but with other unresolved incidents too.",
+    quote: "It's dangerous to build your sense of self on the adoration of others.",
+    beats: [
+      {icon:"🍗", txt:"Dinner with Gemma"},
+      {icon:"📮", txt:"Gemma got a postcard too — \"It wasn't from you?\" \"No.\""},
+      {icon:"📚", txt:"Gemma reveals Jonathan's secret fake reviews"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Charlie wanted to show Gemma something \"special\" the day she vanished — then cancelled."},
+      {type:"bang", label:"Key moment", text:"Jonathan secretly posted fake bad reviews of rivals online, under a false name — \"sock-puppeting.\""},
+      {type:"plus", label:"To discuss", text:"For the first time, Martha hears Charlie described as someone who craved an audience — not flawless."},
+      {type:"q", label:"Question", text:"Was this postcard trail always meant to lead back to Charlie's own secret — not someone else's guilt?"}
+    ],
+    characters: [
+      {n:"Gemma", d:"received a postcard she assumed was from Martha — it wasn't; shares Charlie's last plans"},
+      {n:"Jonathan", d:"revealed to have a history of anonymous online sabotage"}
+    ],
+    vocab: [
+      {w:"engouement", d:"excessive or foolish admiration; infatuation", e:"The team's early <b>engouement</b> with the idea of Chorus being a wronged lover was starting to fade."}
+    ],
+    poll: {
+      q: "Gemma says Charlie \"liked a drama, getting a reaction out of people.\" Does this change your image of Charlie?",
+      options: ["Yes — she suddenly feels more human, less perfect", "No — a little vanity isn't shocking"]
+    }
+  },
+  {
+    n: 28, title: "The Besmirched Slip",
+    hook: "A single miswritten catalogue card in the Slips Room may be Charlie's biggest secret of all.",
+    summary: "Late on a Friday, the team searches the CED's old paper \"Slips Room\" for anything connected to \"hart.\" Instead they find something stranger: <mark>a modern index card for the word \"besmirched,\" citing a source that predates Shakespeare's Hamlet by five years</mark> — from \"The Commonplace Book of J. H., A Provincial Woman,\" credited as edited by <b>Charlotte Thornhill</b>. Charlie never published anything — and <mark>the handwriting on the repeatedly crossed-out, rewritten card is unmistakably hers</mark>. It looks like Charlie had found, or was preparing to reveal, a genuine, unknown historical manuscript — possibly the discovery of a lifetime.",
+    quote: "A new antedating, citing a book that doesn't exist, edited by a woman who didn't publish...",
+    beats: [
+      {icon:"🗄️", txt:"Late-night search of the old Slips Room"},
+      {icon:"📇", txt:"A strange modern card for \"besmirched\""},
+      {icon:"✍️", txt:"It's Charlie's handwriting — and her name as \"editor\""}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"The citation predates Hamlet (1604) by five years — a real historical discovery, if genuine."},
+      {type:"bang", label:"Key moment", text:"\"Edited by Charlotte Thornhill\" — a book that, as far as anyone knows, was never published."},
+      {type:"q", label:"Question", text:"Did Charlie find something real — or was she inventing a discovery to make herself look brilliant?"}
+    ],
+    characters: [
+      {n:"Safi", d:"finds the mysterious besmirched card"},
+      {n:"Charlie", d:"the handwriting and editor credit are hers"}
+    ],
+    vocab: [
+      {w:"vanitarianism", d:"an excessive devotion to vanity or self-regard", e:"Was the manuscript a real discovery, or an act of <b>vanitarianism</b> — a bid to be seen as brilliant?"}
+    ],
+    poll: {
+      q: "If Charlie really found an undiscovered centuries-old manuscript, what do you think she was planning to do with it?",
+      options: ["Publish it herself and take full credit", "Share it with the team eventually", "Sell it privately for money", "We'll never really know"]
+    }
+  },
+  {
+    n: 29, title: "Sunday in the Shoe Cupboard",
+    hook: "Martha spends a quiet Sunday searching for the manuscript — and finally makes peace with loving an imperfect sister.",
+    summary: "On a quiet Sunday, Martha goes through every box in Charlie's shoe cupboard hoping to find the mysterious manuscript, reflecting on how different she and Charlie were even in their feelings about the day of the week. She reminds herself that <mark>loving Charlie always meant loving someone imperfect, not the flawless memory she's built up</mark>. The search comes up empty, but <b>Alex</b> calls with news: <mark>George has finally called back</mark>.",
+    quote: "She needed to remind herself that she had loved her sister with an intensity that still allowed for the realities of imperfection.",
+    beats: [
+      {icon:"🥿", txt:"Martha searches every box in the shoe cupboard"},
+      {icon:"💭", txt:"Reckoning with loving an imperfect sister"},
+      {icon:"📞", txt:"Alex: \"George finally got back to me\""}
+    ],
+    tagged: [
+      {type:"plus", label:"To discuss", text:"\"She needed to remind herself that she had loved her sister... with allowance for imperfection.\""},
+      {type:"q", label:"Question", text:"Is it possible to truly love someone without needing them to be perfect?"}
+    ],
+    characters: [
+      {n:"Martha", d:"searches for the manuscript, reflects on grief"},
+      {n:"Alex", d:"gets a callback from George at last"}
+    ],
+    vocab: [
+      {w:"intaglio", d:"a design incised or engraved into a surface", e:"The old family crest was carved in <b>intaglio</b> on the box where Charlie kept her treasures."}
+    ],
+    poll: {
+      q: "The manuscript search comes up empty. Do you think it still exists somewhere?",
+      options: ["Yes — it's out there, waiting to be found", "No — I think Charlie may have invented the whole thing"]
+    }
+  },
+  {
+    n: 30, title: "The Discovery of a Lifetime",
+    hook: "Walking with Caldwell, Martha pieces together what Charlie might really have found — and why it could be a motive for murder.",
+    summary: "Martha meets <b>Caldwell</b> for a walk through Oxford on May Morning and explains what a \"commonplace book\" really is: a centuries-old personal journal used to preserve quotes, songs, and rhymes otherwise lost to history — genuinely invaluable to historians, filling gaps even in what we know about Shakespeare. Martha theorizes <mark>Charlie may have found a real one, written from a woman's perspective, containing spinning songs and ballads with no other surviving record — \"the discovery of a lifetime\"</mark>. She suspects Charlie kept it secret to control the credit and do the research herself before going public, something Martha finds hard to forgive. Caldwell raises the darkest possibility yet: <mark>if someone else wanted that manuscript, or the credit for finding it, that's a real motive for murder</mark> — circling back to the story Chorus pointed them to earlier, Chaucer's \"The Pardoner's Tale,\" about friends who kill each other over treasure.",
+    quote: "Having it — that could be a motive for murder, couldn't it?",
+    beats: [
+      {icon:"🚶", txt:"Martha and Caldwell walk and talk it through"},
+      {icon:"📖", txt:"What a \"commonplace book\" really is — and why it matters"},
+      {icon:"⚠️", txt:"Caldwell: could the manuscript be a motive for murder?"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"The discovery of a lifetime\" — a real historical manuscript could rewrite what we know about Shakespeare-era voices."},
+      {type:"bang", label:"Key moment", text:"Caldwell connects it all back to \"The Pardoner's Tale\" — friends who murder each other over gold."},
+      {type:"plus", label:"To discuss", text:"Charlie may have wanted total control and credit before sharing her discovery — \"she had no right to try to keep complete editorial control.\""},
+      {type:"q", label:"Question", text:"Who would have had the most to gain — or lose — from that manuscript?"}
+    ],
+    characters: [
+      {n:"Caldwell", d:"raises the manuscript as a possible motive for murder"},
+      {n:"Martha", d:"explains what a commonplace book is, and defends/questions Charlie's secrecy"}
+    ],
+    vocab: [
+      {w:"desiderate", d:"to feel the want of; to desire earnestly", e:"Everyone on the team <b>desiderate</b>d one thing now: finding that manuscript before anyone else did."}
+    ],
+    poll: {
+      q: "Caldwell suggests the manuscript itself could be a motive for murder. Who do you think would want it most?",
+      options: ["Someone at the CED, for the career-making credit", "A book dealer or collector, for the money", "Brin, from the bookshop connection", "Someone we haven't even met yet"]
+    }
+  },
+  {
+    n: 31, title: "George's Story",
+    hook: "Alex, Martha and Safi piece together what George really knows — and Martha finally says the words she's been avoiding.",
+    summary: "Over drinks at Alex's, the three compare notes on <b>George</b>, Alex's early-modern-manuscript-specialist husband. He told Alex the full story: Charlie called him about a genuine find — a late-16th-century manuscript pasted into a 19th-century memorabilia album, including a handwritten recipe and what looked like notes on a play someone had seen performed. He examined a page under a microscope with her but couldn't authenticate it further; <mark>Charlie later went silent on him, ghosting him after he sent the \"You dazzle me\" postcard</mark>. The chapter ends on a gut-punch: prompted by talk of Jonathan and old rumors, Martha admits <mark>she was the one who had an affair with Jonathan years ago — not Charlie</mark>.",
+    quote: "It turned out the words were there all along. 'Because I was.'",
+    beats: [
+      {icon:"🍸", txt:"Alex, Martha and Safi compare notes on George"},
+      {icon:"🔬", txt:"George examined Charlie's manuscript page under a microscope"},
+      {icon:"💥", txt:"Martha: \"Because I was\" — she had the affair with Jonathan, not Charlie"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"George confirms Charlie's manuscript was real: a late-16th-century find pasted into a Victorian memorabilia album."},
+      {type:"bang", label:"Key moment", text:"Martha admits she — not Charlie — had a secret relationship with Jonathan, years before Charlie disappeared."},
+      {type:"plus", label:"To discuss", text:"George assumed Charlie's finds were part of her PhD research and didn't think to mention it when she vanished."},
+      {type:"q", label:"Question", text:"Why has Martha kept this secret for so long, even from her own team?"}
+    ],
+    characters: [
+      {n:"George", d:"Alex's husband, an early-modern-manuscript specialist who examined Charlie's find"},
+      {n:"Martha", d:"finally admits the affair with Jonathan was hers, not Charlie's"}
+    ],
+    vocab: [
+      {w:"tacenda", d:"(17th-century Latin noun) things that are best left unsaid; secrets not to be told", e:"For years, Martha's relationship with Jonathan had been one of her family's <b>tacenda</b> — a thing never spoken of."},
+      {w:"tacit", d:"understood or implied without being stated outright", e:"There was a <b>tacit</b> agreement not to discuss Alex's visit to George until Safi arrived."},
+      {w:"vernacular", d:"the everyday language of ordinary speech, as opposed to formal or literary language", e:"The recipe on the manuscript page was written in plain <b>vernacular</b> English, not scholarly Latin."}
+    ],
+    poll: {
+      q: "Martha kept her affair with Jonathan secret for years, even from her team. Is that understandable, or should she have said something sooner?",
+      options: ["Understandable — some things are too painful or shameful to share", "She should have told someone, especially once the investigation started"]
+    }
+  },
+  {
+    n: 32, title: "What Really Happened With Jonathan",
+    hook: "Martha lays out the full story — and it's far worse than anyone expected.",
+    summary: "Martha tells Alex and Safi everything: <mark>at eighteen, while Jonathan was in his early thirties and effectively her tutor, they had an affair</mark> — one he insisted stay secret, claiming it was to protect Charlie's feelings, even though he had a new undergraduate in his rooms within a week of Martha leaving for university. Alex is furious on Martha's behalf, but Martha refuses to be cast purely as a victim: she admits <mark>she partly slept with Jonathan to \"win\" something Charlie hadn't</mark>, and that when Charlie disappeared, part of her guiltily wondered if seeing them together had broken her sister. Worst of all, Charlie saw Martha sneaking out of Jonathan's rooms the weekend before she vanished — and the two never spoke of it.",
+    quote: "Falling in love seems so simple, at that age.",
+    beats: [
+      {icon:"💔", txt:"Martha reveals the full affair with Jonathan, from age eighteen"},
+      {icon:"😠", txt:"Alex, furious: \"Jesus. Urged you to keep quiet, then did it again within a week?\""},
+      {icon:"👀", txt:"Charlie saw Martha leaving Jonathan's rooms the weekend before she disappeared"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Jonathan, in his early thirties, had an affair with eighteen-year-old Martha, then repeated the pattern with a new undergraduate almost immediately."},
+      {type:"bang", label:"Key moment", text:"Charlie saw Martha leaving Jonathan's rooms the weekend before she vanished — and they never discussed it."},
+      {type:"plus", label:"To discuss", text:"Martha refuses to be painted purely as a victim — she admits her own motives were tangled up with rivalry toward Charlie."},
+      {type:"q", label:"Question", text:"Could this secret be connected to why Charlie disappeared days later?"}
+    ],
+    characters: [
+      {n:"Martha", d:"reveals the full story of her affair with Jonathan"},
+      {n:"Alex", d:"reacts with anger on Martha's behalf"},
+      {n:"Jonathan", d:"pattern of relationships with much younger students exposed"}
+    ],
+    vocab: [
+      {w:"uhtceare", d:"(Old English noun) the anxiety or sorrow felt lying awake in the dark before dawn", e:"Guilt kept Martha in a state of <b>uhtceare</b>, wide awake and dreading the conversation ahead."},
+      {w:"remorse", d:"(from Latin remordere, \"to bite back\") deep regret for a wrong committed", e:"<b>Remorse</b> finally caught up with Martha — she could feel its teeth."}
+    ],
+    poll: {
+      q: "Martha says \"don't paint me as a victim here.\" How do you weigh power, age, and consent in what happened between her and Jonathan?",
+      options: ["It's still on Jonathan — the power imbalance makes it his responsibility", "Both share some responsibility, even with the imbalance", "It's complicated and doesn't reduce to one answer"]
+    }
+  },
+  {
+    n: 33, title: "Zugzwang",
+    hook: "Martha tells Simon the truth herself — and it costs her his trust.",
+    summary: "Caldwell warns Martha that a rediscovered manuscript could be exactly the kind of motive someone might kill for. Fearing rumors will reach Simon first, <mark>Martha tells him herself that she once had an affair with Jonathan</mark> — and immediately sees him connect it to her own hiring, wondering aloud whether she used the relationship to get her job over him. Martha insists she didn't, but the damage is done: <mark>Simon feels passed over yet again, and the conversation ends with real distance between them</mark>.",
+    quote: "Let me get this straight... you have no idea, do you?",
+    beats: [
+      {icon:"⚠️", txt:"Caldwell: the manuscript itself could be a motive for murder"},
+      {icon:"🗣️", txt:"Martha tells Simon about her and Jonathan, before he hears it elsewhere"},
+      {icon:"💢", txt:"Simon wonders if Martha used the relationship to get her job"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Martha admits to Simon that she and Jonathan had a relationship — he immediately connects it to how she got the senior editor job."},
+      {type:"plus", label:"To discuss", text:"Martha fled Berlin after \"pushing the boundaries of professional behaviour,\" then landed this job through a former lover — she admits even she finds the optics bad."},
+      {type:"q", label:"Question", text:"Is Simon's suspicion about Martha's hiring fair, or is he projecting his own resentment onto her?"}
+    ],
+    characters: [
+      {n:"Simon", d:"learns about Martha and Jonathan, suspects it explains her hiring"},
+      {n:"Martha", d:"tries to get ahead of the rumor, but loses Simon's trust"},
+      {n:"Caldwell", d:"warns that the manuscript itself could be a murder motive"}
+    ],
+    vocab: [
+      {w:"zugzwang", d:"(German noun, chess term) a position where every possible move makes things worse", e:"Telling Simon felt like <b>zugzwang</b> — silence would hurt her, but speaking up hurt her too."},
+      {w:"dishevelled", d:"untidy, disordered in appearance", e:"Simon looked <b>dishevelled</b> and exhausted, like he hadn't slept."},
+      {w:"qualmlessly", d:"without any qualms or hesitation; without a twinge of conscience", e:"She wished she could confess <b>qualmlessly</b>, but the guilt made every word difficult."}
+    ],
+    poll: {
+      q: "Was it right for Martha to tell Simon herself before he heard it from someone else, or would it have been better to say nothing at all?",
+      options: ["Right — better to control the story than let rumors spread", "Wrong — some things should stay private unless directly relevant"]
+    }
+  },
+  {
+    n: 34, title: "Alex's Secret Income",
+    hook: "Simon lashes out at Alex over money — and she finally reveals the truth about where it comes from.",
+    summary: "Safi researches leads while the team frays under pressure: Simon, drunk on resentment, snaps at <b>Alex</b> for her \"fancy shopping bags,\" needling her about money and hinting Martha \"slept her way\" into the job. <mark>Alex finally admits the truth: she secretly writes bestselling horror novels under a pen name</mark>, telling her sons the money comes from a fictional inheritance from a made-up Canadian cousin, because she doesn't want them to know. Meanwhile Safi gets Brin to hand over his sales records — <mark>a long list of addresses Charlie visited buying up book lots</mark> — and matches one house in the list to the photo found behind Charlie's hidden bank card.",
+    quote: "That's how I make my money.",
+    beats: [
+      {icon:"🍷", txt:"Simon snaps at Alex over money, needles Martha about her job"},
+      {icon:"📚", txt:"Alex reveals she secretly writes horror novels under a pen name"},
+      {icon:"🏠", txt:"Safi matches a house from Brin's records to Charlie's hidden photo"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Alex's real income: secret bestselling horror novels, hidden even from her own sons."},
+      {type:"bang", label:"Key moment", text:"Safi finds the house in Charlie's hidden photo among Brin's sale records — now a farm shop and agricultural museum."},
+      {type:"plus", label:"To discuss", text:"Simon, drunk and bitter, accuses Martha of sleeping her way into the job — the same suspicion Simon voiced privately to himself."},
+      {type:"q", label:"Question", text:"Why does Alex feel she has to hide something she's clearly proud of?"}
+    ],
+    characters: [
+      {n:"Alex", d:"reveals her secret career as a horror novelist"},
+      {n:"Simon", d:"lashes out, resentful and increasingly isolated"},
+      {n:"Safi", d:"tracks down the house from Charlie's hidden photo"}
+    ],
+    vocab: [
+      {w:"prend", d:"(15th-century verb, from French prendre) to take or seize", e:"Charlie seemed to <b>prend</b> every opportunity the sale offered, snapping up box after box of old papers."}
+    ],
+    poll: {
+      q: "Why do you think Alex hides her success as a horror novelist, even from her own children?",
+      options: ["Fear of judgment from people who know her as a serious lexicographer", "Wanting to protect her kids from feeling like the money changes things", "Some other reason — privacy for its own sake"]
+    }
+  },
+  {
+    n: 35, title: "The House at Witney",
+    hook: "Olivia confronts Martha in the street — and Safi finds the exact house where Charlie bought the manuscript.",
+    summary: "As press interest grows, <b>Olivia</b> ambushes Martha on the pavement outside the office, viciously accusing her of chasing Jonathan and calling Charlie \"a self-righteous arsehole.\" Meanwhile Safi travels to Witney and finds the manor house from Charlie's photo — a perfect match — where she meets <b>Sir Walter</b>, whose family held the house sale Charlie attended. He confirms <mark>a \"spirited young woman\" bought old papers and documents from boxes of his great-grandmother's effects</mark>, and that Charlie left the sale happy, asking him to take her photo. He can't recall exactly what she bought, but promises to help track down the historian who once studied the family's archive.",
+    quote: "That was the girl who went missing, that same year?",
+    beats: [
+      {icon:"😡", txt:"Olivia confronts Martha in the street, furious and cruel"},
+      {icon:"🏚️", txt:"Safi finds the manor house — a perfect match to Charlie's photo"},
+      {icon:"📦", txt:"Sir Walter: Charlie bought old papers from his great-grandmother's boxes"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Olivia: \"You're not the only silly bitch to tail after him... your sister was a self-righteous arsehole. And so are you.\""},
+      {type:"bang", label:"Key moment", text:"Confirmed: Charlie bought old family papers at Sir Walter's house sale, the same year she disappeared."},
+      {type:"plus", label:"To discuss", text:"Charlie asked Sir Walter to take her photo that day — she was genuinely happy, not hiding anything from him."},
+      {type:"q", label:"Question", text:"Olivia's anger feels personal and specific. Is she just protecting her marriage, or does she know more than she's saying?"}
+    ],
+    characters: [
+      {n:"Olivia", d:"confronts Martha with real venom, defending Jonathan"},
+      {n:"Safi", d:"finds the exact house from Charlie's hidden photo"},
+      {n:"Sir Walter", d:"elderly landowner whose family held the sale Charlie attended"}
+    ],
+    vocab: [
+      {w:"obmutescence", d:"(17th-century noun) a becoming willfully silent; obstinate speechlessness", e:"After Olivia's outburst, Martha walked home in a kind of <b>obmutescence</b>, too stunned to speak."}
+    ],
+    poll: {
+      q: "Olivia's confrontation with Martha is vicious and personal. What do you think is really driving her anger?",
+      options: ["Pure jealousy and fear of losing Jonathan", "Guilt or knowledge she's not admitting to", "Genuine, justified anger at a pattern of behavior she's tired of defending"]
+    }
+  },
+  {
+    n: 36, title: "Dr Carmichael's Memory",
+    hook: "Charlie's old PhD supervisor remembers one crucial afternoon differently than anyone expected.",
+    summary: "Martha and Safi visit <b>Dr Catherine Carmichael</b>, Charlie's PhD supervisor, who admits she always blamed herself for not pressing Charlie further after a strange final tutorial. She confirms Charlie had stopped making progress on her PhD and seemed to be secretly \"working on a book\" instead. Crucially, <mark>Dr Carmichael recalls Gemma crossing the street to remind Charlie about a lunch date — and Charlie looking embarrassed and abrupt with her</mark>, which contradicts Gemma's own account that the lunch was casually arranged. Martha also learns <mark>Charlie already had a publisher lined up at OUP, Giles Baldwin</mark> — meaning she didn't need Gemma's help at all, and may have been keeping her closest confidante deliberately in the dark.",
+    quote: "I always blamed myself for not saying or doing anything after that meeting.",
+    beats: [
+      {icon:"🎓", txt:"Martha and Safi meet Dr Carmichael, Charlie's PhD supervisor"},
+      {icon:"🚦", txt:"Carmichael's memory of the Gemma/lunch conversation contradicts Gemma's version"},
+      {icon:"📖", txt:"Charlie already had a publisher lined up — Giles Baldwin at OUP"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Dr Carmichael's memory of Charlie and Gemma's street conversation doesn't match what Gemma told Martha."},
+      {type:"bang", label:"Key moment", text:"Charlie had already secured a publisher, Giles Baldwin at OUP — she didn't need Gemma's connections at all."},
+      {type:"plus", label:"To discuss", text:"Dr Carmichael still carries guilt for not following up after Charlie's unsettled final tutorial."},
+      {type:"q", label:"Question", text:"Why would Charlie keep her own godmother — a literary agent — in the dark about a book deal?"}
+    ],
+    characters: [
+      {n:"Dr Catherine Carmichael", d:"Charlie's PhD supervisor, holds a key contradicting memory"},
+      {n:"Martha", d:"uncovers the mismatch between Gemma's and Carmichael's accounts"},
+      {n:"Safi", d:"helps piece together the publisher lead"}
+    ],
+    vocab: [
+      {w:"fernweh", d:"(German noun) a longing for far-off places — the opposite of homesickness", e:"Even mid-investigation, Martha felt a flash of <b>fernweh</b>, missing the anonymity of her old life in Berlin."}
+    ],
+    poll: {
+      q: "Two people's memories of the same afternoon don't match — Gemma's and Dr Carmichael's. Whose version do you trust more, and why?",
+      options: ["Dr Carmichael — she has no reason to shade the truth", "Gemma — she was there for the whole conversation, not just a moment of it", "Neither fully — memory is unreliable for everyone"]
+    }
+  },
+  {
+    n: 37, title: "Lion-Drunk",
+    hook: "At an art fair, Simon's resentment boils over — and Safi has a breakthrough about who \"J. H.\" really was.",
+    summary: "At Josh's art event, Simon — visibly drunk and bitter — corners Martha, accusing her of sleeping her way into the job and mocking her for \"living rent-free in a bloody mansion.\" It's a low point for their friendship, and Simon storms off into the night regretting having told Olivia about Martha and Jonathan in the first place. Away from the tension, Safi has a breakthrough: talking with an artist about \"the lost women of history\" — echoing Virginia Woolf's essay on Shakespeare's fictional sister — <mark>Safi realizes \"J. H.\" might not be fictional at all: it could stand for Joan Hart, Shakespeare's real-life sister</mark>, especially since Sir Walter mentioned a family rumor of a Shakespeare connection. If true, <mark>Charlie may have found the commonplace book of Shakespeare's own sister</mark> — a discovery that would rewrite literary history.",
+    quote: "What if J. H. is Joan Hart? What if Charlie found the commonplace book of Shakespeare's sister?",
+    beats: [
+      {icon:"🍷", txt:"Simon, \"lion-drunk,\" lashes out at Martha in public"},
+      {icon:"🎨", txt:"An artist's talk about \"the lost women of history\" sparks an idea"},
+      {icon:"💡", txt:"Safi: \"J. H.\" might be Joan Hart — Shakespeare's real sister"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Safi's theory: the manuscript's \"J. H.\" could be Joan Hart, Shakespeare's historical sister — tying back to Sir Walter's family rumor of a Shakespeare connection."},
+      {type:"bang", label:"Key moment", text:"Simon, drunk and furious, tells Martha he regrets ever mentioning her and Jonathan to Olivia."},
+      {type:"plus", label:"To discuss", text:"The art event's theme — women written out of history — directly echoes the mystery of the manuscript's true author."},
+      {type:"q", label:"Question", text:"If Charlie really found Shakespeare's sister's commonplace book, how far would people go to control that discovery?"}
+    ],
+    characters: [
+      {n:"Simon", d:"drunk and openly hostile, regrets telling Olivia the secret"},
+      {n:"Safi", d:"connects \"J. H.\" to Joan Hart, Shakespeare's sister"}
+    ],
+    vocab: [
+      {w:"lion-drunk", d:"(16th-century term, from Thomas Nashe's 1592 taxonomy of drunkenness) quarrelsome and aggressive when drunk", e:"Simon turned <b>lion-drunk</b>, spoiling for a fight with anyone who came near him."}
+    ],
+    poll: {
+      q: "If \"J. H.\" really is Joan Hart, Shakespeare's sister, how big a discovery would that be?",
+      options: ["Massive — it could rewrite literary history", "Interesting, but probably impossible to ever fully prove", "I'm skeptical it's really her — too neat a solution"]
+    }
+  },
+  {
+    n: 38, title: "The Coronation Lunch",
+    hook: "Over lunch with her old boss Mike, Martha hears an accusation about Charlie she refuses to accept — and Simon never shows up.",
+    summary: "On coronation weekend, Martha finally tells Gabriel about the new letter, but <b>Gabriel</b> refuses to engage until she's honest with him about \"that summer\" — a conversation she still dodges. The next day, Martha and Alex meet <b>Mike Orme</b>, her predecessor, for lunch, and Alex explains the Joan Hart theory to him along the way. Over the meal, Mike finally admits why he really left: <mark>rare 17th-century printing type had been quietly stolen from the CED archives the summer Charlie disappeared, and he'd once caught Charlie alone in the slips, refusing to explain herself</mark>. Gabriel found out, threatened to sue Mike for slander if he ever repeated the suspicion, and insisted Charlie was innocent. Worse, <mark>a box of stolen archive material — including a letter from Joseph Wright to Tolkien — arrived at CED reception days after Charlie vanished, addressed as if it were hers to return</mark>. Martha refuses to believe it: if Charlie had already found something as huge as the manuscript, why would she need to steal anything? Simon, meanwhile, never turns up to lunch at all.",
+    quote: "I am sorry, Martha. But she did steal.",
+    beats: [
+      {icon:"👑", txt:"Coronation weekend — Martha tells Gabriel about the new letter"},
+      {icon:"🍽️", txt:"Lunch with Mike Orme, her predecessor at the CED"},
+      {icon:"📦", txt:"Mike: stolen archive items, and a box that arrived addressed like a guilty return"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Mike reveals rare archive material was stolen the summer Charlie disappeared — and he once found her alone in the slips, refusing to explain."},
+      {type:"bang", label:"Key moment", text:"A box of stolen items, including a letter from Joseph Wright to Tolkien, arrived at CED reception just after Charlie vanished — with a note suggesting it was hers."},
+      {type:"plus", label:"To discuss", text:"Gabriel threatened to sue Mike for slander rather than let the theft accusation become public."},
+      {type:"q", label:"Question", text:"Simon skips the lunch entirely, with no message. Is this the first real sign something is wrong?"}
+    ],
+    characters: [
+      {n:"Gabriel", d:"refuses to talk until Martha is honest about \"that summer\""},
+      {n:"Mike Orme", d:"reveals the theft accusation against Charlie, and why he really left"},
+      {n:"Alex", d:"pushes back on Mike's theory, defending Charlie"}
+    ],
+    vocab: [
+      {w:"pneuma", d:"(Greek noun) breath, spirit, or the vital soul", e:"There was a strange <b>pneuma</b> in the room once the coronation ceremony began — something reverent, almost holy."},
+      {w:"bound to", d:"certain to happen; inevitable", e:"\"Some kind of reckoning was <b>bound to</b> come,\" Alex said, watching the empty chair where Simon should have been."},
+      {w:"page-turning", d:"so gripping that a reader can't stop turning the pages", e:"Alex's new horror novel was, by every account, wonderfully <b>page-turning</b>."},
+      {w:"tidsoptimist", d:"(Swedish noun) someone chronically late because they always believe they have more time than they do", e:"Simon was a hopeless <b>tidsoptimist</b> — except today, he hadn't shown up at all."},
+      {w:"flim-flam", d:"deceptive nonsense; empty, misleading talk", e:"\"Don't give me any <b>flim-flam</b> about misplaced boxes,\" Mike said. \"I know what I saw.\""},
+      {w:"pilfering", d:"stealing small amounts, often repeatedly", e:"Mike was convinced someone had been <b>pilfering</b> from the archive for months."}
+    ],
+    poll: {
+      q: "Do you believe Charlie really stole from the archive, or is there another explanation for what Mike found?",
+      options: ["I believe Mike — the evidence sounds real", "I believe Martha — Charlie didn't need to steal anything", "Something else is going on that neither of them has figured out"]
+    }
+  },
+  {
+    n: 39, title: "The Empty House",
+    hook: "Simon doesn't come to work — and what Alex finds at his flat changes everything.",
+    summary: "When Simon misses work with no message, <b>Alex</b> — who still has a key from feeding his cat over New Year — goes to check on him. His flat is empty, his cat Rochester unfed, and his computer still sitting untouched on the desk. Alex reports him missing to Caldwell. Then, sticking out from under the computer, she finds something that stops her cold: <mark>a photocopy of a brand-new letter from Chorus — one the team has never seen before — lying on Simon's own desk</mark>. She photographs it without touching anything else, and takes Rochester home with her.",
+    quote: "Dear Editors. She froze. Oh, Christ Almighty, Simon, what have you done?",
+    beats: [
+      {icon:"🐱", txt:"Simon's cat, Rochester, hasn't been fed"},
+      {icon:"💻", txt:"His computer is still there — he never went to work"},
+      {icon:"📄", txt:"A photocopy of a new, unseen Chorus letter, found on Simon's own desk"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Alex finds a photocopy of a Chorus letter the team has never seen, sitting on Simon's desk."},
+      {type:"plus", label:"To discuss", text:"Simon never would have left his cat unfed and hungry — everyone agrees something is deeply wrong."},
+      {type:"q", label:"Question", text:"Could Simon actually be Chorus — or did he find or steal an original letter some other way?"}
+    ],
+    characters: [
+      {n:"Alex", d:"goes to check on Simon and finds the flat empty"},
+      {n:"Simon", d:"missing, with no explanation"}
+    ],
+    vocab: [
+      {w:"entelechy", d:"(Greek philosophical term, coined by Aristotle) the full realization of potential; a thing made actual and complete", e:"Simon had always talked about the recognition he deserved but never got — a kind of <b>entelechy</b> that never arrived."}
+    ],
+    poll: {
+      q: "A copy of an unseen Chorus letter turns up on Simon's own desk. What's your first theory?",
+      options: ["Simon is Chorus", "Simon found or stole the letter from someone else", "Someone planted it there to frame him", "Not sure yet — too little to go on"]
+    }
+  },
+  {
+    n: 40, title: "A Person in the River",
+    hook: "News spreads fast, and the team is told to wait — not knowing yet whether the worst has happened.",
+    summary: "Waiting on word from Caldwell, Safi scans social media for local news and finds it before anyone official can tell them: <mark>\"Lots of police in University Park. Person in river.\"</mark> Martha texts Caldwell directly — Have you found him? Is he dead? — and gets back only a holding message: he can't confirm anything until next of kin have been notified, and the team should stay at the office. The silence says more than words could.",
+    quote: "Can't confirm until next of kin have been notified. Please stay at the office.",
+    beats: [
+      {icon:"📱", txt:"Safi spots local news: police in University Park, a person found in the river"},
+      {icon:"😨", txt:"Martha texts Caldwell directly, asking if it's Simon"},
+      {icon:"⏳", txt:"Caldwell can't confirm anything yet — the team is told to wait"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"\"Person in river\" — breaking local news, right as Simon remains missing."},
+      {type:"plus", label:"To discuss", text:"Caldwell's careful, procedural silence is its own kind of terrible answer."},
+      {type:"q", label:"Question", text:"Is it better or worse to learn devastating news this way — piecemeal, through social media and cautious texts?"}
+    ],
+    characters: [
+      {n:"Safi", d:"finds the first hint of news on social media"},
+      {n:"Martha", d:"texts Caldwell directly, bracing for the worst"}
+    ],
+    vocab: [
+      {w:"scytheman", d:"(16th-century noun) literally, one who wields a scythe; a poetic name for Death", e:"It felt as though the <b>scytheman</b> himself had walked through University Park that morning."}
+    ],
+    poll: {
+      q: "The team learns devastating news in pieces — a tweet, then a vague text from Caldwell. How do you think you'd cope with that kind of uncertainty?",
+      options: ["I'd need to know immediately, however hard", "I'd rather have a little time before the full truth arrives"]
+    }
+  },
+  {
+    n: 41, title: "Confirmation",
+    hook: "Caldwell delivers the news no one wanted, and raises a question no one wanted to hear either.",
+    summary: "Caldwell arrives at the office in person to confirm it: <mark>Simon is dead, pulled from the river after two or three days in the water</mark>. His ex-wife Nancy has already identified the body. Asked whether it was an accident, Caldwell is blunt: <mark>\"I don't think it was an accident, no.\"</mark> He asks the team not to mention the Chorus letter found at Simon's flat to anyone but him and his colleague DS Marche, and requests Safi's shorthand notes from the investigation. Reeling, Safi asks the question hanging over all of them: does the copy of the letter mean Simon was Chorus? No one has an answer.",
+    quote: "I don't think it was an accident, no.",
+    beats: [
+      {icon:"💔", txt:"Caldwell confirms: Simon is dead, found in the river"},
+      {icon:"🕵️", txt:"\"I don't think it was an accident, no.\""},
+      {icon:"🤐", txt:"Caldwell asks the team to keep the letter find confidential"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Simon's death is confirmed — and Caldwell doesn't believe it was an accident."},
+      {type:"plus", label:"To discuss", text:"Caldwell asks specifically how Simon seemed on Friday night — the same night he was \"lion-drunk\" and lashed out at Martha."},
+      {type:"q", label:"Question", text:"If Simon's death wasn't an accident, who benefits from it — and does that make them more, or less, of a suspect in Charlie's disappearance too?"}
+    ],
+    characters: [
+      {n:"Caldwell", d:"confirms Simon's death and suspects it wasn't an accident"},
+      {n:"Alex", d:"asks after Simon's family, visibly shaken"}
+    ],
+    vocab: [
+      {w:"wrack", d:"(Old English noun) ruin, damage, or destruction — as in \"wrack and ruin\"", e:"The office felt like <b>wrack</b> and ruin now, an empty desk where Simon used to sit."}
+    ],
+    poll: {
+      q: "Caldwell doesn't think Simon's death was an accident. Who — or what — do you suspect is behind it?",
+      options: ["Whoever has been sending the letters and postcards all along", "Something unrelated to Chorus entirely", "Not sure yet — too many open threads"]
+    }
+  },
+  {
+    n: 42, title: "The Final Gift",
+    hook: "The team finally reads the letter found at Simon's flat in full — and Jonathan's reaction raises new suspicion.",
+    summary: "Alone with Simon's desk still empty beside them, the team reads the full text of the new letter: Chorus calls it \"this final gift,\" describing <mark>\"the pattern of a mind... stitched with her own thread into a miracle\"</mark> — a deliberate emphasis on female authorship — and points toward a library, a hidden volume, calling the whole search \"a labyrinth\" and \"a test.\" Safi is stunned: could this really confirm the manuscript is Joan Hart's? Before they can process it, <b>Jonathan</b> arrives at the office and embraces Martha — but when she tells him her theory about Charlie's commonplace book, <mark>his reaction seems oddly unsurprised, and he admits Gemma once mentioned a rumor that Charlie was going to publish a book</mark>, something he'd never shared with the team before.",
+    quote: "The pattern of a mind, the common cloth of other people's words, stitched with her own thread into a miracle.",
+    beats: [
+      {icon:"📜", txt:"The team reads Chorus's full \"final gift\" letter"},
+      {icon:"🧵", txt:"\"Stitched with her own thread\" — another hint the manuscript is a woman's"},
+      {icon:"😬", txt:"Jonathan admits he and Gemma already suspected Charlie had found something"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"The new letter's language (\"her own thread\") strengthens the theory that the manuscript belonged to a woman — possibly Joan Hart."},
+      {type:"bang", label:"Key moment", text:"Jonathan reveals he and Gemma privately suspected, before Charlie vanished, that she'd found something worth publishing — and never told anyone."},
+      {type:"plus", label:"To discuss", text:"Martha notices \"something off\" in Jonathan's reaction — a suspicion she can't quite shake."},
+      {type:"q", label:"Question", text:"Why would Jonathan keep that suspicion secret for over a decade?"}
+    ],
+    characters: [
+      {n:"Jonathan", d:"arrives at the office, reacts suspiciously to news of the manuscript"},
+      {n:"Safi", d:"connects the letter's language to the Joan Hart theory"}
+    ],
+    vocab: [],
+    poll: {
+      q: "Jonathan admits he and Gemma suspected Charlie's discovery years ago and said nothing. How suspicious is that, to you?",
+      options: ["Very — that's a huge thing to hide for over a decade", "A little, but people bury inconvenient memories all the time", "Not suspicious — it was just an unconfirmed rumor at the time"]
+    }
+  },
+  {
+    n: 43, title: "Sinuosity",
+    hook: "A brief, quiet chapter of police work at the office — the calm right before everything breaks open.",
+    summary: "A short transitional chapter: <b>police work</b> continues in the aftermath of Simon's death, with <b>Jonathan</b> still hanging around the office. It's the quiet, twisting lull right before the investigation's biggest breaks in the chapters that follow.",
+    quote: "The investigation had taken on real sinuosity — twisting back on itself again and again.",
+    beats: [
+      {icon:"👮", txt:"Police work continues after Simon's death"},
+      {icon:"📖", txt:"Jonathan lingers at the office"}
+    ],
+    tagged: [
+      {type:"q", label:"Question", text:"With Jonathan still hanging around the investigation, what do you think he's really doing there?"}
+    ],
+    characters: [
+      {n:"Jonathan", d:"remains at the office as police work continues"}
+    ],
+    vocab: [
+      {w:"sinuosity", d:"the quality of having many curves, turns, or windings", e:"The investigation had taken on real <b>sinuosity</b> — twisting back on itself again and again."}
+    ],
+    poll: {
+      q: "With Simon dead and Jonathan's suspicious reaction fresh, where do you think this is heading?",
+      options: ["Toward Jonathan as the real culprit", "Toward someone we haven't suspected yet", "Toward proof that Charlie is still alive somewhere"]
+    }
+  },
+  {
+    n: 44, title: "Godstow Abbey",
+    hook: "Charlie's body is found at last — and Safi realizes Simon may have died because of what he once witnessed near Godstow.",
+    summary: "At St Sepulchre's, Safi voices what everyone's thinking: <mark>\"Someone killed him!\"</mark> The team pieces it together: Simon used to walk his daughter's dog Chloe near <b>Godstow Abbey</b> at night — including on the night of Jonathan's book launch, the same night Charlie disappeared — and Alex wonders if <mark>Simon saw someone burying something at Godstow all those years ago, without understanding it, until Chorus's letters stirred everything back up</mark>. Martha insists, with eerie certainty, that Charlie is there. She's right: police excavate a shallow grave near the abbey ruins, and though Caldwell won't confirm anything until DNA testing, <mark>a necklace matching one Charlie gave to every family member confirms it — after thirteen years, Charlie has been found</mark>.",
+    quote: "Is it her? Is it Charlie?",
+    beats: [
+      {icon:"⛪", txt:"The team realizes Simon may have witnessed something at Godstow Abbey years ago"},
+      {icon:"⛏️", txt:"Police excavate a grave near the abbey ruins"},
+      {icon:"📿", txt:"A matching necklace confirms it: Charlie has been found"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Charlie's body is found buried near Godstow Abbey, confirmed by a necklace she'd given to every member of her family."},
+      {type:"bang", label:"Key moment", text:"Theory: Simon saw the killer burying Charlie years ago on one of his night walks, and only understood its significance once Chorus's letters began arriving — possibly leading him to try blackmail, and to his own death."},
+      {type:"plus", label:"To discuss", text:"Gabriel, told the news, is described as \"terribly relieved\" — an ending to not-knowing, even a devastating one."},
+      {type:"q", label:"Question", text:"If Simon really witnessed the burial and said nothing for over a decade, how responsible is he for what happened to him?"}
+    ],
+    characters: [
+      {n:"Safi", d:"first to voice that Simon was murdered"},
+      {n:"Alex", d:"connects Simon's night walks near Godstow to the burial site"},
+      {n:"Martha", d:"certain, before confirmation, that they've found Charlie"},
+      {n:"Caldwell", d:"leads the excavation, cautious until DNA testing"}
+    ],
+    vocab: [
+      {w:"bethel", d:"(Hebrew noun, literally \"house of God\") a sacred place or sanctuary", e:"Godstow Abbey's ruins had become an unlikely <b>bethel</b> — a hallowed place for a discovery no one wanted to make."}
+    ],
+    poll: {
+      q: "Charlie is finally found, thirteen years later. Does knowing — even something this painful — feel like relief, or does it just open new wounds?",
+      options: ["Relief — an ending, however hard, is better than not knowing", "Both at once — relief and fresh grief, tangled together", "It mostly just raises more painful questions"]
+    }
+  },
+  {
+    n: 45, title: "The Commonplace Book",
+    hook: "At the Bodleian, the team finds Charlie's discovery at last — and the person who sent them there confesses to two murders.",
+    summary: "Following the final letter's clue — \"it takes its place among its own fruits... called forth, openly\" — Martha, Alex, and Safi go straight to the <b>Bodleian Library</b> at opening and find a document box requested under the name \"Hart.\" Inside: <mark>an old photo album with loose index cards tucked inside, all in Charlie's handwriting — pages of the real commonplace book, with the initials \"J. H.\" at the bottom of the page</mark>. A publisher's email confirms it: the manuscript's chapter list includes \"Joan Hart — biography,\" an account of Shakespeare's life written by his own sister. Before they can process the discovery, <mark>Gemma is caught trying to collect the same box on Jonathan's instructions</mark> — and it unravels completely: <mark>Gemma has spent over a decade quietly covering for Jonathan</mark>, intercepting calls from journalists and police alike, and even arranging Martha's old job in Berlin to keep her safely far away. Word arrives from the station: <mark>Jonathan has turned himself in and confessed to killing both Charlie and Simon</mark> — though Caldwell suspects his expensive lawyer will fight to call it manslaughter or self-defence rather than murder. Safi is skeptical the confession fully holds up: Caldwell explains that news of Charlie's body leaking to the press that morning likely forced Jonathan's hand — coming forward first meant credit for \"cooperating,\" rather than being caught later.",
+    quote: "He deserves nothing. I'm ready. Let's go.",
+    beats: [
+      {icon:"📚", txt:"The team finds Charlie's real commonplace book at the Bodleian"},
+      {icon:"✍️", txt:"Confirmed: \"J. H.\" is Joan Hart — Shakespeare's sister, in her own words"},
+      {icon:"🚔", txt:"Gemma is caught collecting the manuscript for Jonathan — and Jonathan confesses"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"The recovered pages confirm it: Charlie really had found the commonplace book of Joan Hart, Shakespeare's sister — a genuine discovery of a lifetime."},
+      {type:"bang", label:"Key moment", text:"Gemma admits she's spent years covering for Jonathan — deflecting journalists, misleading police, and steering Martha away to Berlin — without ever fully facing what she suspected."},
+      {type:"bang", label:"Key moment", text:"Jonathan turns himself in and confesses to killing both Charlie and Simon — right as news of Charlie's body leaks to the press."},
+      {type:"plus", label:"To discuss", text:"Caldwell predicts Jonathan's lawyer will argue for manslaughter or accidental death for Charlie, and self-defence for Simon — not full murder."},
+      {type:"q", label:"Question", text:"Gemma says \"I didn't know, Martha, not really.\" Do you believe her?"}
+    ],
+    characters: [
+      {n:"Martha, Alex & Safi", d:"recover the real commonplace book at the Bodleian"},
+      {n:"Gemma", d:"revealed to have covered for Jonathan for over a decade"},
+      {n:"Jonathan", d:"confesses to killing Charlie and Simon"},
+      {n:"Caldwell", d:"predicts how Jonathan's legal defence will play out"}
+    ],
+    vocab: [],
+    poll: {
+      q: "Gemma says she didn't really know what Jonathan had done — she just quietly protected him for years. How guilty is that kind of willful not-knowing?",
+      options: ["Just as guilty as knowing outright — she chose not to look", "Understandable, if misguided — loyalty and denial are powerful", "Somewhere in between — complicated, not black and white"]
+    }
+  },
+  {
+    n: 46, title: "Rememble",
+    hook: "Jonathan asks to see Martha in custody — and unravels a confession that was protecting the real killer all along.",
+    summary: "Jonathan tells Martha it was all a \"terrible, tragic accident\": he'd learned from Gemma that Charlie's manuscript would overshadow his own book, went to the house to persuade her to collaborate, grabbed her arm as she turned away, and she fell. He also corrects an old lie: <mark>it wasn't Charlie who was obsessed with him years ago and needed secrecy — it was Olivia</mark>, the whole reason Jonathan misled Martha about her own sister. But Safi spots the hole in his story: Charlie was already meant to be having lunch with Jonathan and Gemma together that day, so why would he need to see her alone at home first? Pressed, Jonathan finally breaks: <mark>it was Olivia who threw Charlie down the stairs, Olivia who cancelled the lunch from Charlie's own phone to cover the timeline, Olivia who Simon saw at Godstow while the two of them buried the body, and Olivia who pushed Simon into the river when he tried to blackmail her</mark>. Jonathan's real motive for the decade-long cover-up wasn't love for Olivia — it was wanting Charlie's discovery for himself, which is why he'd spent years \"helping\" the grieving family while quietly searching their house. As the truth comes out, Martha realizes with horror that <mark>Olivia is about to flee the country and take her own children with her</mark>.",
+    quote: "It was Olivia who Simon saw at Godstow, while you were burying the body together. Olivia who he was blackmailing. Olivia pushed him into the river.",
+    beats: [
+      {icon:"🎭", txt:"Jonathan calls Charlie's death \"a terrible, tragic accident\""},
+      {icon:"🔍", txt:"Safi spots the hole in his story — the lunch plans don't add up"},
+      {icon:"💥", txt:"The truth: Olivia killed both Charlie and Simon — Jonathan only covered it up"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"It was Olivia, not Charlie, who was obsessively interested in Jonathan years ago — the lie Martha had believed the whole time."},
+      {type:"bang", label:"Key moment", text:"Olivia killed Charlie in a jealous confrontation, then killed Simon when he tried to blackmail her over what he'd seen at Godstow."},
+      {type:"bang", label:"Key moment", text:"Jonathan's real motive for the cover-up was greed: wanting Charlie's manuscript discovery for his own career."},
+      {type:"plus", label:"To discuss", text:"Jonathan searched the Thornhill family home for years under the guise of being a supportive family friend."},
+      {type:"q", label:"Question", text:"Jonathan confessed to protect Olivia — but also seems to want Martha's forgiveness. Do those two motives make sense together?"}
+    ],
+    characters: [
+      {n:"Jonathan", d:"reveals the truth to protect himself, not just Olivia"},
+      {n:"Olivia", d:"revealed as the one who actually killed Charlie and Simon"},
+      {n:"Safi", d:"spots the inconsistency that unravels Jonathan's story"},
+      {n:"Martha", d:"realizes Olivia may flee with her children"}
+    ],
+    vocab: [
+      {w:"rememble", d:"(informal, blend of \"remember\" and \"fumble\") to have a false memory of something", e:"For over a decade, Martha had let herself <b>rememble</b> her sister's story completely wrong."}
+    ],
+    poll: {
+      q: "Jonathan lied for years to protect Olivia, but was really motivated by wanting Charlie's discovery for himself. Which is worse — the lie, or the reason behind it?",
+      options: ["The greed — he let people suffer for his own ambition", "The lie itself — deceiving Martha personally feels worse", "They're equally damning, honestly"]
+    }
+  },
+  {
+    n: 47, title: "Epilogue",
+    hook: "Charlie is laid to rest, the truth about Chorus finally comes out — and it's the person closest to Martha all along.",
+    summary: "Hundreds attend Charlie's public funeral, where an OUP editor is already helping prepare <mark>\"The Commonplace Book of Joan Hart, edited by Charlotte Thornhill\"</mark> for publication. <b>Olivia</b> flees the country before she can be arrested, leaving her children in her parents' care; Jonathan withdraws his false confession, his career destroyed; Gemma \"retires\" and faces obstruction of justice charges, likely community service. After a private burial beside Rebecca, proceeds from Charlie's book go into a trust split five ways — Martha's family, Alex, Safi, Sir Walter's family, and Simon's family each receiving a life-changing sum. Then comes the final twist: Alex notices the worn \"e\" and unusual spacing on Martha's typed envelope matches Chorus's letters exactly, and puts it together — <mark>Gabriel, Martha's own father, was Chorus all along</mark>. He explains: he found Charlie's hidden manuscript years ago, in one of her old childhood hiding spots, but kept it secret from Rebecca to protect her hope that Charlie was still alive. After Rebecca's death, guilt and quiet suspicion of Jonathan drove him to start sending anonymous letters and postcards himself — nudging the people around Charlie's disappearance without ever directly accusing anyone, since he had no real proof. <mark>Nothing he did was illegal, though he never imagined it would get anyone killed</mark>. The novel closes with a reading from Charlie's own introduction to Joan Hart's book — a tribute to a woman's voice nearly lost to history, finally heard.",
+    quote: "I had no idea writing those letters would get someone killed.",
+    beats: [
+      {icon:"⚰️", txt:"Charlie's funeral, and plans to publish Joan Hart's book"},
+      {icon:"💰", txt:"The manuscript's proceeds go into a trust for five families, including Simon's"},
+      {icon:"🤯", txt:"Final twist: Gabriel — Martha's own father — was Chorus"}
+    ],
+    tagged: [
+      {type:"bang", label:"Key moment", text:"Alex identifies Gabriel as Chorus from a typewriter's worn \"e\" key, matching every letter and postcard sent over the years."},
+      {type:"bang", label:"Key moment", text:"Gabriel found Charlie's manuscript years ago but hid it from Rebecca to protect her hope that Charlie would return."},
+      {type:"bang", label:"Key moment", text:"After Rebecca died, Gabriel began sending the Chorus letters himself, hoping the team could solve what he couldn't prove alone."},
+      {type:"plus", label:"To discuss", text:"Charlie's manuscript proceeds are split five ways, including a share for Simon's family — recognition that his death was part of the same story."},
+      {type:"q", label:"Question", text:"Gabriel says he never meant for anyone to get hurt. Does that soften what his letters set in motion, or not?"}
+    ],
+    characters: [
+      {n:"Gabriel", d:"revealed as Chorus — his own father's decade-long secret"},
+      {n:"Alex", d:"figures out Gabriel is Chorus from his typewriter"},
+      {n:"Martha", d:"reflects on why she really left for, and returned from, Berlin"},
+      {n:"Olivia", d:"escapes the country before she can be arrested"}
+    ],
+    vocab: [],
+    poll: {
+      q: "Of everyone in this story — Jonathan, Olivia, Gemma, and Gabriel — whose choices do you find hardest to forgive?",
+      options: ["Olivia — she's the one who actually killed two people", "Jonathan — he covered it up purely for ambition", "Gemma — she protected him for over a decade", "Gabriel — his secrecy set off the chain of events that got Simon killed"]
+    }
+  }
+];
+
+/* ---------- the investigation: every clue, and where it led ---------- */
+const investigation = [
+  {
+    icon:"✉️", kind:"Letter One", to:"The whole CED team", ch:"1–2",
+    quote:"\"Truth will come to light. Murder cannot be hid long.\"",
+    leads:"A hidden acrostic decodes to 2010, and a second misquote confirms it: the letter is about Charlie.",
+    decode:[
+      "Jonathan spots a misquote: \"Time's glory\" is written as \"Time — its glory,\" breaking the rhythm on purpose.",
+      "That odd mistake makes them wonder: could it be an acrostic? A strange double paragraph-break stands out too.",
+      "Reading just the first word of each paragraph: “This Time You Have Made Two Maidens Cross.”",
+      "Solved like a crossword clue: “two maidens” = M, M · “cross” = X → MMX",
+      "MMX is 2010 in Roman numerals. And “Chorus” comes from the Old English root of “Charlotte” — the letter is about Charlie.",
+      "(Ch 2, at the book launch) Jonathan spots a second misquote — one misplaced apostrophe — in the same letter, confirming it all: Charlie vanished in 2010, from the CED itself."
+    ]
+  },
+  {
+    icon:"📮", kind:"Postcard", to:"Alex", ch:5,
+    quote:"\"I DO DESPISE A LIAR\"",
+    leads:"Chorus isn't only writing to Martha — the circle is widening."
+  },
+  {
+    icon:"📮", kind:"2 Postcards", to:"Gabriel & Martha", ch:6,
+    quote:"To Gabriel: \"This young gentlewoman had a father.\" The one addressed to Martha herself is never shown — the book keeps its exact words a secret.",
+    leads:"Chorus has been in contact with the family far longer than anyone knew."
+  },
+  {
+    icon:"📮", kind:"Yearly Postcard", to:"Mike Orme, since 2011", ch:"7, 47",
+    quote:"\"FALSEDICT: AN UNTRUE DELIVERANCE OR UTTERANCE\" — plus \"Pseudologiser\" (an inventor of elaborate lies) and \"gobemouche\" (a \"fly-swallower\" who believes anything).",
+    leads:"A decade-long pattern nobody had connected — one card every year, always on Charlie's birthday — and it brings Mike back to Oxford. Revealed in the Epilogue: Gabriel sent these himself, furious that Mike had hinted to others that Charlie was the CED thief."
+  },
+  {
+    icon:"📮", kind:"Postcard", to:"Safi", ch:7,
+    quote:"\"'Tis thou that must help me\"",
+    leads:"Pulls Safi deeper into the archive — and the investigation."
+  },
+  {
+    icon:"✉️", kind:"Letter Two", to:"The whole CED team", ch:"11–12",
+    quote:"\"Confessing sins... will help you find your level.\"",
+    leads:"A hidden \"time signature\" points to a real 1649 prisoner's carving in a Burford church — leading straight to Brin Edwards' bookshop.",
+    decode:[
+      "The letter mentions \"full measures, dance, singing, and numbers\" — Alex wonders about a time signature, like 4/4 in music.",
+      "Another line: \"nothing to lose.\" Simon reads that as an instruction — take a letter out. Specifically, the letter \"O.\"",
+      "The clue also mentions a \"captive\" — someone imprisoned. Alex recalls a talk on church graffiti: prisoners sometimes carved their names into old church stone.",
+      "They check historic churches nearby and find it at Burford: ANTHONY SEDLEY 1649 PRISNER — spelled without the \"O,\" exactly as the clue predicted.",
+      "Burford is also where Brin Edwards' bookshop is — the same shop where Charlie once worked."
+    ]
+  },
+  {
+    icon:"📚", kind:"Bookshop Confession", to:"Brin Edwards", ch:14,
+    quote:"\"She'd been buying the best lots for herself... keeping the profit.\"",
+    leads:"Charlie was secretly dealing books, and lied to her family about quitting in 2010."
+  },
+  {
+    icon:"📮", kind:"Postcards", to:"Whole team, incl. Brin", ch:14,
+    quote:"Brin's card: \"What traitors have we here?\"",
+    leads:"Confirms Chorus's suspect pool now includes Brin himself."
+  },
+  {
+    icon:"📮", kind:"3 Postcards", to:"Martha, Tom & Tanya", ch:16,
+    quote:"\"Where have you been, sister?\"",
+    leads:"Leads the team to Tom and Tanya's home — and an old, unresolved rumor of an affair."
+  },
+  {
+    icon:"🖋️", kind:"Handwriting Match", to:"A postcard in Charlie's shoebox", ch:19,
+    quote:"\"You dazzle me\" — dated 30.iii.MMX, addressed to Charlie at Somerville.",
+    leads:"The date format is traced to George — Alex's husband — raising new, uncomfortable questions."
+  },
+  {
+    icon:"💳", kind:"Hidden Bank Card", to:"Behind Charlie's photo frame", ch:19,
+    quote:"A debit card in Charlie's name, from a bank the family never used.",
+    leads:"Sent to Caldwell — a financial secret Charlie kept from everyone."
+  },
+  {
+    icon:"📮", kind:"Postcard", to:"Brin Edwards", ch:"21, 47",
+    quote:"\"Thou art a robber.\"",
+    leads:"\"Chorus has his own suspect pool\" — the circle of doubt keeps widening. Revealed in the Epilogue: Gabriel sent this one too, suspecting (wrongly, it turned out) that Brin had helped Simon offload stolen archive items."
+  },
+  {
+    icon:"📮", kind:"Postcard", to:"Jonathan", ch:24,
+    quote:"\"Thou art a scholar, speak to it!\"",
+    leads:"Draws Jonathan into hard questions about the night of his book launch."
+  },
+  {
+    icon:"📮", kind:"Postcard", to:"Gemma Waldegrave", ch:27,
+    quote:"\"It wasn't from you?\" \"No.\"",
+    leads:"Gemma had assumed Martha sent it — she didn't. Yet another postcard in the trail with no confirmed sender, widening the mystery instead of narrowing it."
+  },
+  {
+    icon:"✉️", kind:"Letter Three", to:"The whole CED team", ch:"24, 26",
+    quote:"\"Search for that lost treasure. I'm no rhymer, but in rhyme resides the truth.\"",
+    leads:"Cracked using the sonnet's own rhyme scheme and a number cipher — leading to Psalm 42, a thirsty deer, and a strange slip hidden in the CED archive.",
+    decode:[
+      "Fourteen lines, laid out like a sonnet — Safi guesses the rhyme scheme (abab cdcd efef gg) is the key.",
+      "A simple number-substitution code (a=1, b=2...) picks out one word per line, using the rhyme pattern to know which word to take.",
+      "Decoded, it reads: \"Search the psalm. That is the answer to the universe. Find the thirsty creature.\"",
+      "\"The answer to the universe\" — Safi immediately thinks of The Hitchhiker's Guide to the Galaxy: 42.",
+      "Psalm 42: \"As the hart panteth after the water brooks...\" — a hart is a deer. That's the thirsty creature.",
+      "Searching the CED's old paper archive for \"hart\" turns up something stranger: a modern slip for a different word entirely, \"besmirched\" — see below."
+    ],
+    salutation:"Dear Editors,",
+    verse:[
+      "Search for that lost treasure. I'm no rhymer, but in rhyme resides the truth.",
+      "That's the journey I have set you on. I am perhaps a Freudian, though few think his work worthy of a",
+      "Psalm of praise now.",
+      "Does that grieve you, as it does me? He thought that the pattern of language on",
+      "The mind is important. Who can speak truth, after all",
+      "Without understanding somehow the living history of words – the time in our mouth.",
+      "For an answer to appear, we must look back.",
+      "I trust you to unpick rotting threads",
+      "Of memory. Search amongst the early scholars",
+      "Who made paths through the universe of English and",
+      "Came back with treasures. Find something remarkable in their scraps of linguistic loot.",
+      "Traces of unfamiliar footsteps in the newly turned soil.",
+      "Be eager, know that those too thirsty for glory are dangers to themselves and others.",
+      "Although they may be that poor creature the scholar, and inks and reputations fade in sunlight."
+    ],
+    signature:"Yours, Chorus"
+  },
+  {
+    icon:"📇", kind:"Slips Room Discovery", to:"CED's paper archive", ch:"28, 35, 37",
+    quote:"\"My reputacion faire by this scoundril now besmirched.\" — Ballad of the Spinner, Anon. Before 1599.",
+    leads:"A real antedating (5 years before Shakespeare's Hamlet), citing a book credited to Charlotte Thornhill — a book that was never published. It's Charlie's handwriting. Later leads (Ch35–37) point toward the astonishing possibility that \"J. H.\" is Joan Hart — Shakespeare's real-life sister.",
+    decode:[
+      "Searching the archive for \"hart\" (from the Psalm 42 clue), the team instead finds a modern index card filed under \"besmirched.\"",
+      "Its citation is older than any known use — five years before Hamlet (1604), which is the current record.",
+      "The source: \"The Commonplace Book of J. H., A Provincial Woman, ed. Charlotte Thornhill\" — Charlie's full name, as an editor.",
+      "Charlie never published a book. But the handwriting on the repeatedly crossed-out, rewritten card is unmistakably hers.",
+      "Martha and Caldwell later theorize: Charlie may have found a genuine, undiscovered 16th-century manuscript — \"the discovery of a lifetime\" — and was quietly working to document it before revealing it to anyone.",
+      "Safi tracks the manuscript's trail to a real house sale near Witney (Ch35), run by Sir Walter's family — who have a rumored historical connection to Shakespeare himself.",
+      "At an art event (Ch37), a conversation about \"the lost women of history\" sparks Safi's breakthrough: \"J. H.\" could be Joan Hart — Shakespeare's actual sister — meaning Charlie may have found her lost commonplace book."
+    ]
+  },
+  {
+    icon:"🌊", kind:"Simon's Death", to:"Found in the river, University Park", ch:"39–41",
+    quote:"\"I don't think it was an accident, no.\"",
+    leads:"Simon goes missing the same weekend a photocopy of a brand-new, never-before-seen Chorus letter turns up on his own desk. Days later he's found dead in the river — and Caldwell doesn't believe it was an accident.",
+    decode:[
+      "Simon misses work with no message; Alex, who has a spare key, checks his flat and finds his cat unfed and his computer untouched — he never went anywhere on purpose.",
+      "Under his computer, Alex finds a photocopy of a Chorus letter the team has never seen before.",
+      "Local news breaks before Caldwell can call: \"Lots of police in University Park. Person in river.\"",
+      "Caldwell confirms it in person: Simon is dead, likely in the water two to three days — since the night of the art event where he was \"lion-drunk\" and lashed out at Martha.",
+      "Caldwell's blunt verdict — \"I don't think it was an accident, no\" — turns Simon from a bitter, sidelined colleague into the investigation's first confirmed victim since Charlie."
+    ]
+  },
+  {
+    icon:"✉️", kind:"Letter Four", to:"Found on Simon's own desk", ch:"39, 42, 45",
+    quote:"\"The pattern of a mind, the common cloth of other people's words, stitched with her own thread into a miracle.\"",
+    leads:"Chorus calls this \"a final gift\": a poetic description of a hidden library discovery, emphasizing female authorship — feeding directly into the Joan Hart theory. Its final clue (\"called forth, openly\") leads the team straight to the Bodleian — and turns out to be the key Jonathan himself decoded, sending Gemma to collect the manuscript on his behalf.",
+    decode:[
+      "The letter describes \"a return home,\" with \"no more fears to whisper\" — Chorus frames this as a final message.",
+      "\"Stitched with her own thread into a miracle\" — deliberate emphasis on a female author, strengthening the Joan Hart theory from the Slips Room discovery.",
+      "It points to \"a library, a new volume... a secret treasure called forth, openly\" and calls the whole search \"a labyrinth\" and \"a test.\"",
+      "When Martha shares the commonplace book theory with Jonathan, his reaction seems oddly unsurprised — he admits he and Gemma once heard a rumor Charlie was writing a book, and never mentioned it before.",
+      "In Ch45, the team decodes the letter's final line themselves and finds the manuscript at the Bodleian — only to learn Jonathan had already cracked it and sent Gemma to collect it first."
+    ]
+  },
+  {
+    icon:"📿", kind:"Charlie's Body Found", to:"Godstow Abbey", ch:44,
+    quote:"\"Is it her? Is it Charlie?\"",
+    leads:"Thirteen years after she vanished, Charlie's body is found in a shallow grave near Godstow Abbey, confirmed by a necklace she'd given to every member of her family. The team theorizes Simon may have witnessed the burial years ago without understanding it — until Chorus's letters brought it all back."
+  },
+  {
+    icon:"📖", kind:"The Commonplace Book, Recovered", to:"The Bodleian Library", ch:45,
+    quote:"\"Martha, is it as important as you thought it might be?\" \"Much, much more.\"",
+    leads:"Following the final letter's clue, the team finds a document box at the Bodleian — checked out under the name \"Hart\" — containing Charlie's own index cards and pages of the real commonplace book, confirmed as the work of Joan Hart, Shakespeare's sister, by a publisher's emailed chapter list including \"Joan Hart — biography.\""
+  },
+  {
+    icon:"🚔", kind:"Jonathan's Confession", to:"The police station", ch:"45, 46",
+    quote:"\"He has confessed to the killings.\"",
+    leads:"Gemma is caught collecting the manuscript on Jonathan's instructions, and it unravels: she's covered for him for over a decade, misleading journalists and police and quietly steering Martha away to Berlin. Jonathan turns himself in and confesses to killing both Charlie and Simon — but in Ch46 this confession turns out to be a cover story: he didn't kill anyone himself."
+  },
+  {
+    icon:"🗡️", kind:"The Truth About Olivia", to:"Told directly to Martha", ch:46,
+    quote:"\"It was Olivia who threw Charlie down the stairs... Olivia who he was blackmailing. Olivia pushed him into the river.\"",
+    leads:"Jonathan's confession unravels under Safi's questioning. The real killer was his wife, Olivia — driven by jealousy over his past affairs, then covering her tracks for over a decade with his help. Jonathan's real motive for the cover-up was greed: he wanted Charlie's manuscript discovery for his own career."
+  },
+  {
+    icon:"✍️", kind:"Chorus Revealed", to:"Gabriel — Martha's own father", ch:47,
+    quote:"\"I had no idea writing those letters would get someone killed.\"",
+    leads:"The final twist: Alex recognizes the worn \"e\" key and unusual line-spacing on Gabriel's typewriter, matching every Chorus letter and postcard. Gabriel found Charlie's manuscript years earlier but hid it from Rebecca to protect her hope that Charlie was alive. After Rebecca's death, guilt and quiet suspicion of Jonathan drove him to become Chorus himself — nudging the investigation forward without ever being able to prove what he feared."
+  }
+];
+
+/* ---------- build slides array: [charmap, investigation, ...chapters, final] ---------- */
+const slidesEl = document.getElementById('slides');
+const tocEl = document.getElementById('toc');
+const dotsEl = document.getElementById('dots');
+let current = 0;
+let refreshNoteBox = null; /* assigned later once the notes panel is wired up */
+const totalSlides = chapters.length + 2; // charmap + investigation + chapters
+
+function tagMeta(type){
+  if(type==="bang") return {cls:"tag-bang", icon:"⚡"};
+  if(type==="plus") return {cls:"tag-plus", icon:"💬"};
+  if(type==="q") return {cls:"tag-q", icon:"❓"};
+  return {cls:"tag-fun", icon:"✨"};
+}
+
+function buildCharCard(key){
+  const info = charInfo[key];
+  if(!info) return '';
+  const linksHtml = (info.links||[]).map(lk => {
+    const target = charInfo[lk];
+    if(!target) return '';
+    return `<button class="char-link-btn" data-charkey="${lk}">${target.emoji} ${target.name}</button>`;
+  }).join('');
+  return `
+  <div class="char-card map-node" id="node-${key}" style="--accent:${groupAccentFor(key)}">
+    <div class="char-emoji">${info.emoji}</div>
+    <div class="cname">${info.name}</div>
+    <div class="crole">${info.role}</div>
+    ${info.badge ? `<div class="char-badge">${info.badge}</div>` : ''}
+    <div class="char-links">${linksHtml}</div>
+  </div>`;
+}
+function groupAccentFor(key){
+  const g = mapGroups.find(gr => gr.members.includes(key));
+  return g ? g.accent : 'var(--line)';
+}
+function buildCharMapSlide(){
+  const div = document.createElement('div');
+  div.className = 'slide map-slide';
+  div.dataset.index = 0;
+
+  const groupsHtml = mapGroups.map(g => `
+    <div class="map-group">
+      <div class="map-group-title"><span class="sw" style="background:${g.accent}"></span>${g.title}</div>
+      <div class="map-grid">${g.members.map(buildCharCard).join('')}</div>
+    </div>`).join('');
+
+  const chorusLinksHtml = chorusTargets.map(k => {
+    const t = charInfo[k];
+    if(!t) return '';
+    return `<button class="char-link-btn" data-charkey="${k}">${t.emoji} ${t.name}</button>`;
+  }).join('');
+
+  div.innerHTML = `
+    <div class="slide-top">
+      <div class="slide-num">🕸️</div>
+      <div class="slide-titles">
+        <h2>Character Map</h2>
+        <div class="hook">Tap any name to see how they connect. 👇</div>
+      </div>
+    </div>
+
+    <div class="map-legend">
+      <span><span class="sw" style="background:var(--burgundy)"></span>Thornhill family</span>
+      <span><span class="sw" style="background:var(--blue)"></span>CED dictionary team</span>
+      <span><span class="sw" style="background:var(--gold)"></span>Charlie's outer circle</span>
+      <span><span class="sw" style="background:var(--teal)"></span>Police</span>
+      <span><span class="sw" style="background:#f5f2ea;border:2px solid #b0512f;"></span>Chorus (unknown)</span>
+    </div>
+
+    <div class="map-groups">
+      ${groupsHtml}
+      <div class="map-group">
+        <div class="map-group-title"><span class="sw" style="background:#f5f2ea;border:2px solid #b0512f;"></span>❓ The Mystery</div>
+        <div class="char-card chorus-card map-node" id="node-chorus">
+          <div class="char-emoji">❓</div>
+          <div class="cname">Chorus</div>
+          <div class="crole">the mystery letter-writer</div>
+          <div class="chorus-targets">📮 Sent letters or postcards to:</div>
+          <div class="char-links">${chorusLinksHtml}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  slidesEl.appendChild(div);
+
+  div.querySelectorAll('.char-link-btn').forEach(btn => {
+    btn.addEventListener('click', () => focusCard(btn.dataset.charkey));
+  });
+}
+
+function buildInvestigationSlide(idx){
+  const div = document.createElement('div');
+  div.className = 'slide investigation-slide';
+  div.dataset.index = idx;
+
+  const itemsHtml = investigation.map((it,i) => `
+    <div class="clue-card">
+      <div class="clue-icon">${it.icon}</div>
+      <div class="clue-body">
+        <div class="clue-top">
+          <span class="clue-kind">${it.kind}</span>
+          <span class="clue-to">→ ${it.to}</span>
+          <span class="clue-ch">Ch ${it.ch}</span>
+        </div>
+        <div class="clue-quote">${it.quote}</div>
+        <div class="clue-leads"><span class="leads-arrow">🔎 Led to:</span> ${it.leads}</div>
+        ${it.decode ? `
+        <button class="decode-toggle" data-idx="${i}">🧩 Show how they cracked it</button>
+        <div class="clue-decode" id="decode-${i}" hidden>
+          <div class="cd-label">Step by step</div>
+          <ol>${it.decode.map(step => `<li>${step}</li>`).join('')}</ol>
+        </div>` : ''}
+        ${it.verse ? `
+        <button class="decode-toggle" data-idx="verse-${i}">📜 Read the full letter</button>
+        <div class="clue-decode" id="decode-verse-${i}" hidden>
+          <div class="cd-label">Full text</div>
+          <div class="clue-verse">
+            ${it.salutation ? `<p>${it.salutation}</p>` : ''}
+            ${it.verse.map(line => `<p>${line}</p>`).join('')}
+            ${it.signature ? `<p class="cv-sig">${it.signature}</p>` : ''}
+          </div>
+        </div>` : ''}
+      </div>
+    </div>`).join('');
+
+  div.innerHTML = `
+    <div class="slide-top">
+      <div class="slide-num">🕵️</div>
+      <div class="slide-titles">
+        <h2>The Investigation</h2>
+        <div class="hook">Every letter and postcard from Chorus, in order — and exactly where each one led the team.</div>
+      </div>
+    </div>
+    <div class="clue-trail">${itemsHtml}</div>
+  `;
+  slidesEl.appendChild(div);
+
+  div.querySelectorAll('.decode-toggle').forEach(btn => {
+    const isVerse = String(btn.dataset.idx).startsWith('verse-');
+    const shownLabel = isVerse ? '📜 Hide the letter' : '🧩 Hide the decode';
+    const hiddenLabel = isVerse ? '📜 Read the full letter' : '🧩 Show how they cracked it';
+    btn.addEventListener('click', () => {
+      const box = div.querySelector('#decode-' + btn.dataset.idx);
+      const isHidden = box.hasAttribute('hidden');
+      if(isHidden){
+        box.removeAttribute('hidden');
+        btn.textContent = shownLabel;
+      } else {
+        box.setAttribute('hidden','');
+        btn.textContent = hiddenLabel;
+      }
+    });
+  });
+}
+
+/* ---------- discussion polls ---------- */
+function loadPollVotes(chapterN, optCount){
+  try {
+    const raw = localStorage.getItem('gbd-poll-' + chapterN);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(Array.isArray(parsed) && parsed.length === optCount) return parsed;
+    }
+  } catch(e){}
+  return new Array(optCount).fill(0);
+}
+function savePollVotes(chapterN, votes){
+  try { localStorage.setItem('gbd-poll-' + chapterN, JSON.stringify(votes)); } catch(e){}
+}
+function buildPollHtml(c){
+  const votes = loadPollVotes(c.n, c.poll.options.length);
+  const total = votes.reduce((a,b) => a+b, 0);
+  const optsHtml = c.poll.options.map((opt,i) => {
+    const pct = total ? Math.round(votes[i]/total*100) : 0;
+    return `
+    <button class="poll-opt${votes[i] === Math.max(...votes) && total ? ' voted' : ''}" data-opt="${i}">
+      <div class="poll-opt-fill" style="width:${pct}%"></div>
+      <div class="poll-opt-content">
+        <span class="poll-opt-text">${opt}</span>
+        <span class="poll-opt-pct">${total ? pct + '%' : ''}</span>
+      </div>
+    </button>`;
+  }).join('');
+  return `
+  <div class="poll-card" id="poll-${c.n}">
+    <div class="poll-q">🗳️ Quick poll — what's your take?</div>
+    <div class="poll-prompt">${c.poll.q}</div>
+    <div class="poll-options">${optsHtml}</div>
+    <div class="poll-footer">
+      <span class="poll-total">${total} vote${total===1?'':'s'} so far</span>
+      <button class="poll-reset">↺ reset poll</button>
+    </div>
+  </div>`;
+}
+function attachPollHandlers(div, c){
+  const container = div.querySelector('#poll-' + c.n);
+  if(!container) return;
+  container.querySelectorAll('.poll-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const votes = loadPollVotes(c.n, c.poll.options.length);
+      votes[Number(btn.dataset.opt)]++;
+      savePollVotes(c.n, votes);
+      container.outerHTML = buildPollHtml(c);
+      attachPollHandlers(div, c);
+    });
+  });
+  const resetBtn = container.querySelector('.poll-reset');
+  resetBtn.addEventListener('click', () => {
+    if(!window.confirm('Reset this poll\'s votes?')) return;
+    savePollVotes(c.n, new Array(c.poll.options.length).fill(0));
+    container.outerHTML = buildPollHtml(c);
+    attachPollHandlers(div, c);
+  });
+}
+
+function buildChapterSlide(c, idx){
+  const div = document.createElement('div');
+  div.className = 'slide';
+  div.dataset.index = idx;
+
+  const beatsHtml = c.beats.map(b => `
+    <div class="beat">
+      <div class="icon">${b.icon}</div>
+      <div class="txt">${b.txt}</div>
+    </div>`).join('');
+
+  const taggedHtml = c.tagged.map(t => {
+    const m = tagMeta(t.type);
+    return `<div class="tag-card ${m.cls}">
+      <div class="badge">${m.icon} ${t.label}</div>
+      <div>${t.text}</div>
+    </div>`;
+  }).join('');
+
+  const charHtml = c.characters.map((p,i) => {
+    const key = keyFor(p.n);
+    return `
+    <div class="char-avatar${key ? ' clickable' : ''}" data-charkey="${key || ''}" title="${key ? 'Click to find on the map' : ''}">
+      <div class="circle" style="background:${colorFor(p.n)}">${initials(p.n)}</div>
+      <div class="nm">${p.n}</div>
+      <div class="rl">${p.d}</div>
+    </div>`;
+  }).join('');
+
+  const vocabHtml = c.vocab.map((v,i) => `
+    <div class="flip-card${i===0 ? ' title-word' : ''}" data-vocab="${idx}-${i}">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="fb-word">${v.w}</div>
+          ${v.e ? `<div class="fb-example">“${v.e}”</div>` : ''}
+        </div>
+        <div class="flip-back">
+          <div class="fb-def-label">Meaning</div>
+          <div>${v.d}</div>
+        </div>
+      </div>
+    </div>`).join('');
+
+  div.innerHTML = `
+    <div class="slide-top">
+      <div class="slide-num">${c.n}</div>
+      <div class="slide-titles">
+        <h2>${c.title}</h2>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <div class="kp-icon">🔑</div>
+      <div class="kp-text"><span class="kp-label">Key point</span>${c.hook}</div>
+    </div>
+
+    ${c.poll ? buildPollHtml(c) : ''}
+
+    ${c.vocab.length ? `
+    <div class="section-label">📚 New Words — tap to reveal meaning</div>
+    <div class="vocab-hint">👆 tap a card to reveal its meaning · the gold card 📌 is this chapter's opening word — how does it connect to the chapter title?</div>
+    <div class="vocab-flip-grid">${vocabHtml}</div>` : ''}
+
+    <div class="summary-card">
+      <div class="lbl">📖 What Happens</div>
+      <p>${c.summary}</p>
+    </div>
+
+    <div class="beat-strip">${beatsHtml}</div>
+
+    <div class="pull-quote"><span class="mark">&ldquo;</span><p>${c.quote}</p></div>
+
+    <div class="tag-grid">${taggedHtml}</div>
+
+    <div class="section-label">🗣️ Characters</div>
+    <div class="char-row">${charHtml}</div>
+  `;
+  slidesEl.appendChild(div);
+
+  div.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
+  div.querySelectorAll('.char-avatar.clickable').forEach(av => {
+    av.addEventListener('click', () => highlightMapNode(av.dataset.charkey));
+  });
+
+  if(c.poll) attachPollHandlers(div, c);
+}
+
+buildCharMapSlide();
+buildInvestigationSlide(1);
+chapters.forEach((c,i) => buildChapterSlide(c, i+2));
+
+/* ---------- nav pills ---------- */
+function buildTocPill(label, idx, special){
+  const b = document.createElement('button');
+  b.textContent = label;
+  if(special) b.className = 'special';
+  b.addEventListener('click', () => goTo(idx));
+  b.dataset.idx = idx;
+  tocEl.appendChild(b);
+  return b;
+}
+const pills = [];
+pills.push(buildTocPill('🕸️ Map', 0, true));
+pills.push(buildTocPill('🕵️ Clues', 1, true));
+
+const chapterJump = document.createElement('select');
+chapterJump.className = 'chapter-jump';
+chapterJump.id = 'chapterJump';
+const jumpDefault = document.createElement('option');
+jumpDefault.value = '';
+jumpDefault.textContent = '📚 Jump to a chapter…';
+jumpDefault.disabled = true;
+jumpDefault.selected = true;
+chapterJump.appendChild(jumpDefault);
+chapters.forEach((c,i) => {
+  const opt = document.createElement('option');
+  opt.value = i + 2;
+  opt.textContent = 'Ch ' + c.n + ' — ' + c.title;
+  chapterJump.appendChild(opt);
+});
+chapterJump.addEventListener('change', () => {
+  const v = Number(chapterJump.value);
+  if(!Number.isNaN(v)) goTo(v);
+});
+tocEl.appendChild(chapterJump);
+
+
+/* ---------- dots ---------- */
+for(let i=0;i<totalSlides;i++){
+  const d = document.createElement('button');
+  d.className = 'dot';
+  d.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(d);
+}
+
+/* ---------- navigation ---------- */
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const counterEl = document.getElementById('counter');
+const allSlides = () => Array.from(document.querySelectorAll('.slide'));
+
+function goTo(i){
+  if(i<0) i=0;
+  if(i>totalSlides-1) i=totalSlides-1;
+  current = i;
+  allSlides().forEach(s => s.classList.toggle('active', Number(s.dataset.index)===i));
+  Array.from(dotsEl.children).forEach((d,idx) => d.classList.toggle('active', idx===i));
+  pills.forEach(p => p.classList.toggle('current', Number(p.dataset.idx)===i));
+  if(i>=2 && i<=chapters.length+1){ chapterJump.value = i; } else { chapterJump.value = ''; }
+  if(refreshNoteBox) refreshNoteBox(i);
+  prevBtn.disabled = i===0;
+  nextBtn.disabled = i===totalSlides-1;
+  counterEl.textContent = (i+1) + ' / ' + totalSlides;
+
+  const deckEl = document.querySelector('.deck');
+  const deckTop = deckEl.getBoundingClientRect().top + window.scrollY - 64;
+  if (window.scrollY > deckTop) {
+    window.scrollTo({top: deckTop, behavior:'smooth'});
+  }
+}
+prevBtn.addEventListener('click', () => goTo(current-1));
+nextBtn.addEventListener('click', () => goTo(current+1));
+document.addEventListener('keydown', (e) => {
+  const tag = document.activeElement.tagName;
+  if(tag==='TEXTAREA' || tag==='SELECT' || tag==='INPUT') return;
+  if(e.key==='ArrowRight') goTo(current+1);
+  if(e.key==='ArrowLeft') goTo(current-1);
+});
+goTo(0);
+
+/* ---------- Floating notes panel ---------- */
+const panel = document.getElementById('notes-panel');
+const toggleHead = document.getElementById('notes-toggle');
+const toggleBtn = document.getElementById('notes-toggle-btn');
+const editor = document.getElementById('note-editor');
+const noteCurrentLabel = document.getElementById('note-current-label');
+const clearBtn = document.getElementById('notes-clear');
+
+function loadNote(key){
+  try { return localStorage.getItem('gbd-note-' + key) || ''; } catch(e){ return ''; }
+}
+function saveNote(key, val){
+  try { localStorage.setItem('gbd-note-' + key, val); } catch(e){}
+}
+
+/* every slide gets its own note, auto-selected by whichever slide is showing */
+function noteMetaForSlide(i){
+  if(i === 0) return {key:'map', label:'🕸️ Character Map'};
+  if(i === 1) return {key:'clues', label:'🕵️ The Investigation'};
+  const c = chapters[i-2];
+  if(c) return {key:'ch'+c.n, label:'Ch '+c.n+' — '+c.title};
+  return {key:'general', label:'Notes'};
+}
+const noteLabels = [
+  {key:'map', label:'Character Map'},
+  {key:'clues', label:'The Investigation'},
+  ...chapters.map(c => ({key:'ch'+c.n, label:'Chapter '+c.n+' — '+c.title}))
+];
+let currentNoteKey = 'map';
+refreshNoteBox = function(i){
+  const meta = noteMetaForSlide(i);
+  currentNoteKey = meta.key;
+  noteCurrentLabel.textContent = meta.label;
+  editor.innerHTML = loadNote(meta.key);
+};
+refreshNoteBox(0);
+editor.addEventListener('input', () => { saveNote(currentNoteKey, editor.innerHTML); });
+clearBtn.addEventListener('click', () => { editor.innerHTML = ''; saveNote(currentNoteKey, ''); });
+
+/* formatting toolbar: bold, underline, 4 highlight colors + remove */
+document.querySelectorAll('.notes-toolbar .fmt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    editor.focus();
+    document.execCommand(btn.dataset.cmd, false, null);
+    saveNote(currentNoteKey, editor.innerHTML);
+  });
+});
+document.querySelectorAll('.notes-toolbar .hl-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    editor.focus();
+    const color = btn.dataset.color;
+    try { document.execCommand('hiliteColor', false, color); }
+    catch(e) { document.execCommand('backColor', false, color); }
+    saveNote(currentNoteKey, editor.innerHTML);
+  });
+});
+
+/* Save Notes as PDF */
+const pdfBtn = document.getElementById('notes-pdf');
+function escapeHtml(str){
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+const clearAllBtn = document.getElementById('notes-clear-all');
+clearAllBtn.addEventListener('click', () => {
+  const confirmed = window.confirm('Clear ALL notes — general, every chapter, and the big-picture questions? This can\'t be undone.');
+  if(!confirmed) return;
+  noteLabels.forEach(item => saveNote(item.key, ''));
+  editor.innerHTML = loadNote(currentNoteKey);
+});
+
+pdfBtn.addEventListener('click', () => {
+  const sections = noteLabels
+    .map(item => ({ label: item.label, text: loadNote(item.key) }))
+    .filter(s => s.text && s.text.trim().length > 0);
+  const bodyHtml = sections.length
+    ? sections.map(s => `
+        <div class="note-block">
+          <h2>${escapeHtml(s.label)}</h2>
+          <div class="note-content">${s.text}</div>
+        </div>`).join('')
+    : `<p class="empty">No notes written yet. Add some in the notes panel first.</p>`;
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Guilty by Definition — Discussion Notes</title>
+      <style>
+        body{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; color:#212a38; max-width:720px; margin:40px auto; padding:0 20px; line-height:1.6; }
+        h1{ font-size:1.8em; color:#20375c; border-bottom:2px solid #d99a2b; padding-bottom:10px; margin-bottom:4px; }
+        .subtitle{ color:#5c6472; font-style:italic; margin-bottom:30px; }
+        h2{ font-size:1.15em; color:#20375c; margin:26px 0 6px; border-left:4px solid #d99a2b; padding-left:10px; }
+        .note-block p{ margin:0 0 10px; white-space:pre-wrap; }
+        .note-content{ margin:0 0 10px; white-space:pre-wrap; }
+        .note-content div{ margin:0 0 6px; }
+        .empty{ color:#999; font-style:italic; }
+        @media print{ body{ margin:0; padding:20px; } }
+      </style>
+    </head>
+    <body>
+      <h1>Guilty by Definition — Book Club Notes</h1>
+      <div class="subtitle">Chapters 1–46 + Epilogue (complete) &middot; ${new Date().toLocaleDateString()}</div>
+      ${bodyHtml}
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
+  printWindow.focus();
+  setTimeout(() => printWindow.print(), 300);
+});
+
+toggleHead.addEventListener('click', () => {
+  panel.classList.toggle('collapsed');
+  toggleBtn.textContent = panel.classList.contains('collapsed') ? '+' : '–';
+  try { localStorage.setItem('gbd-panel-collapsed', panel.classList.contains('collapsed') ? '1' : '0'); } catch(e){}
+});
+try {
+  if(localStorage.getItem('gbd-panel-collapsed') === '1'){
+    panel.classList.add('collapsed');
+    toggleBtn.textContent = '+';
+  }
+} catch(e){}
+</script>
+
+</body>
+</html>
