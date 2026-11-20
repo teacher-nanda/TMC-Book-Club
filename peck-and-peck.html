@@ -336,6 +336,7 @@ body.notes-open .fab{display:none}
 @media (min-width:761px){.home-hero .hero-inner{position:relative;padding-right:250px}.home-hero .cover-img{position:absolute;right:16px;top:50%;width:178px;transform:translateY(-50%) rotate(3deg)}}
 @media (max-width:760px){.home-hero .cover-img{width:120px;margin-top:18px}}
 @media (min-width:761px) and (max-width:1100px){.home-hero .chapters{grid-template-columns:repeat(2,max-content)}}
+@media (max-width:560px){.home-hero .chapters{grid-template-columns:minmax(0,1fr)}.home-hero .chbtn{justify-content:space-between}}
 :root{--bg:#FBF6EE;--surface2:#F3E9DB;--line:#E6D8C3;--accent:#B8472E;--accent-soft:#F8DED3;--night:#2A1B2E;--night2:#6B3A3A;--star:#F8DDA8;--on-night:#FBF3E6;--on-night-muted:#E3CFC0;--wall:#F1E7D6;--dot:#D9C7AA;--then:#3F57C0;--now:#B7791F}
 </style>
 
@@ -349,7 +350,7 @@ body.notes-open .fab{display:none}
       <p class="label eyebrow">Book Club</p>
       <h1>Peck &amp; Peck</h1>
       <p class="by">a novel by Bonnie Garmus</p>
-      <div class="chapters"><a class="chbtn" href="#chapter1">Session 1 · Chapters 1–14 <span aria-hidden="true">→</span></a></div>
+      <div class="chapters"><a class="chbtn" href="#chapter1">Session 1 · Chapters 1–14 <span aria-hidden="true">→</span></a><a class="chbtn" href="#chapter2">Session 2 · Chapters 15–30 <span aria-hidden="true">→</span></a></div>
       <img class="cover-img" src="covers/peck-and-peck.jpg" alt="Cover of Peck &amp; Peck by Bonnie Garmus" width="178">
       <div class="pr-head"><p class="pr-big">Check out our Book Club!</p><p class="pr-sub">Read along with us, and see what we think, at</p><a href="https://teacher-nanda.github.io/Whistler/">teacher-nanda.github.io/Whistler</a></div>
     </div>
@@ -370,7 +371,7 @@ body.notes-open .fab{display:none}
     </div>
     <div class="board" id="board"><button class="empty-add" id="ghostAdd" type="button">+ Add your first post-it</button></div>
   </main>
-  <p class="homefoot">Page version 1</p>
+  <p class="homefoot">Page version 2</p>
   <section id="printWall"><h2>Our post-its</h2><p class="sub" id="pwDate"></p><div class="pw-grid" id="pwGrid"></div></section>
 </div>
 
@@ -389,12 +390,12 @@ body.notes-open .fab{display:none}
 <nav class="agenda" aria-label="Lesson plan">
   <div class="agenda-scroll wrap">
     <ol>
-      <li><a href="#c2-warmup" data-s="c2-warmup"><span class="n">1</span>Warm-up</a></li>
-      <li><a href="#c2-story" data-s="c2-story"><span class="n">2</span>The&nbsp;story</a></li>
-      <li><a href="#c2-people" data-s="c2-people"><span class="n">3</span>The&nbsp;people</a></li>
-      <li><a href="#c2-close" data-s="c2-close"><span class="n">4</span>Words &amp;&nbsp;quotes</a></li>
-      <li><a href="#c2-discuss" data-s="c2-discuss"><span class="n">5</span>Discuss</a></li>
-      <li><a href="#c2-wrapup" data-s="c2-wrapup"><span class="n">6</span>Wrap-up</a></li>
+      <li><a href="#c1-warmup" data-s="c1-warmup"><span class="n">1</span>Warm-up</a></li>
+      <li><a href="#c1-story" data-s="c1-story"><span class="n">2</span>The&nbsp;story</a></li>
+      <li><a href="#c1-people" data-s="c1-people"><span class="n">3</span>The&nbsp;people</a></li>
+      <li><a href="#c1-close" data-s="c1-close"><span class="n">4</span>Words &amp;&nbsp;quotes</a></li>
+      <li><a href="#c1-discuss" data-s="c1-discuss"><span class="n">5</span>Discuss</a></li>
+      <li><a href="#c1-wrapup" data-s="c1-wrapup"><span class="n">6</span>Wrap-up</a></li>
     </ol>
   </div>
 </nav>
@@ -402,19 +403,19 @@ body.notes-open .fab{display:none}
 <main class="wrap">
 
 <!-- 1 WARM-UP -->
-<section class="step" id="c2-warmup">
+<section class="step" id="c1-warmup">
   <div class="sec-head"><span class="badge">Step 1 · 5 min</span><h2>Warm-up</h2></div>
   <p class="intro">We read the sample of the book, Chapters 1 to 14. Start with one easy&nbsp;question.</p>
-  <div class="pick" id="c2-pick">
+  <div class="pick" id="c1-pick">
     <div class="card"><span class="label">Question A</span><p>If you could <b>be</b> anything, not just do something, when you grow up, what would you&nbsp;be?</p></div>
     <div class="card"><span class="label">Question B</span><p>Have you ever told a small lie to protect someone you love? What&nbsp;happened?</p></div>
     <div class="card"><span class="label">Question C</span><p>Do you read poetry? If not, what do you read when you want to&nbsp;think?</p></div>
   </div>
-  <div class="pick-bar"><button class="btn" id="c2-pickBtn" type="button">Pick a question for us</button><span class="tip" style="margin:0">Or choose your own.</span></div>
+  <div class="pick-bar"><button class="btn" id="c1-pickBtn" type="button">Pick a question for us</button><span class="tip" style="margin:0">Or choose your own.</span></div>
 </section>
 
 <!-- 2 STORY -->
-<section class="step" id="c2-story">
+<section class="step" id="c1-story">
   <div class="sec-head"><span class="badge">Step 2 · 8 min</span><h2>The story so far</h2></div>
   <p class="intro">A one-minute reminder of the sample, then the two parts of Batter’s&nbsp;life.</p>
   <div class="sixty">
@@ -448,7 +449,7 @@ body.notes-open .fab{display:none}
 </section>
 
 <!-- 3 PEOPLE -->
-<section class="step" id="c2-people">
+<section class="step" id="c1-people">
   <div class="sec-head"><span class="badge">Step 3 · 7 min</span><h2>Who is who</h2></div>
   <div class="tree" aria-label="Batter’s journey so far, in order">
     <p class="tree-title label">Batter’s journey so&nbsp;far</p>
@@ -493,7 +494,7 @@ body.notes-open .fab{display:none}
 </section>
 
 <!-- 4 WORDS AND QUOTES -->
-<section class="step" id="c2-close">
+<section class="step" id="c1-close">
   <div class="sec-head"><span class="badge">Step 4 · 10 min</span><h2>Close reading: quotes and words</h2></div>
   <p class="intro">Take a few minutes on <b>six lines</b> from the chapters. Tap “Think about it” for a question. Use “Add to notes” to save a line to your&nbsp;notes.</p>
   <div class="quotes">
@@ -551,11 +552,11 @@ body.notes-open .fab{display:none}
 </section>
 
 <!-- 5 DISCUSS -->
-<section class="step" id="c2-discuss">
+<section class="step" id="c1-discuss">
   <div class="sec-head"><span class="badge">Step 5 · 15 min</span><h2>Let’s discuss</h2></div>
 
   <p class="tip">You do not need every question. Choose <b>the ones your group likes</b>. Tick a question when you have talked about&nbsp;it.</p>
-  <div class="progress"><span id="c2-progTxt">0 of 11 discussed</span><div class="bar"><i id="c2-progBar"></i></div></div>
+  <div class="progress"><span id="c1-progTxt">0 of 11 discussed</span><div class="bar"><i id="c1-progBar"></i></div></div>
 
   <div class="round">
     <h3>Round 1 · Understanding <small>about 3 min</small></h3>
@@ -580,10 +581,10 @@ body.notes-open .fab{display:none}
     <div class="q"><span class="qn">11</span><div class="qt">Predict: what does the prison in Chapter 1 have to do with Chapter&nbsp;14?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>The first chapter promises a second&nbsp;crime.</div></div></div>
   </div>
 
-  <div class="card bonus" id="c2-game">
+  <div class="card bonus" id="c1-game">
     <h3>Bonus game: who is it?</h3>
     <p class="tip" style="margin:0">Read each clue and choose the right person. Two rounds of&nbsp;three.</p>
-    <div class="game-head"><div class="steps" id="c2-gSteps"><span class="on" data-r="1">Round 1</span><span data-r="2">Round 2</span><span data-r="3">Final score</span></div><div class="gscore" id="c2-gScore">Score: 0 / 6</div></div>
+    <div class="game-head"><div class="steps" id="c1-gSteps"><span class="on" data-r="1">Round 1</span><span data-r="2">Round 2</span><span data-r="3">Final score</span></div><div class="gscore" id="c1-gScore">Score: 0 / 6</div></div>
     <div class="gr" data-r="1">
       <p class="pr-only label">Round&nbsp;1</p>
       <div class="gq" data-a="Paul">
@@ -623,6 +624,301 @@ body.notes-open .fab{display:none}
       <div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">See my final score</button></div>
     </div>
     <div class="gr gfinal" data-r="3" hidden>
+      <div class="big" id="c1-gBig">0 / 6</div>
+      <p id="c1-gMsg"></p>
+      <button class="btn" id="c1-gAgain" type="button">Play again</button>
+    </div>
+  </div>
+</section>
+
+<!-- 6 WRAP-UP -->
+<section class="step" id="c1-wrapup">
+  <div class="sec-head"><span class="badge">Step 6 · 5 min</span><h2>Wrap-up</h2></div>
+  <p class="intro">Before we stop, share one thought&nbsp;each.</p>
+  <div class="wrapgrid">
+    <div class="card"><h3>Final thoughts</h3><ul><li>Which chapter did you enjoy most so far, and&nbsp;why?</li><li>What do you think Peck &amp; Peck really&nbsp;is?</li><li>What will Batter do after&nbsp;graduation?</li></ul><div class="pick-bar"><button class="btn small" id="c1-predNote" type="button">Add these to my notes</button></div></div>
+    <div class="card locked"><span class="label">Next time</span><h3>Chapters 15–30 are ready</h3><p>We will start by checking our predictions about&nbsp;Batter.</p><p><a class="nextlink" href="#chapter2">Open Session 2&nbsp;→</a></p></div>
+  </div>
+</section>
+
+<section class="print-notes" id="c1-printNotes"><h2>My notes</h2><div class="pn-body" id="c1-pnBody"></div></section>
+
+</main>
+
+<footer class="wrap">Based on the club’s reading highlights from Chapters 1–14 of Peck &amp; Peck by Bonnie Garmus (Kindle sample).</footer>
+
+<button class="fab" id="c1-fab" type="button" aria-controls="c1-drawer" aria-expanded="false">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+  My notes
+</button>
+<aside class="drawer" id="c1-drawer" aria-label="My notes" role="dialog">
+  <div class="dhead"><h3>My notes</h3><button class="btn ghost small" id="c1-closeN" type="button">Close</button></div>
+  <div class="tb" id="c1-tb" role="toolbar" aria-label="Formatting">
+    <button type="button" data-c="bold" title="Bold" aria-label="Bold"><b>B</b></button>
+    <button type="button" data-c="underline" title="Underline" aria-label="Underline"><u>U</u></button>
+    <button type="button" data-c="strikeThrough" title="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
+    <span class="sep"></span>
+    <button type="button" class="sw" data-h="#FFE55C" title="Highlight yellow" aria-label="Highlight yellow"><i style="background:#FFE55C"></i></button>
+    <button type="button" class="sw" data-h="#FFB3C7" title="Highlight pink" aria-label="Highlight pink"><i style="background:#FFB3C7"></i></button>
+    <button type="button" class="sw" data-h="#A8F0C0" title="Highlight green" aria-label="Highlight green"><i style="background:#A8F0C0"></i></button>
+    <button type="button" class="sw" data-h="#A9CBFF" title="Highlight blue" aria-label="Highlight blue"><i style="background:#A9CBFF"></i></button>
+    <button type="button" class="sw none" data-h="transparent" title="Remove highlight" aria-label="Remove highlight"><i></i></button>
+  </div>
+  <div class="editor" id="c1-editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" aria-label="Notes"></div>
+  <div class="dfoot"><span class="st" id="c1-st">Saved on this device</span><button class="btn small" id="c1-savePdf" type="button">Save PDF</button><button class="btn ghost small" id="c1-clearN" type="button">Clear all</button></div>
+</aside>
+</div><!-- /ch1 -->
+<div id="ch2" hidden>
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="glow4" cx="22%" cy="100%" r="70%"><stop offset="0" stop-color="#F7C46A" stop-opacity=".55"/><stop offset="1" stop-color="#F7C46A" stop-opacity="0"/></radialGradient></defs><rect x="0" y="0" width="1200" height="480" fill="url(#glow4)"/><g id="stars4"></g><g fill="#1d1226" opacity=".55"><rect x="470" y="388" width="49" height="92"/><rect x="523" y="350" width="38" height="130"/><rect x="562" y="376" width="37" height="104"/><rect x="605" y="296" width="45" height="184"/><rect x="651" y="304" width="43" height="176"/><rect x="935" y="319" width="58" height="161"/><rect x="996" y="302" width="52" height="178"/><rect x="1049" y="300" width="49" height="180"/><rect x="1104" y="333" width="56" height="147"/><rect x="1162" y="283" width="68" height="197"/></g><g fill="#F7C46A"><rect x="1071" y="423" width="5" height="7" opacity="0.85"/><rect x="981" y="230" width="5" height="7" opacity="0.85"/><rect x="1058" y="374" width="5" height="7" opacity="0.85"/><rect x="1063" y="351" width="5" height="7" opacity="0.85"/><rect x="894" y="223" width="5" height="7" opacity="0.85"/><rect x="499" y="290" width="5" height="7" opacity="0.4"/><rect x="1026" y="278" width="5" height="7" opacity="0.25"/><rect x="773" y="461" width="5" height="7" opacity="0.85"/><rect x="635" y="241" width="5" height="7" opacity="0.25"/><rect x="884" y="214" width="5" height="7" opacity="0.25"/><rect x="959" y="341" width="5" height="7" opacity="0.85"/><rect x="994" y="308" width="5" height="7" opacity="0.4"/><rect x="1036" y="446" width="5" height="7" opacity="0.6"/><rect x="560" y="310" width="5" height="7" opacity="0.6"/><rect x="798" y="274" width="5" height="7" opacity="0.6"/><rect x="876" y="433" width="5" height="7" opacity="0.6"/><rect x="932" y="227" width="5" height="7" opacity="0.6"/><rect x="965" y="262" width="5" height="7" opacity="0.25"/><rect x="1172" y="442" width="5" height="7" opacity="0.85"/><rect x="865" y="197" width="5" height="7" opacity="0.6"/><rect x="574" y="337" width="5" height="7" opacity="0.25"/><rect x="522" y="420" width="5" height="7" opacity="0.25"/><rect x="741" y="271" width="5" height="7" opacity="0.85"/><rect x="1058" y="436" width="5" height="7" opacity="0.85"/><rect x="524" y="446" width="5" height="7" opacity="0.25"/><rect x="965" y="231" width="5" height="7" opacity="0.85"/><rect x="717" y="419" width="5" height="7" opacity="0.6"/><rect x="1174" y="233" width="5" height="7" opacity="0.25"/><rect x="537" y="360" width="5" height="7" opacity="0.85"/><rect x="924" y="367" width="5" height="7" opacity="0.25"/><rect x="1113" y="344" width="5" height="7" opacity="0.85"/><rect x="799" y="470" width="5" height="7" opacity="0.25"/><rect x="921" y="387" width="5" height="7" opacity="0.25"/><rect x="1165" y="368" width="5" height="7" opacity="0.85"/><rect x="1010" y="191" width="5" height="7" opacity="0.4"/><rect x="737" y="317" width="5" height="7" opacity="0.85"/><rect x="1004" y="359" width="5" height="7" opacity="0.6"/><rect x="729" y="351" width="5" height="7" opacity="0.85"/><rect x="806" y="191" width="5" height="7" opacity="0.6"/><rect x="710" y="364" width="5" height="7" opacity="0.25"/><rect x="656" y="448" width="5" height="7" opacity="0.25"/><rect x="1069" y="394" width="5" height="7" opacity="0.6"/><rect x="611" y="361" width="5" height="7" opacity="0.25"/><rect x="802" y="365" width="5" height="7" opacity="0.85"/><rect x="1108" y="470" width="5" height="7" opacity="0.85"/><rect x="1065" y="252" width="5" height="7" opacity="0.85"/><rect x="1075" y="192" width="5" height="7" opacity="0.25"/><rect x="639" y="426" width="5" height="7" opacity="0.4"/><rect x="1151" y="290" width="5" height="7" opacity="0.6"/><rect x="857" y="397" width="5" height="7" opacity="0.4"/><rect x="1050" y="456" width="5" height="7" opacity="0.25"/><rect x="1022" y="429" width="5" height="7" opacity="0.4"/><rect x="1181" y="363" width="5" height="7" opacity="0.85"/><rect x="1099" y="398" width="5" height="7" opacity="0.25"/><rect x="758" y="362" width="5" height="7" opacity="0.4"/><rect x="759" y="372" width="5" height="7" opacity="0.4"/><rect x="541" y="428" width="5" height="7" opacity="0.4"/><rect x="581" y="224" width="5" height="7" opacity="0.6"/><rect x="690" y="226" width="5" height="7" opacity="0.85"/><rect x="1028" y="272" width="5" height="7" opacity="0.4"/><rect x="809" y="270" width="5" height="7" opacity="0.25"/><rect x="857" y="404" width="5" height="7" opacity="0.4"/><rect x="909" y="277" width="5" height="7" opacity="0.6"/><rect x="1063" y="265" width="5" height="7" opacity="0.4"/><rect x="970" y="432" width="5" height="7" opacity="0.85"/><rect x="958" y="277" width="5" height="7" opacity="0.85"/><rect x="550" y="406" width="5" height="7" opacity="0.6"/><rect x="932" y="316" width="5" height="7" opacity="0.25"/><rect x="942" y="360" width="5" height="7" opacity="0.85"/><rect x="1147" y="276" width="5" height="7" opacity="0.25"/></g><rect x="708" y="150" width="214" height="330" fill="#2a1a2f"/><rect x="700" y="140" width="230" height="13" fill="#3b2640"/><g><rect x="728" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="728" y="364" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="728" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="775" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="220" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="822" y="268" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="316" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="822" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="172" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="220" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="268" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="316" width="26" height="32" rx="12" fill="#4a3350" opacity="0.8"/><rect x="869" y="364" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/><rect x="869" y="412" width="26" height="32" rx="12" fill="#F9D58A" opacity="1"/></g></svg>
+  <div class="wrap hero-inner">
+    <a class="back" href="#home">← Cover</a>
+    <p class="label eyebrow">Book Club · Meeting&nbsp;2</p>
+    <h1>Peck &amp; Peck</h1>
+    <p class="by">a novel by Bonnie&nbsp;Garmus</p>
+    <div class="chips"><span>Chapters 15–30</span><span>50 minutes</span><span>Bring your highlights</span></div>
+  </div>
+</header>
+
+<nav class="agenda" aria-label="Lesson plan">
+  <div class="agenda-scroll wrap">
+    <ol>
+      <li><a href="#c2-warmup" data-s="c2-warmup"><span class="n">1</span>Warm-up</a></li>
+      <li><a href="#c2-story" data-s="c2-story"><span class="n">2</span>The&nbsp;story</a></li>
+      <li><a href="#c2-people" data-s="c2-people"><span class="n">3</span>The&nbsp;people</a></li>
+      <li><a href="#c2-close" data-s="c2-close"><span class="n">4</span>Words &amp;&nbsp;quotes</a></li>
+      <li><a href="#c2-discuss" data-s="c2-discuss"><span class="n">5</span>Discuss</a></li>
+      <li><a href="#c2-wrapup" data-s="c2-wrapup"><span class="n">6</span>Wrap-up</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- 1 WARM-UP -->
+<section class="step" id="c2-warmup">
+  <div class="sec-head"><span class="badge">Step 1 · 5 min</span><h2>Warm-up</h2></div>
+  <p class="intro">Chapters 15 to 30 take Batter into the building he has dreamed about. Start with one easy&nbsp;question.</p>
+  <div class="pick" id="c2-pick">
+    <div class="card"><span class="label">Question A</span><p>Have you ever followed a gut feeling, even when it seemed risky? What&nbsp;happened?</p></div>
+    <div class="card"><span class="label">Question B</span><p>Imagine your dream workplace turns out to be nothing like you expected. What would you&nbsp;do?</p></div>
+    <div class="card"><span class="label">Question C</span><p>What is the best, or the worst, first week at a job you have ever&nbsp;had?</p></div>
+  </div>
+  <div class="pick-bar"><button class="btn" id="c2-pickBtn" type="button">Pick a question for us</button><span class="tip" style="margin:0">Or choose your own.</span></div>
+</section>
+
+<!-- 2 STORY -->
+<section class="step" id="c2-story">
+  <div class="sec-head"><span class="badge">Step 2 · 8 min</span><h2>The story so far</h2></div>
+  <p class="intro">A one-minute reminder, then Batter’s life before the job and inside Peck &amp;&nbsp;Peck.</p>
+  <div class="sixty">
+    <div class="card"><b class="lead">Poetry in New York</b>Batter works three jobs, meets <mark class="k">June</mark>, and visits poetry readings to find new poets. Then he finds <mark class="k">Peck &amp; Peck</mark> alive again, and&nbsp;hiring.</div>
+    <div class="card"><b class="lead">The job</b><mark class="k">Salton Peck</mark> says he loves Batter’s poems and hires him. The job is making copies in a small room&nbsp;downstairs.</div>
+    <div class="card"><b class="lead">Eggs and a secret</b>A stranger visits Batter in secret: <mark class="k">Declonius Peck</mark>, Salton’s twin. Howard explains why no one may speak of&nbsp;him.</div>
+  </div>
+  <div class="lanes">
+    <div class="lane then">
+      <p class="where">New York · before the&nbsp;job</p>
+      <h3>Finding Peck &amp; Peck</h3>
+      <ol class="beats">
+        <li><b class="lead">Chapter 15</b>Batter’s mother tells the story of the dog and the wallet full of&nbsp;cash.</li>
+        <li><b class="lead">Chapter 16</b>Batter works three jobs. June tells him to stop putting off the&nbsp;future.</li>
+        <li><b class="lead">Chapter 17</b>Batter owes money, avoids Paul, and goes looking for a poetry&nbsp;reading.</li>
+        <li><b class="lead">Chapters 18–19</b>He finds the Peck &amp; Peck building and learns it is&nbsp;hiring.</li>
+        <li><b class="lead">Chapters 20–21</b>He sends his résumé and has a stormy interview with Salton&nbsp;Peck.</li>
+      </ol>
+    </div>
+    <div class="lane now">
+      <p class="where">Peck &amp; Peck · the first&nbsp;weeks</p>
+      <h3>Working at Peck &amp; Peck</h3>
+      <ol class="beats">
+        <li><b class="lead">Chapters 22–23</b>Dexter gives a tour. Batter’s office has three copy&nbsp;machines.</li>
+        <li><b class="lead">Chapter 24</b>His old manager tells him to push&nbsp;back.</li>
+        <li><b class="lead">Chapters 25–26</b>His mother tells a strep-throat story. Batter’s paper-saving memo upsets the&nbsp;editors.</li>
+        <li><b class="lead">Chapter 27</b>A stranger with a poem turns out to be Declonius&nbsp;Peck.</li>
+        <li><b class="lead">Chapters 28–29</b>Howard explains the twins. Batter enters the Editorial&nbsp;Aviary.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="bridge">Batter wanted to find poetry at Peck &amp; Peck. What did he find&nbsp;instead?</p>
+</section>
+
+<!-- 3 PEOPLE -->
+<section class="step" id="c2-people">
+  <div class="sec-head"><span class="badge">Step 3 · 7 min</span><h2>Who is who</h2></div>
+  <div class="tree" aria-label="Batter’s path to the copy room, in order">
+    <p class="tree-title label">Batter’s path to the copy&nbsp;room</p>
+    <div class="t">Three jobs<small>copies, T-shirts, a restaurant</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="t">The interview<small>Salton says he loves the poems</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="t hot">The copy room<small>three copy machines</small></div>
+  </div>
+  <div class="people">
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#8A2E2E">S</div><div><h3>Salton Peck</h3><p class="role">Editor in&nbsp;Chief</p></div></div>
+      <span class="tag now">Peck &amp; Peck</span>
+      <ul><li>Hires Batter, saying he loves his&nbsp;work</li><li>Believes poetry is&nbsp;genetics</li><li>Hates copiers and shouts a&nbsp;lot</li><li>Is responsible for every line in each&nbsp;issue</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#7A4FA3">X</div><div><h3>Declonius Peck</h3><p class="role">Salton’s twin&nbsp;brother</p></div></div>
+      <span class="tag now">Peck &amp; Peck</span>
+      <ul><li>Visits Batter in secret with a&nbsp;poem</li><li>Was once Editor in Chief of Peck &amp;&nbsp;Peck</li><li>Was convicted of embezzlement and went to prison for five&nbsp;years</li><li>Is not allowed near the&nbsp;building</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#555F7D">D</div><div><h3>Dexter</h3><p class="role">The&nbsp;gatekeeper</p></div></div>
+      <span class="tag now">Peck &amp; Peck</span>
+      <ul><li>Shows Batter around the&nbsp;building</li><li>Decides who can see&nbsp;Salton</li><li>Is rude to Batter and says “No personal&nbsp;details”</li><li>Starts a betting pool on how long Batter will&nbsp;last</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#0F8B8D">H</div><div><h3>Howard Gadley</h3><p class="role">An&nbsp;editor</p></div></div>
+      <span class="tag now">Peck &amp; Peck</span>
+      <ul><li>Meets Batter by the covers on the second&nbsp;floor</li><li>Explains the history of the&nbsp;twins</li><li>Takes Batter to the Editorial&nbsp;Aviary</li><li>Warns Batter not to talk about&nbsp;Declonius</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#3F57C0">J</div><div><h3>June</h3><p class="role">Batter’s&nbsp;friend</p></div></div>
+      <span class="tag then">New York</span>
+      <ul><li>Met Batter at the&nbsp;Gap</li><li>Tells him to do what he wants right&nbsp;now</li><li>Sent his poem to the Poetry in Buses&nbsp;contest</li><li>Tells Batter she is getting&nbsp;married</li></ul>
+    </article>
+    <article class="card person">
+      <div class="top"><div class="av" style="background:#B7791F">R</div><div><h3>Mr. Raley</h3><p class="role">Batter’s old&nbsp;manager</p></div></div>
+      <span class="tag then">New York</span>
+      <ul><li>Runs the restaurant called the Just&nbsp;Okay</li><li>Calls everyone&nbsp;Alex</li><li>Refuses to give Batter his old job&nbsp;back</li><li>Tells Batter to push&nbsp;back</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- 4 WORDS AND QUOTES -->
+<section class="step" id="c2-close">
+  <div class="sec-head"><span class="badge">Step 4 · 10 min</span><h2>Close reading: quotes and words</h2></div>
+  <p class="intro">Take a few minutes on <b>six lines</b> from the chapters. Tap “Think about it” for a question. Use “Add to notes” to save a line to your&nbsp;notes.</p>
+  <div class="quotes">
+    <article class="card quote">
+      <blockquote>“It’s the ‘still’ that gets&nbsp;you.”</blockquote>
+      <p class="ctx">June, about putting off the&nbsp;future</p>
+      <div class="reveal" hidden>Is there something you keep saying you could <mark class="k">still</mark>&nbsp;do?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“That’s what a poem can&nbsp;do.”</blockquote>
+      <p class="ctx">Batter, about a poem on an old woman eating&nbsp;plums</p>
+      <div class="reveal" hidden>What can a poem make you <mark class="k">do</mark> or&nbsp;<mark class="k">feel</mark>?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“Poetry is not a&nbsp;trade.”</blockquote>
+      <p class="ctx">Salton Peck, at the&nbsp;interview</p>
+      <div class="reveal" hidden>Do you agree? Can anyone <mark class="k">become</mark> a&nbsp;poet?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“Originality is dying, Mr. Gray. It’s being massacred by&nbsp;copiers.”</blockquote>
+      <p class="ctx">Salton Peck, at the&nbsp;interview</p>
+      <div class="reveal" hidden>What is <mark class="k">ironic</mark> about Batter’s new&nbsp;job?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“They push you; you push back. That’s how a person stays&nbsp;upright.”</blockquote>
+      <p class="ctx">Mr.&nbsp;Raley</p>
+      <div class="reveal" hidden>Is this <mark class="k">good advice</mark> for Batter?&nbsp;Why?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+    <article class="card quote">
+      <blockquote>“I think it’s Peck &amp; Peck’s duty to publish every good poem. Anything short of that is&nbsp;failure.”</blockquote>
+      <p class="ctx">The stranger in the copy&nbsp;room</p>
+      <div class="reveal" hidden>Do you agree that a magazine has a <mark class="k">duty</mark> to its&nbsp;readers?</div>
+      <div class="qactions"><button class="btn ghost small rv" type="button" aria-expanded="false">Think about it</button><button class="btn ghost small an" type="button">Add to notes</button></div>
+    </article>
+  </div>
+
+  <div class="words-head"><h3>Words from the chapters</h3><p class="tip">Tap a card to see the meaning and the sentence from the&nbsp;story.</p></div>
+  <div class="words">
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">admonish</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">to tell someone firmly that they did something&nbsp;wrong</span><span class="ex">“Mr. Raley admonished&nbsp;me”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">congenial</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">friendly and&nbsp;pleasant</span><span class="ex">“counting on you to be my congenial&nbsp;host”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">transfixed</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">so amazed or interested that you cannot look&nbsp;away</span><span class="ex">“transfixed by the movement of people&nbsp;inside”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">forthright</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">honest and&nbsp;direct</span><span class="ex">“I’m not being completely&nbsp;forthright”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">audacity</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">bold behavior that shocks other&nbsp;people</span><span class="ex">“have the audacity to put their ‘poetry’ in an&nbsp;envelope”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">acumen</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">the ability to judge things quickly and&nbsp;well</span><span class="ex">“the financial&nbsp;acumen”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">pneumatic</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">worked by air&nbsp;pressure</span><span class="ex">“They’re pneumatic&nbsp;tubes.”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">false economy</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">saving money in a way that costs more&nbsp;later</span><span class="ex">“It’s called a ‘false&nbsp;economy’”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">embezzlement</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">stealing money you were trusted to look&nbsp;after</span><span class="ex">“convicted of&nbsp;embezzlement”</span></span></button>
+    <button class="flip" type="button" aria-pressed="false"><span class="front"><span class="w">to and fro</span><span class="hint">tap for meaning</span></span><span class="back" hidden><span class="def">back and&nbsp;forth</span><span class="ex">a vocabulary note you made in Chapter&nbsp;21</span></span></button>
+  </div>
+</section>
+
+<!-- 5 DISCUSS -->
+<section class="step" id="c2-discuss">
+  <div class="sec-head"><span class="badge">Step 5 · 15 min</span><h2>Let’s discuss</h2></div>
+
+  <p class="tip">You do not need every question. Choose <b>the ones your group likes</b>. Tick a question when you have talked about&nbsp;it.</p>
+  <div class="progress"><span id="c2-progTxt">0 of 11 discussed</span><div class="bar"><i id="c2-progBar"></i></div></div>
+
+  <div class="round">
+    <h3>Round 1 · Understanding <small>about 3 min</small></h3>
+    <div class="q"><span class="qn">1</span><div class="qt">In Chapter 15 Batter’s mother says dogs trust their guts, while people question theirs. Do you&nbsp;agree?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about the wallet and the three&nbsp;children.</div></div></div>
+    <div class="q"><span class="qn">2</span><div class="qt">What jobs does Batter have in New York, and how does he feel about&nbsp;them?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Copy-a-Go-Go, the Gap, the Just Okay: about sixty hours a&nbsp;week.</div></div></div>
+    <div class="q"><span class="qn">3</span><div class="qt">What does June tell Batter about the word&nbsp;“still”?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about putting off the&nbsp;future.</div></div></div>
+  </div>
+
+  <div class="round">
+    <h3>Round 2 · Digging deeper <small>about 8 min</small></h3>
+    <div class="q"><span class="qn">4</span><div class="qt">Why does Batter go to poetry readings? What does he hope to&nbsp;find?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Discover new poets, support lonely ones, imply a fan&nbsp;base.</div></div></div>
+    <div class="q"><span class="qn">5</span><div class="qt">Salton says he loves Batter’s work, then shouts about people who write poetry. What does this show about&nbsp;him?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Genetics, “a landfill,”&nbsp;copiers.</div></div></div>
+    <div class="q"><span class="qn">6</span><div class="qt">Batter is hired to make copies. Why do you think the job is nothing like he&nbsp;expected?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>His own office has three copy&nbsp;machines.</div></div></div>
+    <div class="q"><span class="qn">7</span><div class="qt">Mr. Raley tells Batter to push back. What happens after Batter’s&nbsp;memo?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Double-sided copies, “a false&nbsp;economy.”</div></div></div>
+    <div class="q"><span class="qn">8</span><div class="qt">Howard says Salton and Declonius are twins who share nothing but the name. What do you think happened between&nbsp;them?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Money, prison, a restraining&nbsp;order.</div></div></div>
+  </div>
+
+  <div class="round">
+    <h3>Round 3 · The big picture <small>about 4 min</small></h3>
+    <div class="q"><span class="qn">9</span><div class="qt">Peck &amp; Peck is full of eggs, trees and strange rules. What do you think the egg stands&nbsp;for?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Howard takes Batter to the Editorial Aviary to&nbsp;explain.</div></div></div>
+    <div class="q"><span class="qn">10</span><div class="qt">Is it better to work in a place you admire, even if you are treated badly?&nbsp;Why?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Think about Batter’s other&nbsp;jobs.</div></div></div>
+    <div class="q"><span class="qn">11</span><div class="qt">Predict: what will Batter do about Declonius and the secret he now&nbsp;knows?</div><div class="body"><div class="qrow"><button class="btn ghost small hn" type="button" aria-expanded="false">Hint</button><button class="btn ghost small an" type="button">Add to notes</button><label class="chk"><input type="checkbox" class="dn"> Discussed</label></div><div class="hint" hidden>Howard asks Batter not to talk about&nbsp;him.</div></div></div>
+  </div>
+
+  <div class="card bonus" id="c2-game">
+    <h3>Bonus game: true or false?</h3>
+    <p class="tip" style="margin:0">Decide if each sentence is true or false. Two rounds of&nbsp;three.</p>
+    <div class="game-head"><div class="steps" id="c2-gSteps"><span class="on" data-r="1">Round 1</span><span data-r="2">Round 2</span><span data-r="3">Final score</span></div><div class="gscore" id="c2-gScore">Score: 0 / 6</div></div>
+    <div class="gr" data-r="1">
+      <p class="pr-only label">Round&nbsp;1</p>
+      <div class="gq" data-a="True">
+        <p class="gt">1. In Chapter 15, Batter’s mother says Batter the dog gave money to three&nbsp;children.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is True.</b> He left a one-hundred-dollar bill in each of their hands.</div>
+      </div>
+      <div class="gq" data-a="False">
+        <p class="gt">2. Mr. Raley gives Batter his old job&nbsp;back.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is False.</b> Mr. Raley says no, in Chapter 24.</div>
+      </div>
+      <div class="gq" data-a="False">
+        <p class="gt">3. When Batter finds the Peck &amp; Peck building, it has closed for&nbsp;good.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is False.</b> The building is alive and hiring (Chapters 18–19).</div>
+      </div>
+      <div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">Start Round 2</button></div>
+    </div>
+    <div class="gr" data-r="2" hidden>
+      <p class="pr-only label">Round&nbsp;2</p>
+      <div class="gq" data-a="True">
+        <p class="gt">4. June tells Batter to switch from poetry to&nbsp;novels.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is True.</b> She says it in Chapter 16.</div>
+      </div>
+      <div class="gq" data-a="True">
+        <p class="gt">5. Batter’s office at Peck &amp; Peck has three copy&nbsp;machines.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is True.</b> Dexter shows it to him in Chapter 22.</div>
+      </div>
+      <div class="gq" data-a="False">
+        <p class="gt">6. Howard says Salton and Declonius Peck are&nbsp;cousins.</p>
+        <div class="tfrow"><button class="tf" type="button" data-v="True">True</button><button class="tf" type="button" data-v="False">False</button></div>
+        <div class="fb" hidden aria-live="polite"><span class="vr"></span><b>The answer is False.</b> Howard says they are twins (Chapter 28).</div>
+      </div>
+      <div class="gsum" hidden><p class="gres"></p><button class="btn gnext" type="button">See my final score</button></div>
+    </div>
+    <div class="gr gfinal" data-r="3" hidden>
       <div class="big" id="c2-gBig">0 / 6</div>
       <p id="c2-gMsg"></p>
       <button class="btn" id="c2-gAgain" type="button">Play again</button>
@@ -635,8 +931,8 @@ body.notes-open .fab{display:none}
   <div class="sec-head"><span class="badge">Step 6 · 5 min</span><h2>Wrap-up</h2></div>
   <p class="intro">Before we stop, share one thought&nbsp;each.</p>
   <div class="wrapgrid">
-    <div class="card"><h3>Final thoughts</h3><ul><li>Which chapter did you enjoy most so far, and&nbsp;why?</li><li>What do you think Peck &amp; Peck really&nbsp;is?</li><li>What will Batter do after&nbsp;graduation?</li></ul><div class="pick-bar"><button class="btn small" id="c2-predNote" type="button">Add these to my notes</button></div></div>
-    <div class="card locked"><span class="label">Next time</span><h3>Chapter 15 and beyond</h3><p>We will start by checking our predictions about&nbsp;Batter.</p></div>
+    <div class="card"><h3>Predictions for the next session</h3><ul><li>What will Batter do about Declonius’s&nbsp;secret?</li><li>Will Batter push back at work, or&nbsp;quit?</li><li>What do the eggs in the Aviary stand&nbsp;for?</li></ul><div class="pick-bar"><button class="btn small" id="c2-predNote" type="button">Add these to my notes</button></div></div>
+    <div class="card locked"><span class="label">Next time</span><h3>Chapter 31 and beyond</h3><p>We will start by checking our predictions about&nbsp;Batter.</p></div>
   </div>
 </section>
 
@@ -644,7 +940,7 @@ body.notes-open .fab{display:none}
 
 </main>
 
-<footer class="wrap">Based on the club’s reading highlights from Chapters 1–14 of Peck &amp; Peck by Bonnie Garmus (Kindle sample).</footer>
+<footer class="wrap">Based on the club’s reading highlights from Chapters 15–29 of Peck &amp; Peck by Bonnie Garmus (Kindle sample).</footer>
 
 <button class="fab" id="c2-fab" type="button" aria-controls="c2-drawer" aria-expanded="false">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
@@ -666,7 +962,7 @@ body.notes-open .fab{display:none}
   <div class="editor" id="c2-editor" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" aria-label="Notes"></div>
   <div class="dfoot"><span class="st" id="c2-st">Saved on this device</span><button class="btn small" id="c2-savePdf" type="button">Save PDF</button><button class="btn ghost small" id="c2-clearN" type="button">Clear all</button></div>
 </aside>
-</div><!-- /ch1 -->
+</div><!-- /ch2 -->
 
 
 
@@ -679,7 +975,7 @@ body.notes-open .fab{display:none}
   function store(k,v){try{if(v===undefined){return localStorage.getItem(k)}localStorage.setItem(k,v);}catch(e){return null}}
 
   /* stars */
-  ["stars2","stars3"].forEach(function(id){
+  ["stars2","stars3","stars4"].forEach(function(id){
     var g=document.getElementById(id), seed=7, ns="http://www.w3.org/2000/svg";
     function r(){seed=(seed*16807)%2147483647;return seed/2147483647}
     for(var i=0;i<90;i++){
@@ -827,8 +1123,8 @@ body.notes-open .fab{display:none}
   }
 
   /* ---- chapters and router ---- */
-  var ch1=initCh($("#ch1"),"c2-","peck-ch1-notes-v1",'<h3>Final thoughts on Peck &amp; Peck</h3><ul><li>Which chapter did you enjoy most so far, and why?</li><li>What do you think Peck &amp; Peck really is?</li><li>What will Batter do after graduation?</li></ul>'), chs=[ch1];
-  var TITLES=[ "Peck and Peck - Chapters 1-14 slides and notes" ], origTitle=document.title;
+  var ch1=initCh($("#ch1"),"c1-","peck-ch1-notes-v1",'<h3>Final thoughts on Peck &amp; Peck</h3><ul><li>Which chapter did you enjoy most so far, and why?</li><li>What do you think Peck &amp; Peck really is?</li><li>What will Batter do after graduation?</li></ul>'), ch2=initCh($("#ch2"),"c2-","peck-ch2-notes-v1",'<h3>Predictions for the next session</h3><ul><li>What will Batter do about Declonius’s secret?</li><li>Will Batter push back at work, or quit?</li><li>What do the eggs in the Aviary stand for?</li></ul>'), chs=[ch1,ch2];
+  var TITLES=[ "Peck and Peck - Chapters 1-14 slides and notes","Peck and Peck - Chapters 15-30 slides and notes" ], origTitle=document.title;
   var homeEl=$("#home"), first=true, curKey="home";
   window.addEventListener("beforeprint",function(){
     origTitle=document.title;
@@ -838,7 +1134,7 @@ body.notes-open .fab{display:none}
   window.addEventListener("afterprint",function(){document.title=origTitle});
   function route(){
     var h=location.hash, toHome=(h===""||h==="#"||h==="#home");
-    var key=toHome?"home":"ch1";
+    var key=toHome?"home":((h.indexOf("#chapter2")===0||h.indexOf("#c2-")===0)?"ch2":"ch1");
     homeEl.hidden=key!=="home";chs.forEach(function(c,i){c.root.hidden=key!=="ch"+(i+1)});
     if(key!==curKey){chs.forEach(function(c){c.setOpen(false)})}
     if(key==="home"){layoutPits()}
